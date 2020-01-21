@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">SimpleCalculator</string>
+    <string name="symbol_plus">+</string>
+    <string name="symbol_minus">-</string>
+    <string name="symbol_multiply">×</string>
+    <string name="symbol_divide">/</string>
+    <string name="symbol_power">xʸ</string>
+    <string name="symbol_root">√</string>
+    <string name="symbol_equals">=</string>
+    <string name="symbol_change_sign">+/-</string>
+    <string name="symbol_cancel">C</string>
+    <string name="symbol_percentage">%</string>
+
+    <string name="symbol_0">0</string>
+    <string name="symbol_1">1</string>
+    <string name="symbol_2">2</string>
+    <string name="symbol_3">3</string>
+    <string name="symbol_4">4</string>
+    <string name="symbol_5">5</string>
+    <string name="symbol_6">6</string>
+    <string name="symbol_7">7</string>
+    <string name="symbol_8">8</string>
+    <string name="symbol_9">9</string>
+
+    <string name="minus">-</string>
+</resources>
