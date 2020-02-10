@@ -1,9 +1,18 @@
 package com.jacstuff.simplecalculator.state;
 
+import com.jacstuff.simplecalculator.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
 public class ResultState extends AbstractState implements CalcState {
 
+
+    private OperandString firstOperandString;
+    private OperandString secondOperandString;
+
+    public ResultState(OperandString firstOperandString, OperandString secondOperandString){
+        this.firstOperandString = firstOperandString;
+        this.secondOperandString = secondOperandString;
+    }
 
     @Override
     public void init(){
@@ -11,43 +20,50 @@ public class ResultState extends AbstractState implements CalcState {
     }
     @Override
     public void setOperator(Operator operator) {
-        calculatorActions.assignResultToFirstNumber();
-        calculatorActions.setAndDisplayOperatorAction(operator);
-        if(operator.hasSingleInput()){
-            calculator.setState(State.SECOND_NUMBER);
-            calculator.evaluate();
-            return;
-        }
-        calculator.setState(State.OPERATOR);
+        calculatorActions.copyResultToFirstNumber();
+        secondOperandString.init();
+        calculator.setState(State.FIRST_NUMBER);
+        calculator.setOperator(operator);
     }
 
     @Override
     public void addDigit(int digit) {
-
-        calculatorActions.clearNumbers();
-        calculatorActions.addDigitToFirstNumber(digit);
+        calculatorActions.clearNumbersAndDisplayText();
         calculator.setState(State.FIRST_NUMBER);
-
+        calculator.addDigit(digit);
     }
 
     @Override
     public void changeSign() {
-        calculatorActions.changeSignOfResult();
+        calculatorActions.copyResultToFirstNumber();
+        calculator.setState(State.FIRST_NUMBER);
+        calculator.changeSign();
     }
 
     @Override
     public void addDecimal() {
-
+        calculatorActions.copyResultToFirstNumber();
+        secondOperandString.init();
+        calculator.setState(State.FIRST_NUMBER);
+        firstOperandString.addDecimal();
     }
 
     @Override
     public void clear() {
 
-        calculatorActions.clearNumbers();
+        calculatorActions.clearNumbersAndDisplayText();
     }
 
     @Override
     public void evaluate() {
 
+    }
+
+    @Override
+    public void deleteDigit() {
+        secondOperandString.init();
+        calculatorActions.copyResultToFirstNumber();
+        calculator.setState(State.FIRST_NUMBER);
+        calculator.backSpace();
     }
 }

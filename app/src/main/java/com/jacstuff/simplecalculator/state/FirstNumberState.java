@@ -1,9 +1,16 @@
 package com.jacstuff.simplecalculator.state;
 
+import com.jacstuff.simplecalculator.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
 public class FirstNumberState extends AbstractState implements CalcState {
 
+
+    OperandString firstOperandString;
+
+    public FirstNumberState(OperandString firstOperandString){
+        this.firstOperandString = firstOperandString;
+    }
 
     @Override
     public void init(){
@@ -23,25 +30,31 @@ public class FirstNumberState extends AbstractState implements CalcState {
 
     @Override
     public void changeSign() {
-        calculatorActions.changeSignOfFirstNumber();
+        firstOperandString.negate();
     }
 
     @Override
     public void addDecimal() {
-
+        firstOperandString.addDecimal();
     }
 
     @Override
     public void addDigit(int digit) {
-        calculatorActions.addDigitToFirstNumber(digit);
+        firstOperandString.addDigit(digit);
     }
 
     @Override
     public void clear() {
-        calculatorActions.clearNumbers();
+        calculatorActions.clearNumbersAndDisplayText();
     }
 
     @Override
     public void evaluate() {
+    }
+
+
+    @Override
+    public void deleteDigit() {
+        firstOperandString.deleteDigit();
     }
 }

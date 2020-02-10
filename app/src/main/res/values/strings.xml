@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SimpleCalculator</string>
+    <string name="app_name">Simple Calculator</string>
     <string name="symbol_plus">+</string>
     <string name="symbol_minus">-</string>
     <string name="symbol_multiply">×</string>
@@ -10,6 +10,22 @@
     <string name="symbol_change_sign">+/-</string>
     <string name="symbol_cancel">C</string>
     <string name="symbol_percentage">%</string>
+
+    <string name="symbol_decimal">.</string>
+    <string name="symbol_backspace">DEL</string>
+    <string name="symbol_cubeRoot">√3</string>
+    <string name="symbol_log">log</string>
+
+    <string name="symbol_cos">COS</string>
+    <string name="symbol_sin">SIN</string>
+    <string name="symbol_tan">TAN</string>
+    <string name="symbol_inverse">INV</string>
+
+
+    <string name="symbol_ln">LN</string>
+    <string name="symbol_memory_add">M+</string>
+    <string name="symbol_memory_recall">M</string>
+    <string name="symbol_">INV</string>
 
     <string name="symbol_0">0</string>
     <string name="symbol_1">1</string>

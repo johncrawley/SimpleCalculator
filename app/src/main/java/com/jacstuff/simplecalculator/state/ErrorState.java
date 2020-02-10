@@ -34,7 +34,7 @@ public class ErrorState extends AbstractState implements CalcState {
 
     @Override
     public void clear() {
-        calculatorActions.clearNumbers();
+        calculatorActions.clearNumbersAndDisplayText();
         calculator.setState(State.FIRST_NUMBER);
     }
 
@@ -42,4 +42,10 @@ public class ErrorState extends AbstractState implements CalcState {
     public void evaluate() {
 
     }
+
+    @Override
+    public void deleteDigit() {
+
+    }
+
 }

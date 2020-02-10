@@ -12,12 +12,15 @@ import com.jacstuff.simplecalculator.actions.operators.PowerOf;
 import com.jacstuff.simplecalculator.actions.operators.SquareRoot;
 import com.jacstuff.simplecalculator.actions.operators.Subtract;
 
+import java.math.MathContext;
+
 public class ActionsFactory {
 
 
-    public enum Action { DIVIDE, MULTIPLY, PERCENT, PLUS, POWER, ROOT, SUBTRACT, EQUALS, CHANGE_SIGN, CLEAR, NUMBER};
+    public enum Action { DIVIDE, MULTIPLY, PERCENT, PLUS, POWER, ROOT, SUBTRACT, EQUALS, CHANGE_SIGN, CLEAR, BACKSPACE, DECIMAL, NUMBER};
     private Context context;
     private Calculator calculator;
+    private MathContext mc;
 
     public ActionsFactory(Context context, Calculator calculator){
         this.context = context;
@@ -25,6 +28,7 @@ public class ActionsFactory {
             Log.i("ActionsFactory", "constructor: calculator param is null!");
         }
         this.calculator = calculator;
+        mc = new MathContext(9);
     }
 
 
@@ -50,16 +54,20 @@ public class ActionsFactory {
 
         switch(actionType){
 
-            case PLUS:      return new Plus();
-            case SUBTRACT:  return new Subtract();
-            case DIVIDE:    return new Divide();
-            case MULTIPLY:  return new Multiply();
-            case PERCENT:   return new PercentOf();
-            case POWER:     return new PowerOf();
-            case ROOT:      return new SquareRoot();
+            case PLUS:      return new Plus(mc);
+            case SUBTRACT:  return new Subtract(mc);
+            case DIVIDE:    return new Divide(mc);
+            case MULTIPLY:  return new Multiply(mc);
+            case PERCENT:   return new PercentOf(mc);
+            case POWER:     return new PowerOf(mc);
+            case ROOT:      return new SquareRoot(mc);
+
             case EQUALS:    return new EqualsAction();
             case CLEAR:     return new ClearAction();
             case CHANGE_SIGN: return new ChangeSignAction();
+
+            case DECIMAL: return new DecimalAction();
+            case BACKSPACE: return new BackspaceAction();
 
             default : return new ClearAction();
 

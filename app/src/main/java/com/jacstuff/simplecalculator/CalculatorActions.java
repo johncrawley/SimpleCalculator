@@ -5,18 +5,23 @@ import android.widget.TextView;
 
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
+import java.math.BigDecimal;
+
 public class CalculatorActions {
 
-    private int firstNumber;
-    private int secondNumber;
+
     private Operator operator;
-    private int result;
     private TextView textView;
-    private String displayText;
+    private OperandString operandString1;
+    private OperandString operandString2;
+    private OperandString resultStr;
 
 
-    public CalculatorActions(TextView textView){
+    CalculatorActions(OperandString operandString1, OperandString operandString2, OperandString resultStr, TextView textView){
 
+        this.operandString1 = operandString1;
+        this.operandString2 = operandString2;
+        this.resultStr = resultStr;
         this.textView = textView;
     }
 
@@ -29,104 +34,45 @@ public class CalculatorActions {
     }
 
 
-    public void addDigitToFirstNumber(int digit){
-        firstNumber = addDigitAndUpdateDisplay(firstNumber, digit);
-    }
-
-    public void addDigitToSecondNumber(int digit){
-        secondNumber = addDigitAndUpdateDisplay(secondNumber, digit);
-    }
-
     public void displayError(){
-        displayText = "ERR";
-        updateDisplay();
-    }
-
-
-    public void clearSecondNumber(){
-        secondNumber = 0;
-    }
-
-    private void updateDisplay(){
-        textView.setText(displayText);
-    }
-    public void appendOperatorToDisplay(){
-        displayText += " " + operator.getSymbol();
-    }
-
-    public void appendSecondNumberToDisplay(){
-
-        displayText += " " + secondNumber;
-
-    }
-
-
-    private int addDigitAndUpdateDisplay(int number, int newDigit){
-        log("Entered addDigitAndUpdateDisplay()");
-        number = addDigit(number, newDigit);
-        setDisplay(number);
-        return number;
+        setDisplay("ERR");
     }
 
 
 
-    public void assignResultToFirstNumber(){
-        firstNumber = result;
-    }
-
-    private int addDigit(int number, int digit){
-        return (number * 10) + digit;
+    public void copyResultToFirstNumber(){
+        operandString1.getValueFrom(resultStr);
     }
 
     private void log(String msg){
-
         Log.i("CalculatorActions", msg);
-
     }
 
     public void evaluateAndDisplay(){
-        Log.i("CalculatorActions", "Entered evaluateAndDisplay()");
-        result = operator.execute(firstNumber, secondNumber);
-        setDisplay(result);
-        firstNumber = result;
+
+        BigDecimal number1 = createBigDecimalFrom(operandString1);
+        BigDecimal number2 = createBigDecimalFrom(operandString2);
+
+        BigDecimal resultBig = operator.execute(number1, number2).stripTrailingZeros();
+        resultStr.set(resultBig.toPlainString());
+        operandString1.getValueFrom(resultStr);
     }
 
-    private void setDisplay(int value){
-        Log.i("CalculatorActions", "Entered setDisplay(), value: " + value + " state: ");
-        displayText = "" + value;
-        textView.setText(displayText);
+    private BigDecimal createBigDecimalFrom(OperandString operandString){
+        return new BigDecimal(operandString.get());
     }
 
-    public void clearNumbers(){
-        firstNumber = 0;
-        secondNumber = 0;
-        result = 0;
-        setDisplay(0);
-    }
 
+    public void clearNumbersAndDisplayText(){
+        operandString1.init();
+        operandString2.init();
+
+        setDisplay("0");
+    }
 
     private void setDisplay(String text){
-        displayText = text;
-        textView.setText(displayText);
+        textView.setText(text);
     }
 
-    public void changeSignOfFirstNumber(){
-        firstNumber = changeSign(firstNumber);
-        setDisplay(firstNumber);
-    }
-    public void changeSignOfSecondNumber(){
-        secondNumber = changeSign(secondNumber);
-        setDisplay(secondNumber);
-    }
-
-    public void changeSignOfResult(){
-        result = result *-1 ;
-        setDisplay(result);
-    }
-
-
-    private int changeSign(int number){
-        return number * -1;
-    }
 
 }

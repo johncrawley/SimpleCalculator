@@ -2,8 +2,18 @@ package com.jacstuff.simplecalculator.actions.operators;
 
 import com.jacstuff.simplecalculator.Calculator;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 public class PowerOf extends AbstractOperatorAction {
-    public int execute(int num1, int num2){
-        return (int)Math.pow(num1, num2);
+
+    public PowerOf(MathContext mathContext){
+        this.mathContext = mathContext;
+    }
+
+    @Override
+    public BigDecimal execute(BigDecimal num1, BigDecimal num2){
+        int exponent = num2.toBigInteger().intValue();
+        return num1.pow(exponent, mathContext);
     }
 }

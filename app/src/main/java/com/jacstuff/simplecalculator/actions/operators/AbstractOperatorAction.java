@@ -4,11 +4,16 @@ import com.jacstuff.simplecalculator.Calculator;
 import com.jacstuff.simplecalculator.actions.AbstractAction;
 import com.jacstuff.simplecalculator.actions.ButtonAction;
 
+import java.math.MathContext;
+
 public abstract class AbstractOperatorAction extends AbstractAction implements ButtonAction, Operator {
+
+    protected MathContext mathContext;
 
     public void process(){
         calculator.setOperator(this);
     }
+
 
     public int execute(){
         return 0;

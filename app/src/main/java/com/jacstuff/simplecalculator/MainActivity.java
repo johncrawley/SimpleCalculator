@@ -8,8 +8,11 @@ import android.widget.TextView;
 
 import com.jacstuff.simplecalculator.actions.ActionsFactory;
 import com.jacstuff.simplecalculator.actions.ButtonAction;
+
+import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.BACKSPACE;
 import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.CHANGE_SIGN;
 import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.CLEAR;
+import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.DECIMAL;
 import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.DIVIDE;
 import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.EQUALS;
 import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.MULTIPLY;
@@ -79,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void mapOtherButtons(){
         mapButtonToAction(R.id.buttonClear, CLEAR, R.string.symbol_cancel);
+        mapButtonToAction(R.id.buttonBackspace, BACKSPACE, R.string.symbol_backspace);
+        mapButtonToAction(R.id.buttonDecimal, DECIMAL, R.string.symbol_decimal);
         mapButtonToAction(R.id.buttonEquals, EQUALS, R.string.symbol_equals);
         mapButtonToAction(R.id.buttonChangeSign, CHANGE_SIGN, R.string.symbol_change_sign);
     }
@@ -110,3 +115,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //TODO: use double instead of int
 // TODO: if operator on 2nd number state, eval sum, store in 1st num and set operator
+
+// TODO: create CalculatorNumber class, will represent the 1st and 2nd numbers in the calculator
+//      The calculator will have access to these 2 instances, as well as the various states
+//      This should mean less duplication for methods clearing numbers, inverting signs,
+//      as well as somewhere to put state for adding the decimal place

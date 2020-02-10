@@ -23,18 +23,58 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTable"
         app:layout_constraintTop_toBottomOf="@+id/textView"
 
-        />
+        tools:layout_editor_absoluteX="0dp" />
 
     <TableLayout
+        android:id="@+id/buttonTable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider">
+        app:layout_constraintTop_toBottomOf="@+id/divider"
+        >
 
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <Button
+                android:id="@+id/buttonDecimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="@string/symbol_decimal" />
+
+
+            <Button
+                android:id="@+id/buttonBackspace"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="@string/symbol_backspace" />
+
+
+            <Button
+                android:id="@+id/buttonMemoryAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:enabled="false"
+                android:text="@string/symbol_memory_add" />
+
+            <Button
+                android:id="@+id/buttonMemoryRecall"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:enabled="false"
+                android:text="@string/symbol_memory_recall" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"

@@ -23,22 +23,33 @@ public class Calculator {
     private CalcState currentState;
     private CalculatorActions calculatorActions;
 
+    private OperandString operandStr1;
+    private OperandString operandStr2;
+    private OperandString resultStr;
+
     public Calculator(TextView textView){
-        calculatorActions = new CalculatorActions(textView);
+        initFields(textView);
         setupStates();
         setState(State.FIRST_NUMBER);
+    }
 
+    private void initFields(TextView textView){
+        UpdatableDisplay updatableDisplay = new UpdatableDisplayImpl(textView);
+        operandStr1 = new OperandString(updatableDisplay);
+        operandStr2 = new OperandString(updatableDisplay);
+        resultStr = new OperandString(updatableDisplay);
 
+        calculatorActions = new CalculatorActions(operandStr1, operandStr2, resultStr, textView);
     }
 
     private void setupStates(){
 
         states = new HashMap<>();
-        addState(State.FIRST_NUMBER, new FirstNumberState());
-        addState(State.OPERATOR, new OperatorState());
-        addState(State.SECOND_NUMBER, new SecondNumberState());
+        addState(State.FIRST_NUMBER, new FirstNumberState(operandStr1));
+        addState(State.OPERATOR, new OperatorState(operandStr2));
+        addState(State.SECOND_NUMBER, new SecondNumberState(operandStr1, operandStr2));
         addState(State.ERROR, new ErrorState());
-        addState(State.RESULT, new ResultState());
+        addState(State.RESULT, new ResultState(operandStr1, operandStr2));
 
     }
 
@@ -69,6 +80,7 @@ public class Calculator {
     }
     public void changeSign() { currentState.changeSign(); }
     public void addDecimal() { currentState.addDecimal(); }
+    public void backSpace() { currentState.deleteDigit();}
 
     private void log(String msg){
         Log.i("Calculator", msg);

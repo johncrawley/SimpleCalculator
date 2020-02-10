@@ -15,5 +15,6 @@ public interface CalcState {
     void init();
     void changeSign();
     void addDecimal();
+    void deleteDigit();
 
 }
