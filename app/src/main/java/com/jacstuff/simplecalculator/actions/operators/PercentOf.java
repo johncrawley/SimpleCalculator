@@ -14,7 +14,7 @@ public class PercentOf extends AbstractOperatorAction {
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
 
-        BigDecimal result = num1.divide(num2, mathContext);
+        BigDecimal result = num2.multiply(num1, mathContext);
         return result.divide(new BigDecimal(100), mathContext);
     }
 }

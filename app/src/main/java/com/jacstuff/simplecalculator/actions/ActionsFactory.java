@@ -75,11 +75,6 @@ public class ActionsFactory {
     }
 
     private ButtonAction assignSymbolAndCalculator(ButtonAction action, int symbolId){
-        if(this.calculator == null){
-            Log.i("ActionsFactory", "assignSymbolAndCalculator() : calculator is null!");
-        }else{
-            Log.i("ActionsFactory", "assignSymbolAndCalculator() : calculator appears to be ok!");
-        }
         action.setCalculator(calculator);
         action.setSymbol(context.getString(symbolId));
         return action;

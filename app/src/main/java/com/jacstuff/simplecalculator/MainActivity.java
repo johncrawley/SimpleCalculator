@@ -112,11 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 }
 
-
-//TODO: use double instead of int
 // TODO: if operator on 2nd number state, eval sum, store in 1st num and set operator
+//       - doing this already but need to show result, instead of operator symbol
 
-// TODO: create CalculatorNumber class, will represent the 1st and 2nd numbers in the calculator
-//      The calculator will have access to these 2 instances, as well as the various states
-//      This should mean less duplication for methods clearing numbers, inverting signs,
-//      as well as somewhere to put state for adding the decimal place
