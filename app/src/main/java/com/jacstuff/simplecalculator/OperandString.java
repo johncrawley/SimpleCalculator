@@ -30,6 +30,15 @@ public class OperandString {
         return MINUS + value;
     }
 
+    public String getLegalStr(){
+
+        String str = get();
+        if(str.endsWith(DECIMAL)){
+            str += "0";
+        }
+        return str;
+    }
+
 
     public void set(String str){
         this.isPositive = !str.startsWith(MINUS);
@@ -52,8 +61,6 @@ public class OperandString {
         }
         updateValueAndDisplay(value + digit);
     }
-
-
 
 
     public void addDecimal(){

@@ -161,5 +161,18 @@ public class OperandStringTest {
     }
 
 
+    @Test
+    public void canGetSafeString(){
+        String initialValue = "123";
+        operandStr.set(initialValue);
+        operandStr.addDecimal();
+        String expected = initialValue + DECIMAL;
+        assertOperand(expected);
+
+        String expectedSafe = expected + "0";
+        assertEquals(expectedSafe, operandStr.getLegalStr());
+
+
+    }
 
 }

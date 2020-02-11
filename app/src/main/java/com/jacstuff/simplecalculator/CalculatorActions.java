@@ -30,7 +30,6 @@ public class CalculatorActions {
         this.operator = operator;
         operator.onLoad();
         setDisplay(operator.getSymbol());
-
     }
 
 
@@ -59,7 +58,7 @@ public class CalculatorActions {
     }
 
     private BigDecimal createBigDecimalFrom(OperandString operandString){
-        return new BigDecimal(operandString.get());
+        return new BigDecimal(operandString.getLegalStr());
     }
 
 
