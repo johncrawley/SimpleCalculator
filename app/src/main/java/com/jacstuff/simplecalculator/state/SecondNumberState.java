@@ -26,6 +26,7 @@ public class SecondNumberState extends AbstractState implements CalcState {
         calculatorActions.copyResultToFirstNumber();
         calculator.setState(State.FIRST_NUMBER);
         calculator.setOperator(operator);
+        calculatorActions.displayResult(); // because we'd rather see the result of the existing operation
     }
 
 

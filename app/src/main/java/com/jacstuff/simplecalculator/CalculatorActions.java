@@ -57,6 +57,10 @@ public class CalculatorActions {
         operandString1.getValueFrom(resultStr);
     }
 
+    public void displayResult(){
+        setDisplay(resultStr.get());
+    }
+
     private BigDecimal createBigDecimalFrom(OperandString operandString){
         return new BigDecimal(operandString.getLegalStr());
     }

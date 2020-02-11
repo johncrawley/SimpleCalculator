@@ -111,7 +111,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 }
-
-// TODO: if operator on 2nd number state, eval sum, store in 1st num and set operator
-//       - doing this already but need to show result, instead of operator symbol
-
+//TODO: need to have a "a * b%"  and "a +/- b%" type operation inputs
+//TODO: need to show sci string for result if above a certain number
