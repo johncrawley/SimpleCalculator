@@ -1,6 +1,6 @@
 package com.jacstuff.simplecalculator.state;
 
-import com.jacstuff.simplecalculator.OperandString;
+import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
 public class OperatorState extends AbstractState implements CalcState {
@@ -15,9 +15,17 @@ public class OperatorState extends AbstractState implements CalcState {
     public void init(){
 
     }
+
+
     @Override
     public void setOperator(Operator operator){
-        calculatorActions.setAndDisplayOperatorAction(operator);
+
+        calculatorActions.setAndDisplay(operator);
+
+        if(operator.hasSingleInput()) {
+            calculator.setState(State.SECOND_NUMBER);
+            calculator.evaluate();
+        }
     }
 
 

@@ -2,8 +2,6 @@ package com.jacstuff.simplecalculator.actions.operators;
 
 import android.util.Log;
 
-import com.jacstuff.simplecalculator.Calculator;
-
 import java.math.BigDecimal;
 import java.math.MathContext;
 

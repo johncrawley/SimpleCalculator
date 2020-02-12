@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.jacstuff.simplecalculator.actions.ActionsFactory;
 import com.jacstuff.simplecalculator.actions.ButtonAction;
+import com.jacstuff.simplecalculator.calculator.Calculator;
 
 import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.BACKSPACE;
 import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.CHANGE_SIGN;
@@ -113,3 +114,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 }
 //TODO: need to have a "a * b%"  and "a +/- b%" type operation inputs
 //TODO: need to show sci string for result if above a certain number
+//TODO: mem save and recall functionality
+//TODO: handle alt layout for landscape
+//TODO: fix divide by zero problem

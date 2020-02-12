@@ -1,4 +1,4 @@
-package com.jacstuff.simplecalculator;
+package com.jacstuff.simplecalculator.calculator.display;
 
 public interface UpdatableDisplay {
 

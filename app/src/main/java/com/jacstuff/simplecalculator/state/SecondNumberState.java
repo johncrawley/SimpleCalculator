@@ -1,8 +1,6 @@
 package com.jacstuff.simplecalculator.state;
 
-import android.util.Log;
-
-import com.jacstuff.simplecalculator.OperandString;
+import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
 public class SecondNumberState extends AbstractState implements CalcState {
@@ -22,11 +20,14 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
     @Override
     public void setOperator(Operator operator) {
-        calculator.evaluate();
-        calculatorActions.copyResultToFirstNumber();
-        calculator.setState(State.FIRST_NUMBER);
-        calculator.setOperator(operator);
-        calculatorActions.displayResult(); // because we'd rather see the result of the existing operation
+
+        boolean success = calculatorActions.evaluateAndDisplay();
+        if(success){
+            calculatorActions.copyResultToFirstNumber();
+            calculator.setState(State.FIRST_NUMBER);
+            calculator.setOperator(operator);
+            calculatorActions.displayResult(); // because we'd rather see the result of the existing operation than the operator symbol
+        }
     }
 
 
@@ -58,7 +59,9 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
     @Override
     public void evaluate() {
-        calculatorActions.evaluateAndDisplay();
-        calculator.setState(State.RESULT);
+        boolean success = calculatorActions.evaluateAndDisplay();
+        if(success){
+            calculator.setState(State.RESULT);
+        }
     }
 }

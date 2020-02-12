@@ -1,12 +1,12 @@
 package com.jacstuff.simplecalculator.state;
 
-import com.jacstuff.simplecalculator.OperandString;
+import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
 public class FirstNumberState extends AbstractState implements CalcState {
 
 
-    OperandString firstOperandString;
+    private OperandString firstOperandString;
 
     public FirstNumberState(OperandString firstOperandString){
         this.firstOperandString = firstOperandString;
@@ -18,14 +18,8 @@ public class FirstNumberState extends AbstractState implements CalcState {
     }
     @Override
     public void setOperator(Operator operator){
-
-        calculatorActions.setAndDisplayOperatorAction(operator);
-        if(operator.hasSingleInput()){
-            calculator.setState(State.SECOND_NUMBER);
-            calculator.evaluate();
-            return;
-        }
         calculator.setState(State.OPERATOR);
+        calculator.setOperator(operator);
     }
 
     @Override

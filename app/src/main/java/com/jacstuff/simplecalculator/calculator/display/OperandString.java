@@ -1,4 +1,6 @@
-package com.jacstuff.simplecalculator;
+package com.jacstuff.simplecalculator.calculator.display;
+
+import java.math.BigDecimal;
 
 public class OperandString {
 
@@ -8,7 +10,9 @@ public class OperandString {
     private final String DECIMAL = ".";
     private boolean isPositive = true;
     private final String MINUS = "-";
+    private final String ERROR = "ERROR";
     private UpdatableDisplay updatableDisplay;
+    private boolean showError;
 
     public OperandString(UpdatableDisplay updatableDisplay){
         this.updatableDisplay = updatableDisplay;
@@ -19,10 +23,14 @@ public class OperandString {
     public void init(){
         this.value = INITIAL_VALUE;
         this.isPositive = true;
+        this.showError = false;
     }
 
 
     public String get(){
+        if(showError){
+            return ERROR;
+        }
 
         if(isPositive || value.equals(ZERO)){
             return value;
@@ -30,11 +38,14 @@ public class OperandString {
         return MINUS + value;
     }
 
-    public String getLegalStr(){
 
+    public String getLegalStr(){
+        if(showError){
+            return ZERO;
+        }
         String str = get();
         if(str.endsWith(DECIMAL)){
-            str += "0";
+            str += ZERO;
         }
         return str;
     }
@@ -45,14 +56,21 @@ public class OperandString {
         updateValueAndDisplay(stripLeadingMinus(str));
     }
 
+    public void set(BigDecimal bigDecimal){
+        String str = bigDecimal.toPlainString();
+        set(str);
+    }
+
     private String stripLeadingMinus(String str){
         return str.startsWith(MINUS) ? str.substring(1) : str;
     }
+
 
     private void updateValueAndDisplay(String str){
         this.value = str;
         updatableDisplay.update(get());
     }
+
 
     public void addDigit(int digit){
         if(value.equals(INITIAL_VALUE)){
@@ -94,7 +112,16 @@ public class OperandString {
 
 
     public void getValueFrom(OperandString operandString){
+        if(operandString.get().equals(ERROR)){
+            set(ZERO);
+            return;
+        }
         set(operandString.get());
+    }
+
+    public void setAndDisplayError(){
+        this.showError = true;
+        updatableDisplay.update(ERROR);
     }
 
 }

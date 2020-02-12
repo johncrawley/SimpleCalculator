@@ -1,6 +1,5 @@
 package com.jacstuff.simplecalculator.actions.operators;
 
-import com.jacstuff.simplecalculator.Calculator;
 import com.jacstuff.simplecalculator.actions.AbstractAction;
 import com.jacstuff.simplecalculator.actions.ButtonAction;
 

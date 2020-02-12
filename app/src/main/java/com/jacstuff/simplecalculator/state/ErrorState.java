@@ -1,14 +1,13 @@
 package com.jacstuff.simplecalculator.state;
 
+import android.util.Log;
+
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
 public class ErrorState extends AbstractState implements CalcState {
 
-
     @Override
-    public void init(){
-        calculatorActions.displayError();
-    }
+    public void init(){}
 
     @Override
     public void changeSign() {
@@ -28,8 +27,7 @@ public class ErrorState extends AbstractState implements CalcState {
 
 
     @Override
-    public void addDigit(int digit) {
-
+    public void addDigit(int digit){
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.jacstuff.simplecalculator.actions;
 import android.content.Context;
 import android.util.Log;
 
-import com.jacstuff.simplecalculator.Calculator;
+import com.jacstuff.simplecalculator.calculator.Calculator;
 import com.jacstuff.simplecalculator.actions.operators.Divide;
 import com.jacstuff.simplecalculator.actions.operators.Multiply;
 import com.jacstuff.simplecalculator.actions.operators.PercentOf;

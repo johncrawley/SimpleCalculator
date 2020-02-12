@@ -1,8 +1,10 @@
-package com.jacstuff.simplecalculator;
+package com.jacstuff.simplecalculator.calculator;
 
-import android.util.Log;
 import android.widget.TextView;
 
+import com.jacstuff.simplecalculator.calculator.display.OperandString;
+import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
+import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplayImpl;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 import com.jacstuff.simplecalculator.state.CalcState;
 import com.jacstuff.simplecalculator.state.ErrorState;
@@ -33,14 +35,20 @@ public class Calculator {
         setState(State.FIRST_NUMBER);
     }
 
+    OperandString getNumberStr1(){return this.operandStr1;}
+    OperandString getNumberStr2(){return this.operandStr2;}
+    OperandString getResultStr(){ return this.resultStr;}
+
+
     private void initFields(TextView textView){
         UpdatableDisplay updatableDisplay = new UpdatableDisplayImpl(textView);
         operandStr1 = new OperandString(updatableDisplay);
         operandStr2 = new OperandString(updatableDisplay);
         resultStr = new OperandString(updatableDisplay);
 
-        calculatorActions = new CalculatorActions(operandStr1, operandStr2, resultStr, textView);
+        calculatorActions = new CalculatorActions(this, textView);
     }
+
 
     private void setupStates(){
 
@@ -50,46 +58,50 @@ public class Calculator {
         addState(State.SECOND_NUMBER, new SecondNumberState(operandStr1, operandStr2));
         addState(State.ERROR, new ErrorState());
         addState(State.RESULT, new ResultState(operandStr1, operandStr2));
-
     }
 
     private void addState(State key, CalcState calcState){
         calcState.setCalculator(this);
         calcState.setCalculatorActions(calculatorActions);
         states.put(key, calcState);
-
     }
 
 
-
     public void setState(State key){
-        Log.i("Calculator", "Entered setState, currentState = " + this.currentState + " new state: " + states.get(key));
-        this.currentState = states.get(key);
-        this.currentState.init();
+        CalcState calcState = states.get(key);
+        if(calcState != null){
+            this.currentState = calcState;
+            this.currentState.init();
+        }
     }
 
 
     public void setOperator(Operator operator){
         currentState.setOperator(operator);
     }
+
+
     public void evaluate(){
         currentState.evaluate();
     }
+
+
     public void addDigit(int digit){
         currentState.addDigit(digit);
     }
+
     public void changeSign() { currentState.changeSign(); }
+
+
     public void addDecimal() { currentState.addDecimal(); }
+
+
     public void backSpace() { currentState.deleteDigit();}
 
-    private void log(String msg){
-        Log.i("Calculator", msg);
-    }
 
     public void clear(){
         currentState.clear();
     }
-
 
 
 

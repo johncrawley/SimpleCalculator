@@ -1,6 +1,6 @@
 package com.jacstuff.simplecalculator.state;
 
-import com.jacstuff.simplecalculator.OperandString;
+import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
 public class ResultState extends AbstractState implements CalcState {

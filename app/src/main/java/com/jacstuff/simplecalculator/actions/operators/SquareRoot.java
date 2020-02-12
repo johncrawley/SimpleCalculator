@@ -1,9 +1,5 @@
 package com.jacstuff.simplecalculator.actions.operators;
 
-import android.util.Log;
-
-import com.jacstuff.simplecalculator.state.State;
-
 import java.math.BigDecimal;
 import java.math.MathContext;
 
@@ -15,12 +11,11 @@ public class SquareRoot extends AbstractOperatorAction {
         this.mathContext = mathContext;
     }
 
-    public int execute(int num1, int num2){
-        Log.i("SquareRoot", "Entered execute()");
-        return (int)Math.sqrt(num1);
-    }
-
+    @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
+        if(num1.signum() == -1){
+            throw new ArithmeticException();
+        }
         final int SCALE = 30;
         BigDecimal x0 = BigDecimal.ZERO;
         final BigDecimal TWO = new BigDecimal(2);
@@ -34,12 +29,6 @@ public class SquareRoot extends AbstractOperatorAction {
         return x1.setScale(10, ROUND_HALF_UP);
     }
 
-    @Override
-    public void onLoad(){
-        Log.i("SquareRoot", "Entered onLoad()");
-       // calculator.setState(State.SECOND_NUMBER);
-       // calculator.evaluate();
-    }
 
     @Override
     public boolean hasSingleInput(){

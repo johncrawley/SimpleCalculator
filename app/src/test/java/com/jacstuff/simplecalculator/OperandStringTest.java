@@ -1,5 +1,8 @@
 package com.jacstuff.simplecalculator;
 
+import com.jacstuff.simplecalculator.calculator.display.OperandString;
+import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,16 +20,14 @@ public class OperandStringTest {
     private final String INITIAL_VALUE = "0";
     private final String DECIMAL = ".";
     private final String MINUS = "-";
+    private MockDisplay mockDisplay;
+
 
     @Before
     public void setup()
     {
-        operandStr = new OperandString(new UpdatableDisplay() {
-            @Override
-            public void update(String str) {
-
-            }
-        });
+        mockDisplay = new MockDisplay();
+        operandStr = new OperandString(mockDisplay);
     }
 
     @Test
@@ -171,8 +172,48 @@ public class OperandStringTest {
 
         String expectedSafe = expected + "0";
         assertEquals(expectedSafe, operandStr.getLegalStr());
+    }
 
+
+    @Test
+    public void canSetAndResetError(){
+        String errorString = "ERROR";
+        operandStr.setAndDisplayError();
+        assertEquals(errorString, operandStr.get());
+        assertEquals("0", operandStr.getLegalStr());
+        assertEquals(errorString, mockDisplay.getContents());
+
+        String expected = "123";
+        operandStr.init();
+        operandStr.set(expected);
+        assertEquals(expected, operandStr.get());
+        assertEquals(expected, mockDisplay.getContents());
 
     }
+
+    @Test
+    public void wontCopyErrorString(){
+
+        OperandString badStr = new OperandString(mockDisplay);
+        badStr.setAndDisplayError();
+
+        operandStr.getValueFrom(badStr);
+        assertOperand(INITIAL_VALUE);
+    }
+
+    class MockDisplay implements UpdatableDisplay {
+
+        private String contents;
+
+        public String getContents() {
+            return this.contents;
+        }
+
+        @Override
+        public void update(String str) {
+            contents = str;
+        }
+    }
+
 
 }
