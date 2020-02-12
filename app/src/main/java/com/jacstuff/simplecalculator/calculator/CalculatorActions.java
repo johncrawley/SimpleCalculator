@@ -18,13 +18,15 @@ public class CalculatorActions {
     private OperandString numberStr2;
     private OperandString resultStr;
     private Calculator calculator;
+    private Memory memory;
 
 
-    CalculatorActions(Calculator calculator, TextView textView){
+    CalculatorActions(Calculator calculator, Memory memory, TextView textView){
         this.calculator = calculator;
         this.numberStr1 = calculator.getNumberStr1();
         this.numberStr2 = calculator.getNumberStr2();
         this.resultStr = calculator.getResultStr();
+        this.memory = memory;
         this.textView = textView;
     }
 
@@ -81,5 +83,18 @@ public class CalculatorActions {
         textView.setText(text);
     }
 
+
+
+    public void saveNumberToMemory(OperandString operandString){
+
+        memory.saveNumber(operandString.get());
+    }
+
+
+    public void recallNumberFromMemory(OperandString operandString){
+
+        String recalledStr = memory.recallNumber();
+        operandString.set(recalledStr);
+    }
 
 }

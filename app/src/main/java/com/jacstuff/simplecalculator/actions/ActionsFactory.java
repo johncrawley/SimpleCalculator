@@ -1,7 +1,6 @@
 package com.jacstuff.simplecalculator.actions;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.jacstuff.simplecalculator.calculator.Calculator;
 import com.jacstuff.simplecalculator.actions.operators.Divide;
@@ -17,16 +16,13 @@ import java.math.MathContext;
 public class ActionsFactory {
 
 
-    public enum Action { DIVIDE, MULTIPLY, PERCENT, PLUS, POWER, ROOT, SUBTRACT, EQUALS, CHANGE_SIGN, CLEAR, BACKSPACE, DECIMAL, NUMBER};
+    public enum Action { DIVIDE, MULTIPLY, PERCENT, PLUS, POWER, ROOT, SUBTRACT, EQUALS, CHANGE_SIGN, CLEAR, BACKSPACE, DECIMAL, MEMORY_SET, MEMORY_RECALL}
     private Context context;
     private Calculator calculator;
     private MathContext mc;
 
     public ActionsFactory(Context context, Calculator calculator){
         this.context = context;
-        if(calculator == null){
-            Log.i("ActionsFactory", "constructor: calculator param is null!");
-        }
         this.calculator = calculator;
         mc = new MathContext(9);
     }
@@ -34,9 +30,8 @@ public class ActionsFactory {
 
     public ButtonAction create(Action actionType, int symbolId){
 
-
         ButtonAction action = createAction(actionType);
-        return assignSymbolAndCalculator(action, symbolId);
+            return assignSymbolAndCalculator(action, symbolId);
 
     }
 
@@ -69,7 +64,10 @@ public class ActionsFactory {
             case DECIMAL: return new DecimalAction();
             case BACKSPACE: return new BackspaceAction();
 
-            default : return new ClearAction();
+            case MEMORY_SET: return new MemorySetAction();
+            case MEMORY_RECALL: return new MemoryRecallAction();
+
+            default : return null;
 
         }
     }

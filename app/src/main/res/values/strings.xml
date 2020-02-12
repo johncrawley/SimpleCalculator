@@ -23,7 +23,7 @@
 
 
     <string name="symbol_ln">LN</string>
-    <string name="symbol_memory_add">M+</string>
+    <string name="symbol_memory_set">M+</string>
     <string name="symbol_memory_recall">M</string>
     <string name="symbol_">INV</string>
 

@@ -1,5 +1,6 @@
 package com.jacstuff.simplecalculator.calculator;
 
+import android.content.Context;
 import android.widget.TextView;
 
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
@@ -21,16 +22,15 @@ public class Calculator {
 
 
     private Map<State, CalcState> states;
-
     private CalcState currentState;
     private CalculatorActions calculatorActions;
-
     private OperandString operandStr1;
     private OperandString operandStr2;
     private OperandString resultStr;
 
-    public Calculator(TextView textView){
-        initFields(textView);
+
+    public Calculator(Context context, TextView textView){
+        initFields(context, textView);
         setupStates();
         setState(State.FIRST_NUMBER);
     }
@@ -40,13 +40,15 @@ public class Calculator {
     OperandString getResultStr(){ return this.resultStr;}
 
 
-    private void initFields(TextView textView){
+    private void initFields(Context context, TextView textView){
         UpdatableDisplay updatableDisplay = new UpdatableDisplayImpl(textView);
+
         operandStr1 = new OperandString(updatableDisplay);
         operandStr2 = new OperandString(updatableDisplay);
         resultStr = new OperandString(updatableDisplay);
 
-        calculatorActions = new CalculatorActions(this, textView);
+        Memory memory = new Memory(context);
+        calculatorActions = new CalculatorActions(this, memory, textView);
     }
 
 
@@ -57,7 +59,7 @@ public class Calculator {
         addState(State.OPERATOR, new OperatorState(operandStr2));
         addState(State.SECOND_NUMBER, new SecondNumberState(operandStr1, operandStr2));
         addState(State.ERROR, new ErrorState());
-        addState(State.RESULT, new ResultState(operandStr1, operandStr2));
+        addState(State.RESULT, new ResultState(operandStr1, operandStr2, resultStr));
     }
 
     private void addState(State key, CalcState calcState){
@@ -103,6 +105,8 @@ public class Calculator {
         currentState.clear();
     }
 
+    public void saveNumberToMemory(){ currentState.saveNumberToMemory();}
+    public void recallNumberFromMemory(){ currentState.recallNumberFromMemory();}
 
 
 }

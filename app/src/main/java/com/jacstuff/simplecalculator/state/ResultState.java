@@ -8,10 +8,12 @@ public class ResultState extends AbstractState implements CalcState {
 
     private OperandString firstOperandString;
     private OperandString secondOperandString;
+    private OperandString resultString;
 
-    public ResultState(OperandString firstOperandString, OperandString secondOperandString){
+    public ResultState(OperandString firstOperandString, OperandString secondOperandString, OperandString resultString){
         this.firstOperandString = firstOperandString;
         this.secondOperandString = secondOperandString;
+        this.resultString = resultString;
     }
 
     @Override
@@ -65,5 +67,17 @@ public class ResultState extends AbstractState implements CalcState {
         calculatorActions.copyResultToFirstNumber();
         calculator.setState(State.FIRST_NUMBER);
         calculator.backSpace();
+    }
+
+
+    @Override
+    public void saveNumberToMemory(){
+
+        calculatorActions.saveNumberToMemory(resultString);
+    }
+
+    @Override
+    public void recallNumberFromMemory(){
+        calculatorActions.recallNumberFromMemory(resultString);
     }
 }

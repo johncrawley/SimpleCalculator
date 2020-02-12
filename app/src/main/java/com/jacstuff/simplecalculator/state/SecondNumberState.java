@@ -64,4 +64,15 @@ public class SecondNumberState extends AbstractState implements CalcState {
             calculator.setState(State.RESULT);
         }
     }
+
+    @Override
+    public void saveNumberToMemory(){
+
+        calculatorActions.saveNumberToMemory(secondOperandString);
+    }
+
+    @Override
+    public void recallNumberFromMemory(){
+        calculatorActions.recallNumberFromMemory(secondOperandString);
+    }
 }

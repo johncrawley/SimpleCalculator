@@ -61,18 +61,16 @@
 
 
             <Button
-                android:id="@+id/buttonMemoryAdd"
+                android:id="@+id/buttonMemorySet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:enabled="false"
-                android:text="@string/symbol_memory_add" />
+                android:text="@string/symbol_memory_set" />
 
             <Button
                 android:id="@+id/buttonMemoryRecall"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:enabled="false"
                 android:text="@string/symbol_memory_recall" />
         </TableRow>
 

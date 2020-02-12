@@ -51,4 +51,15 @@ public class FirstNumberState extends AbstractState implements CalcState {
     public void deleteDigit() {
         firstOperandString.deleteDigit();
     }
+
+
+    @Override
+    public void saveNumberToMemory(){
+        calculatorActions.saveNumberToMemory(firstOperandString);
+    }
+
+    @Override
+    public void recallNumberFromMemory(){
+        calculatorActions.recallNumberFromMemory(firstOperandString);
+    }
 }

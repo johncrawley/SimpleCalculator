@@ -66,4 +66,11 @@ public class OperatorState extends AbstractState implements CalcState {
     public void deleteDigit() {
 
     }
+
+
+    @Override
+    public void recallNumberFromMemory(){
+        calculator.setState(State.SECOND_NUMBER);
+        calculator.recallNumberFromMemory();
+    }
 }
