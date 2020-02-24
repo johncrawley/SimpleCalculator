@@ -12,6 +12,16 @@ public class Multiply extends AbstractOperatorAction {
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
+
+        if(isCalculatingPercentage){
+            Operator percentOf = new PercentOf(mathContext);
+            return percentOf.execute(num2, num1);
+        }
+
         return num1.multiply(num2, mathContext);
     }
+
+
+    @Override
+    public boolean isPercentagePreOperator(){return true;}
 }

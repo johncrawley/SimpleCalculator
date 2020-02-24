@@ -8,4 +8,6 @@ public interface Operator {
     String getSymbol();
     void onLoad();
     boolean hasSingleInput();
+    boolean isPercentagePreOperator();
+    void setCalculatingPercentage(boolean isCalculatingPercentage);
 }

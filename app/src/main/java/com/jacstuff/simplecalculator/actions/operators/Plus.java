@@ -13,10 +13,19 @@ public class Plus extends AbstractOperatorAction {
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
-        log("num1 : " + num1.toPlainString() + " num2 : " + num2.toPlainString());
+
+
+        if(isCalculatingPercentage){
+            Operator percentOf = new PercentOf(mathContext);
+            BigDecimal percentResult =  percentOf.execute(num2, num1);
+            return num1.add(percentResult, mathContext);
+        }
+
         return num1.add(num2, mathContext);
     }
 
+    @Override
+    public boolean isPercentagePreOperator(){return true;}
 
     private void log(String msg){
         Log.i("Plus", msg);

@@ -116,6 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 }
-//TODO: need to have a "a * b%"  and "a +/- b%" type operation inputs
+
 //TODO: need to show sci string for result if above a certain number
 //TODO: handle alt layout for landscape

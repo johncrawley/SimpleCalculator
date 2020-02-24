@@ -43,10 +43,22 @@ public class CalculatorActions {
     }
 
 
-    public boolean evaluateAndDisplay(){
+
+    public boolean evaluateAndDisplay() {
+
+        return evalAndDisplay(false);
+    }
+
+    public boolean evaluatePercentageAndDisplay(){
+        return evalAndDisplay(true);
+    }
+
+
+    private boolean evalAndDisplay(boolean isCalculatingPercentage){
+
 
         try {
-            resultStr.set(execute());
+            resultStr.set(execute(isCalculatingPercentage));
         }
         catch(ArithmeticException e){
             resultStr.setAndDisplayError();
@@ -57,9 +69,11 @@ public class CalculatorActions {
     }
 
 
-    private BigDecimal execute(){
+    private BigDecimal execute(boolean isCalculatingPercentage){
         BigDecimal number1 = createBigDecimalFrom(numberStr1);
         BigDecimal number2 = createBigDecimalFrom(numberStr2);
+
+        operator.setCalculatingPercentage(isCalculatingPercentage);
         return operator.execute(number1, number2).stripTrailingZeros();
     }
 
@@ -86,13 +100,11 @@ public class CalculatorActions {
 
 
     public void saveNumberToMemory(OperandString operandString){
-
         memory.saveNumber(operandString.get());
     }
 
 
     public void recallNumberFromMemory(OperandString operandString){
-
         String recalledStr = memory.recallNumber();
         operandString.set(recalledStr);
     }

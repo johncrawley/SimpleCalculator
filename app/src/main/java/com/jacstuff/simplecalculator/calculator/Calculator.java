@@ -27,6 +27,7 @@ public class Calculator {
     private OperandString operandStr1;
     private OperandString operandStr2;
     private OperandString resultStr;
+    private Operator operator;
 
 
     public Calculator(Context context, TextView textView){
@@ -80,6 +81,11 @@ public class Calculator {
 
     public void setOperator(Operator operator){
         currentState.setOperator(operator);
+        this.operator = operator;
+    }
+
+    public Operator getExistingOperator(){
+        return operator;
     }
 
 
