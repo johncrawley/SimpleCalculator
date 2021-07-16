@@ -19,7 +19,6 @@ public class OperandStringTest {
     private OperandString operandStr;
     private final String INITIAL_VALUE = "0";
     private final String DECIMAL = ".";
-    private final String MINUS = "-";
     private MockDisplay mockDisplay;
 
 
@@ -131,6 +130,7 @@ public class OperandStringTest {
 
     @Test
     public void canNegate(){
+        final String MINUS = "-";
         int number = 4;
         operandStr.addDigit(number);
         operandStr.negate();
@@ -146,7 +146,6 @@ public class OperandStringTest {
         assertOperand(positiveNumber);
         operandStr.negate();
         assertOperand(negativeNumber);
-
     }
 
 

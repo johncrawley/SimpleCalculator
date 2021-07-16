@@ -21,9 +21,6 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
     }
 
-    private void log(String msg){
-        Log.i("2ndNumState", msg);
-    }
 
     @Override
     public void setOperator(Operator operator) {
@@ -81,11 +78,13 @@ public class SecondNumberState extends AbstractState implements CalcState {
         secondOperandString.addDigit(digit);
     }
 
+
     @Override
     public void clear() {
         calculatorActions.clearNumbersAndDisplayText();
         calculator.setState(State.FIRST_NUMBER);
     }
+
 
     @Override
     public void evaluate() {
@@ -95,11 +94,13 @@ public class SecondNumberState extends AbstractState implements CalcState {
         }
     }
 
+
     @Override
     public void saveNumberToMemory(){
 
         calculatorActions.saveNumberToMemory(secondOperandString);
     }
+
 
     @Override
     public void recallNumberFromMemory(){
