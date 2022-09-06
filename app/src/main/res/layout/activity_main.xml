@@ -45,11 +45,11 @@
 
 
             <Button
-                android:id="@+id/buttonDecimal"
+                android:id="@+id/buttonClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_decimal" />
+                android:text="@string/symbol_cancel" />
 
 
             <Button
@@ -223,13 +223,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <Button
-                android:id="@+id/buttonClear"
+                android:id="@+id/buttonDecimal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_cancel" />
+                android:text="@string/symbol_decimal" />
 
             <Button
                 android:id="@+id/button0"
