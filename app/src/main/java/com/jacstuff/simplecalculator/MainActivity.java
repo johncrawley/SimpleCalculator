@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Map<Integer, ButtonAction> actions;
     private Calculator calculator;
-
     private ActionsFactory actionsFactory;
 
     @Override
@@ -40,10 +39,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initCalculator();
-
         actionsFactory = new ActionsFactory(getApplicationContext(), calculator);
         setupViews();
+    }
 
+
+    @Override
+    public void onClick(View view){
+        int id = view.getId();
+        if(actions.containsKey(id)) {
+            ButtonAction buttonAction = actions.get(id);
+            if(buttonAction!= null){
+                buttonAction.process();
+            }
+        }
     }
 
 
@@ -52,12 +61,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         calculator = new Calculator(getApplicationContext(), display);
     }
 
+
     private void setupViews(){
         actions = new HashMap<>();
         mapNumberButtons();
         mapOperatorButtons();
         mapOtherButtons();
    }
+
 
    private void mapNumberButtons(){
        mapButtonToAction(R.id.button0, R.string.symbol_0, 0);
@@ -72,8 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        mapButtonToAction(R.id.button9, R.string.symbol_9, 9);
    }
 
-    private void mapOperatorButtons(){
 
+    private void mapOperatorButtons(){
         mapButtonToAction(R.id.buttonPlus,       PLUS, R.string.symbol_plus);
         mapButtonToAction(R.id.buttonMinus,      SUBTRACT, R.string.symbol_minus);
         mapButtonToAction(R.id.buttonMultiply,   MULTIPLY, R.string.symbol_multiply);
@@ -82,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mapButtonToAction(R.id.buttonRoot,       ROOT, R.string.symbol_root);
         mapButtonToAction(R.id.buttonPercent,    PERCENT, R.string.symbol_percentage);
     }
+
 
     private void mapOtherButtons(){
         mapButtonToAction(R.id.buttonClear, CLEAR, R.string.symbol_cancel);
@@ -93,29 +105,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mapButtonToAction(R.id.buttonMemoryRecall, MEMORY_RECALL, R.string.symbol_memory_recall);
     }
 
+
     private void mapButtonToAction(int viewId, ActionsFactory.Action actionType, int symbolId){
         ButtonAction buttonAction = actionsFactory.create(actionType, symbolId);
         mapActionAndAssignListener(viewId, buttonAction);
     }
+
+
     private void mapButtonToAction(int viewId, int symbolId, int digit){
         ButtonAction buttonAction = actionsFactory.create(symbolId, digit);
         mapActionAndAssignListener(viewId, buttonAction);
     }
+
 
     private void mapActionAndAssignListener(int viewId, ButtonAction buttonAction){
         actions.put(viewId, buttonAction);
         findViewById(viewId).setOnClickListener(this);
     }
 
-    public void onClick(View view){
-        int id = view.getId();
-        if(actions.containsKey(id)) {
-            actions.get(id).process();
-        }
-    }
-
 
 }
-
-//TODO: need to show sci string for result if above a certain number
-//TODO: handle alt layout for landscape
