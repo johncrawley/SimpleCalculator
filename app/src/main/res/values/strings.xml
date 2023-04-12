@@ -8,7 +8,7 @@
     <string name="symbol_root">√</string>
     <string name="symbol_equals">=</string>
     <string name="symbol_change_sign">+/-</string>
-    <string name="symbol_cancel">C</string>
+    <string name="symbol_cancel">&#160;C&#160;&#160;</string>
     <string name="symbol_percentage">%</string>
 
     <string name="symbol_decimal">.</string>
