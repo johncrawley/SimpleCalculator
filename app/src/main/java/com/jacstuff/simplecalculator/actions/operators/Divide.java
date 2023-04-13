@@ -11,7 +11,6 @@ public class Divide  extends AbstractOperatorAction {
 
     @Override
     public BigDecimal execute(BigDecimal number1, BigDecimal number2){
-
         return number1.divide(number2, mathContext);
     }
 

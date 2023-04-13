@@ -7,21 +7,14 @@ import java.math.MathContext;
 public class Multiply extends AbstractOperatorAction {
 
     public Multiply(MathContext mathContext){
+        isPercentagePreOperator = true;
         this.mathContext = mathContext;
     }
 
+
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
-
-        if(isCalculatingPercentage){
-            Operator percentOf = new PercentOf(mathContext);
-            return percentOf.execute(num2, num1);
-        }
-
-        return num1.multiply(num2, mathContext);
+        return isCalculatingPercentage ? new PercentOf(mathContext).execute(num2, num1)
+                : num1.multiply(num2, mathContext);
     }
-
-
-    @Override
-    public boolean isPercentagePreOperator(){return true;}
 }

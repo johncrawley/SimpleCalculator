@@ -43,25 +43,23 @@ public class Calculator {
 
     private void initFields(Context context, TextView textView){
         UpdatableDisplay updatableDisplay = new UpdatableDisplayImpl(textView);
-
         operandStr1 = new OperandString(updatableDisplay);
         operandStr2 = new OperandString(updatableDisplay);
         resultStr = new OperandString(updatableDisplay);
-
         Memory memory = new Memory(context);
         calculatorActions = new CalculatorActions(this, memory, textView);
     }
 
 
     private void setupStates(){
-
         states = new HashMap<>();
-        addState(State.FIRST_NUMBER, new FirstNumberState(operandStr1));
+        addState(State.FIRST_NUMBER, new FirstNumberState(operandStr1, operandStr2));
         addState(State.OPERATOR, new OperatorState(operandStr2));
         addState(State.SECOND_NUMBER, new SecondNumberState(operandStr1, operandStr2));
         addState(State.ERROR, new ErrorState());
         addState(State.RESULT, new ResultState(operandStr1, operandStr2, resultStr));
     }
+
 
     private void addState(State key, CalcState calcState){
         calcState.setCalculator(this);
@@ -84,6 +82,7 @@ public class Calculator {
         this.operator = operator;
     }
 
+
     public Operator getExistingOperator(){
         return operator;
     }
@@ -98,6 +97,7 @@ public class Calculator {
         currentState.addDigit(digit);
     }
 
+
     public void changeSign() { currentState.changeSign(); }
 
 
@@ -111,7 +111,10 @@ public class Calculator {
         currentState.clear();
     }
 
+
     public void saveNumberToMemory(){ currentState.saveNumberToMemory();}
+
+
     public void recallNumberFromMemory(){ currentState.recallNumberFromMemory();}
 
 

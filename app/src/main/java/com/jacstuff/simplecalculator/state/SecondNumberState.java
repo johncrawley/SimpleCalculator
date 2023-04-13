@@ -1,6 +1,5 @@
 package com.jacstuff.simplecalculator.state;
 
-import android.util.Log;
 
 import com.jacstuff.simplecalculator.actions.operators.PercentOf;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
@@ -8,23 +7,20 @@ import com.jacstuff.simplecalculator.actions.operators.Operator;
 
 public class SecondNumberState extends AbstractState implements CalcState {
 
-    private OperandString firstOperandString;
-    private OperandString secondOperandString;
+    private final OperandString secondOperandString;
 
     public SecondNumberState(OperandString firstOperandString, OperandString secondOperandString){
-        this.firstOperandString = firstOperandString;
         this.secondOperandString = secondOperandString;
     }
 
     @Override
     public void init(){
-
+        calculatorActions.clearSecondNumberString();
     }
 
 
     @Override
     public void setOperator(Operator operator) {
-
         if(isCompoundPercentageOperation(operator)){
             evaluateCompoundPercentage();
             return;
@@ -46,6 +42,7 @@ public class SecondNumberState extends AbstractState implements CalcState {
         }
     }
 
+
     private void evaluateAndDisplayNewResult(Operator operator){
         boolean success = calculatorActions.evaluateAndDisplay();
         if (success) {
@@ -54,7 +51,6 @@ public class SecondNumberState extends AbstractState implements CalcState {
             calculator.setOperator(operator);
             calculatorActions.displayResult(); // because we'd rather see the result of the existing operation than the operator symbol
         }
-
     }
 
 
@@ -63,15 +59,18 @@ public class SecondNumberState extends AbstractState implements CalcState {
         secondOperandString.negate();
     }
 
+
     @Override
     public void addDecimal() {
         secondOperandString.addDecimal();
     }
 
+
     @Override
     public void deleteDigit() {
         secondOperandString.deleteDigit();
     }
+
 
     @Override
     public void addDigit(int digit) {
@@ -97,7 +96,6 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
     @Override
     public void saveNumberToMemory(){
-
         calculatorActions.saveNumberToMemory(secondOperandString);
     }
 

@@ -13,15 +13,16 @@ public class CalculatorActions {
 
 
     private Operator operator;
-    private TextView textView;
-    private OperandString numberStr1;
-    private OperandString numberStr2;
-    private OperandString resultStr;
-    private Calculator calculator;
-    private Memory memory;
+    private final TextView textView;
+    private final OperandString numberStr1;
+    private final OperandString numberStr2;
+    private final OperandString resultStr;
+    private final Calculator calculator;
+    private final Memory memory;
 
 
     CalculatorActions(Calculator calculator, Memory memory, TextView textView){
+        log("Entered CalculatorActions()");
         this.calculator = calculator;
         this.numberStr1 = calculator.getNumberStr1();
         this.numberStr2 = calculator.getNumberStr2();
@@ -43,11 +44,10 @@ public class CalculatorActions {
     }
 
 
-
     public boolean evaluateAndDisplay() {
-
         return evalAndDisplay(false);
     }
+
 
     public boolean evaluatePercentageAndDisplay(){
         return evalAndDisplay(true);
@@ -55,8 +55,6 @@ public class CalculatorActions {
 
 
     private boolean evalAndDisplay(boolean isCalculatingPercentage){
-
-
         try {
             resultStr.set(execute(isCalculatingPercentage));
         }
@@ -72,14 +70,21 @@ public class CalculatorActions {
     private BigDecimal execute(boolean isCalculatingPercentage){
         BigDecimal number1 = createBigDecimalFrom(numberStr1);
         BigDecimal number2 = createBigDecimalFrom(numberStr2);
-
+        log("Entered execute() numberStr1: " + numberStr1.get() + " numberStr2: " + numberStr2.get());
         operator.setCalculatingPercentage(isCalculatingPercentage);
         return operator.execute(number1, number2).stripTrailingZeros();
     }
 
+
+    private void log(String msg){
+        System.out.println("^^^ CalculatorActions: " +  msg);
+    }
+
+
     public void displayResult(){
         setDisplay(resultStr.get());
     }
+
 
     private BigDecimal createBigDecimalFrom(OperandString operandString){
         return new BigDecimal(operandString.getLegalStr());
@@ -87,16 +92,23 @@ public class CalculatorActions {
 
 
     public void clearNumbersAndDisplayText(){
+        log("Entered clearNumberAndDisplayText");
         numberStr1.init();
-        numberStr2.init();
+        // numberStr2.init();
         resultStr.init();
         setDisplay("0");
     }
 
+
+    public void clearSecondNumberString(){
+        log("Entered clearSecondNumberString()");
+        numberStr2.init();
+    }
+
+
     private void setDisplay(String text){
         textView.setText(text);
     }
-
 
 
     public void saveNumberToMemory(OperandString operandString){

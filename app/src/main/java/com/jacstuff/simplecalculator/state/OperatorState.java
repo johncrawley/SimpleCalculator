@@ -11,6 +11,7 @@ public class OperatorState extends AbstractState implements CalcState {
         this.secondOperandString = secondOperandString;
     }
 
+
     @Override
     public void init(){
 
@@ -60,7 +61,10 @@ public class OperatorState extends AbstractState implements CalcState {
 
     @Override
     public void evaluate() {
-        calculator.setState(State.ERROR);
+        boolean success = calculatorActions.evaluateAndDisplay();
+        if(success){
+            calculator.setState(State.RESULT);
+        }
     }
 
 

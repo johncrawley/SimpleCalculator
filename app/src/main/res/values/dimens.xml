@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="button_margin">6dp</dimen>
+    <dimen name="button_minHeight">20dp</dimen>
+    <dimen name="button_minWidth">20dp</dimen>
+    <dimen name="button_paddingHorizontal">20dp</dimen>
+    <dimen name="button_paddingVertical">20dp</dimen>
+</resources>

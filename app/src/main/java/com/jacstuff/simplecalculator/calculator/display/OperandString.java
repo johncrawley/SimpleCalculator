@@ -11,8 +11,9 @@ public class OperandString {
     private boolean isPositive = true;
     private final String MINUS = "-";
     private final String ERROR = "ERROR";
-    private UpdatableDisplay updatableDisplay;
+    private final UpdatableDisplay updatableDisplay;
     private boolean showError;
+
 
     public OperandString(UpdatableDisplay updatableDisplay){
         this.updatableDisplay = updatableDisplay;
@@ -31,7 +32,6 @@ public class OperandString {
         if(showError){
             return ERROR;
         }
-
         if(isPositive || value.equals(ZERO)){
             return value;
         }
@@ -86,8 +86,8 @@ public class OperandString {
             return;
         }
         updateValueAndDisplay( value + DECIMAL);
-
     }
+
 
     public void deleteDigit(){
         if(value.length() <= 1){
@@ -98,9 +98,11 @@ public class OperandString {
         updateValueAndDisplay(removeEndDigit(value));
     }
 
+
     private String removeEndDigit(String str){
         return str.substring(0, str.length()-1);
     }
+
 
     public void negate(){
         if(value.equals(ZERO)){

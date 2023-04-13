@@ -12,12 +12,16 @@ public class PowerOf extends AbstractOperatorAction {
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
         double doubleExponent = num2.doubleValue();
-        if(Math.floor(doubleExponent) - doubleExponent != 0){
+        if(isFractionalNumber(doubleExponent)){
             double result = Math.pow(num1.doubleValue(), doubleExponent);
             return new BigDecimal(result, mathContext);
         }
         int exponent = num2.toBigInteger().intValue();
         return num1.pow(exponent, mathContext);
+    }
+
+    private boolean isFractionalNumber(double number){
+        return Math.floor(number) - number != 0;
     }
 
 }

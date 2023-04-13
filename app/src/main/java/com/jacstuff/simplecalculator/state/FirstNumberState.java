@@ -6,16 +6,21 @@ import com.jacstuff.simplecalculator.actions.operators.Operator;
 public class FirstNumberState extends AbstractState implements CalcState {
 
 
-    private OperandString firstOperandString;
+    private final OperandString firstOperandString, secondOperandString;
+    private boolean hasFirstDigitBeenAdded = false;
 
-    public FirstNumberState(OperandString firstOperandString){
+    public FirstNumberState(OperandString firstOperandString, OperandString secondOperandString){
         this.firstOperandString = firstOperandString;
+        this.secondOperandString = secondOperandString;
     }
+
 
     @Override
     public void init(){
-
+        hasFirstDigitBeenAdded = false;
     }
+
+
     @Override
     public void setOperator(Operator operator){
         calculator.setState(State.OPERATOR);
@@ -27,24 +32,32 @@ public class FirstNumberState extends AbstractState implements CalcState {
         firstOperandString.negate();
     }
 
+
     @Override
     public void addDecimal() {
         firstOperandString.addDecimal();
     }
 
+
     @Override
     public void addDigit(int digit) {
+        if(!hasFirstDigitBeenAdded){
+            secondOperandString.init();
+        }
         firstOperandString.addDigit(digit);
+        hasFirstDigitBeenAdded = true;
     }
+
 
     @Override
     public void clear() {
         calculatorActions.clearNumbersAndDisplayText();
     }
 
+
     @Override
-    public void evaluate() {
-    }
+    public void evaluate() { // do nothing
+     }
 
 
     @Override
