@@ -5,9 +5,9 @@ import android.util.Log;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-public class Plus extends AbstractOperatorAction {
+public class Add extends AbstractOperatorAction {
 
-    public Plus(MathContext mathContext){
+    public Add(MathContext mathContext){
         this.mathContext = mathContext;
     }
 

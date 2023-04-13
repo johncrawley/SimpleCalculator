@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Simple Calculator</string>
-    <string name="symbol_plus">+</string>
-    <string name="symbol_minus">-</string>
+    <string name="symbol_add">+</string>
+    <string name="symbol_subtract">-</string>
     <string name="symbol_multiply">×</string>
     <string name="symbol_divide">/</string>
     <string name="symbol_power">xʸ</string>
@@ -25,7 +25,7 @@
     <string name="symbol_ln">LN</string>
     <string name="symbol_memory_set">M+</string>
     <string name="symbol_memory_recall">M</string>
-    <string name="symbol_">INV</string>
+    <string name="symbol_inv">INV</string>
 
     <string name="symbol_0">0</string>
     <string name="symbol_1">1</string>

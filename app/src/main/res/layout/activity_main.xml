@@ -200,7 +200,7 @@
                 android:minWidth="@dimen/button_minWidth"
                 android:paddingHorizontal="@dimen/button_paddingHorizontal"
                 android:paddingVertical="@dimen/button_paddingVertical"
-                android:text="@string/symbol_plus"
+                android:text="@string/symbol_add"
                 tools:ignore="ButtonStyle" />
 
         </TableRow>
@@ -252,7 +252,7 @@
                 android:minWidth="@dimen/button_minWidth"
                 android:paddingHorizontal="@dimen/button_paddingHorizontal"
                 android:paddingVertical="@dimen/button_paddingVertical"
-                android:text="@string/symbol_minus" />
+                android:text="@string/symbol_subtract" />
         </TableRow>
 
 

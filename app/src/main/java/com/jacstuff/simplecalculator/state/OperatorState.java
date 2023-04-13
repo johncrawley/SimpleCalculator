@@ -5,7 +5,7 @@ import com.jacstuff.simplecalculator.actions.operators.Operator;
 
 public class OperatorState extends AbstractState implements CalcState {
 
-    private OperandString secondOperandString;
+    private final OperandString secondOperandString;
 
     public OperatorState(OperandString secondOperandString){
         this.secondOperandString = secondOperandString;
@@ -19,9 +19,7 @@ public class OperatorState extends AbstractState implements CalcState {
 
     @Override
     public void setOperator(Operator operator){
-
         calculatorActions.setAndDisplay(operator);
-
         if(operator.hasSingleInput()) {
             calculator.setState(State.SECOND_NUMBER);
             calculator.evaluate();
@@ -36,12 +34,14 @@ public class OperatorState extends AbstractState implements CalcState {
         calculator.addDigit(digit);
     }
 
+
     @Override
     public void changeSign() {
         calculator.setState(State.SECOND_NUMBER);
         secondOperandString.init();
         secondOperandString.addDecimal();
     }
+
 
     @Override
     public void addDecimal() {
@@ -50,11 +50,13 @@ public class OperatorState extends AbstractState implements CalcState {
         calculator.addDecimal();
     }
 
+
     @Override
     public void clear() {
         calculatorActions.clearNumbersAndDisplayText();
         calculator.setState(State.FIRST_NUMBER);
     }
+
 
     @Override
     public void evaluate() {
@@ -63,9 +65,7 @@ public class OperatorState extends AbstractState implements CalcState {
 
 
     @Override
-    public void deleteDigit() {
-
-    }
+    public void deleteDigit() {}
 
 
     @Override

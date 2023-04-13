@@ -3,56 +3,40 @@ package com.jacstuff.simplecalculator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
 
-import com.jacstuff.simplecalculator.actions.ActionsFactory;
+import com.jacstuff.simplecalculator.actions.BackspaceAction;
 import com.jacstuff.simplecalculator.actions.ButtonAction;
+import com.jacstuff.simplecalculator.actions.ChangeSignAction;
+import com.jacstuff.simplecalculator.actions.ClearAction;
+import com.jacstuff.simplecalculator.actions.DecimalAction;
+import com.jacstuff.simplecalculator.actions.EqualsAction;
+import com.jacstuff.simplecalculator.actions.MemoryRecallAction;
+import com.jacstuff.simplecalculator.actions.MemorySetAction;
+import com.jacstuff.simplecalculator.actions.Number;
+import com.jacstuff.simplecalculator.actions.operators.Add;
+import com.jacstuff.simplecalculator.actions.operators.Divide;
+import com.jacstuff.simplecalculator.actions.operators.Multiply;
+import com.jacstuff.simplecalculator.actions.operators.PercentOf;
+import com.jacstuff.simplecalculator.actions.operators.PowerOf;
+import com.jacstuff.simplecalculator.actions.operators.SquareRoot;
+import com.jacstuff.simplecalculator.actions.operators.Subtract;
 import com.jacstuff.simplecalculator.calculator.Calculator;
 
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.BACKSPACE;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.CHANGE_SIGN;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.CLEAR;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.DECIMAL;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.DIVIDE;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.EQUALS;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.MEMORY_RECALL;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.MEMORY_SET;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.MULTIPLY;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.PERCENT;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.PLUS;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.POWER;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.ROOT;
-import static com.jacstuff.simplecalculator.actions.ActionsFactory.Action.SUBTRACT;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.math.MathContext;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
-    private Map<Integer, ButtonAction> actions;
     private Calculator calculator;
-    private ActionsFactory actionsFactory;
+    MathContext mc = new MathContext(9);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initCalculator();
-        actionsFactory = new ActionsFactory(getApplicationContext(), calculator);
         setupViews();
-    }
-
-
-    @Override
-    public void onClick(View view){
-        int id = view.getId();
-        if(actions.containsKey(id)) {
-            ButtonAction buttonAction = actions.get(id);
-            if(buttonAction!= null){
-                buttonAction.process();
-            }
-        }
     }
 
 
@@ -63,65 +47,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void setupViews(){
-        actions = new HashMap<>();
-        mapNumberButtons();
-        mapOperatorButtons();
-        mapOtherButtons();
+        setupButtons();
    }
 
 
-   private void mapNumberButtons(){
-       mapButtonToAction(R.id.button0, R.string.symbol_0, 0);
-       mapButtonToAction(R.id.button1, R.string.symbol_1, 1);
-       mapButtonToAction(R.id.button2, R.string.symbol_2, 2);
-       mapButtonToAction(R.id.button3, R.string.symbol_3, 3);
-       mapButtonToAction(R.id.button4, R.string.symbol_4,4);
-       mapButtonToAction(R.id.button5, R.string.symbol_5, 5);
-       mapButtonToAction(R.id.button6, R.string.symbol_6, 6);
-       mapButtonToAction(R.id.button7, R.string.symbol_7, 7);
-       mapButtonToAction(R.id.button8, R.string.symbol_8, 8);
-       mapButtonToAction(R.id.button9, R.string.symbol_9, 9);
-   }
+    private void setupButtons(){
+        setupButton(R.id.buttonPlus,    new Add(mc),        R.string.symbol_add);
+        setupButton(R.id.buttonMinus,   new Subtract(mc),   R.string.symbol_subtract);
+        setupButton(R.id.buttonMultiply,new Multiply(mc),   R.string.symbol_multiply);
+        setupButton(R.id.buttonDivide,  new Divide(mc),     R.string.symbol_divide);
+        setupButton(R.id.buttonPow,     new PowerOf(mc),    R.string.symbol_power);
+        setupButton(R.id.buttonRoot,    new SquareRoot(mc), R.string.symbol_root);
+        setupButton(R.id.buttonPercent, new PercentOf(mc),  R.string.symbol_percentage);
 
+        setupButton(R.id.buttonClear,       new ClearAction(),      R.string.symbol_cancel);
+        setupButton(R.id.buttonBackspace,   new BackspaceAction(),  R.string.symbol_backspace);
+        setupButton(R.id.buttonDecimal,     new DecimalAction(),    R.string.symbol_decimal);
+        setupButton(R.id.buttonEquals,      new EqualsAction(),     R.string.symbol_equals);
+        setupButton(R.id.buttonChangeSign,  new ChangeSignAction(), R.string.symbol_change_sign);
 
-    private void mapOperatorButtons(){
-        mapButtonToAction(R.id.buttonPlus,       PLUS, R.string.symbol_plus);
-        mapButtonToAction(R.id.buttonMinus,      SUBTRACT, R.string.symbol_minus);
-        mapButtonToAction(R.id.buttonMultiply,   MULTIPLY, R.string.symbol_multiply);
-        mapButtonToAction(R.id.buttonDivide,     DIVIDE, R.string.symbol_divide);
-        mapButtonToAction(R.id.buttonPow,        POWER, R.string.symbol_power);
-        mapButtonToAction(R.id.buttonRoot,       ROOT, R.string.symbol_root);
-        mapButtonToAction(R.id.buttonPercent,    PERCENT, R.string.symbol_percentage);
+        setupButton(R.id.buttonMemorySet,   new MemorySetAction(),      R.string.symbol_memory_set);
+        setupButton(R.id.buttonMemoryRecall,new MemoryRecallAction(),   R.string.symbol_memory_recall);
+
+        setupButton(R.id.button0, new Number(0), R.string.symbol_0);
+        setupButton(R.id.button1, new Number(1), R.string.symbol_1);
+        setupButton(R.id.button2, new Number(2),R.string.symbol_2);
+        setupButton(R.id.button3, new Number(3), R.string.symbol_3);
+        setupButton(R.id.button4, new Number(4), R.string.symbol_4);
+        setupButton(R.id.button5, new Number(5), R.string.symbol_5);
+        setupButton(R.id.button6, new Number(6), R.string.symbol_6 );
+        setupButton(R.id.button7, new Number(7), R.string.symbol_7);
+        setupButton(R.id.button8, new Number(8), R.string.symbol_8);
+        setupButton(R.id.button9, new Number(9), R.string.symbol_9);
     }
 
 
-    private void mapOtherButtons(){
-        mapButtonToAction(R.id.buttonClear, CLEAR, R.string.symbol_cancel);
-        mapButtonToAction(R.id.buttonBackspace, BACKSPACE, R.string.symbol_backspace);
-        mapButtonToAction(R.id.buttonDecimal, DECIMAL, R.string.symbol_decimal);
-        mapButtonToAction(R.id.buttonEquals, EQUALS, R.string.symbol_equals);
-        mapButtonToAction(R.id.buttonChangeSign, CHANGE_SIGN, R.string.symbol_change_sign);
-        mapButtonToAction(R.id.buttonMemorySet, MEMORY_SET, R.string.symbol_memory_set);
-        mapButtonToAction(R.id.buttonMemoryRecall, MEMORY_RECALL, R.string.symbol_memory_recall);
+    private void setupButton(int buttonId, ButtonAction buttonAction, int symbolId){
+        buttonAction.setSymbol(getString(symbolId));
+        buttonAction.setCalculator(calculator);
+        findViewById(buttonId).setOnClickListener(v -> buttonAction.process());
     }
-
-
-    private void mapButtonToAction(int viewId, ActionsFactory.Action actionType, int symbolId){
-        ButtonAction buttonAction = actionsFactory.create(actionType, symbolId);
-        mapActionAndAssignListener(viewId, buttonAction);
-    }
-
-
-    private void mapButtonToAction(int viewId, int symbolId, int digit){
-        ButtonAction buttonAction = actionsFactory.create(symbolId, digit);
-        mapActionAndAssignListener(viewId, buttonAction);
-    }
-
-
-    private void mapActionAndAssignListener(int viewId, ButtonAction buttonAction){
-        actions.put(viewId, buttonAction);
-        findViewById(viewId).setOnClickListener(this);
-    }
-
-
 }

@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_plus" />
+                android:text="@string/symbol_add" />
 
 
             <Button
@@ -137,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_minus" />
+                android:text="@string/symbol_subtract" />
 
 
             <Button
