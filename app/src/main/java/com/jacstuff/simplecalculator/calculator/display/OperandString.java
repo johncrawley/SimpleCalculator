@@ -56,10 +56,12 @@ public class OperandString {
         updateValueAndDisplay(stripLeadingMinus(str));
     }
 
+
     public void set(BigDecimal bigDecimal){
         String str = bigDecimal.toPlainString();
         set(str);
     }
+
 
     private String stripLeadingMinus(String str){
         return str.startsWith(MINUS) ? str.substring(1) : str;
@@ -120,6 +122,7 @@ public class OperandString {
         }
         set(operandString.get());
     }
+
 
     public void setAndDisplayError(){
         this.showError = true;

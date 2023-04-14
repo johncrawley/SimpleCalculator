@@ -53,16 +53,18 @@ public class ResultState extends AbstractState implements CalcState {
         firstOperandString.addDecimal();
     }
 
+
     @Override
     public void clear() {
-
         calculatorActions.clearNumbersAndDisplayText();
     }
 
+
     @Override
     public void evaluate() {
-
+        //do nothing
     }
+
 
     @Override
     public void deleteDigit() {
@@ -75,9 +77,9 @@ public class ResultState extends AbstractState implements CalcState {
 
     @Override
     public void saveNumberToMemory(){
-
         calculatorActions.saveNumberToMemory(resultString);
     }
+
 
     @Override
     public void recallNumberFromMemory(){

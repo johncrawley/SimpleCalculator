@@ -1,6 +1,7 @@
 package com.jacstuff.simplecalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ import com.jacstuff.simplecalculator.actions.operators.PowerOf;
 import com.jacstuff.simplecalculator.actions.operators.SquareRoot;
 import com.jacstuff.simplecalculator.actions.operators.Subtract;
 import com.jacstuff.simplecalculator.calculator.Calculator;
+import com.jacstuff.simplecalculator.view.MainViewModel;
 
 
 import java.math.MathContext;
@@ -29,12 +31,14 @@ import java.math.MathContext;
 public class MainActivity extends AppCompatActivity {
 
     private Calculator calculator;
+    private MainViewModel viewModel;
     MathContext mc = new MathContext(9);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         initCalculator();
         setupViews();
     }
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initCalculator(){
         TextView display = findViewById(R.id.textView);
-        calculator = new Calculator(getApplicationContext(), display);
+        calculator = new Calculator(getApplicationContext(), display, viewModel);
     }
 
 

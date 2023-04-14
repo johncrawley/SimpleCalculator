@@ -14,6 +14,7 @@ import com.jacstuff.simplecalculator.state.OperatorState;
 import com.jacstuff.simplecalculator.state.ResultState;
 import com.jacstuff.simplecalculator.state.SecondNumberState;
 import com.jacstuff.simplecalculator.state.State;
+import com.jacstuff.simplecalculator.view.MainViewModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -30,8 +31,8 @@ public class Calculator {
     private Operator operator;
 
 
-    public Calculator(Context context, TextView textView){
-        initFields(context, textView);
+    public Calculator(Context context, TextView textView, MainViewModel viewModel){
+        initFields(context, textView, viewModel);
         setupStates();
         setState(State.FIRST_NUMBER);
     }
@@ -41,8 +42,8 @@ public class Calculator {
     OperandString getResultStr(){ return this.resultStr;}
 
 
-    private void initFields(Context context, TextView textView){
-        UpdatableDisplay updatableDisplay = new UpdatableDisplayImpl(textView);
+    private void initFields(Context context, TextView textView, MainViewModel viewModel){
+        UpdatableDisplay updatableDisplay = new UpdatableDisplayImpl(textView, viewModel);
         operandStr1 = new OperandString(updatableDisplay);
         operandStr2 = new OperandString(updatableDisplay);
         resultStr = new OperandString(updatableDisplay);

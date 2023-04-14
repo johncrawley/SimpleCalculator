@@ -2,15 +2,21 @@ package com.jacstuff.simplecalculator.calculator.display;
 
 import android.widget.TextView;
 
+import com.jacstuff.simplecalculator.view.MainViewModel;
+
 public class UpdatableDisplayImpl implements UpdatableDisplay {
 
-    private TextView textView;
+    private final TextView textView;
+    private final MainViewModel viewModel;
 
-    public UpdatableDisplayImpl(TextView textView){
+    public UpdatableDisplayImpl(TextView textView, MainViewModel viewModel){
         this.textView = textView;
+        this.viewModel = viewModel;
+        textView.setText(viewModel.display);
     }
 
     public void update(String str){
+        viewModel.display = str;
         textView.setText(str);
     }
 }

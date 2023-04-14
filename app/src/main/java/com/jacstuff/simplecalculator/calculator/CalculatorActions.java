@@ -22,7 +22,6 @@ public class CalculatorActions {
 
 
     CalculatorActions(Calculator calculator, Memory memory, TextView textView){
-        log("Entered CalculatorActions()");
         this.calculator = calculator;
         this.numberStr1 = calculator.getNumberStr1();
         this.numberStr2 = calculator.getNumberStr2();
@@ -70,14 +69,8 @@ public class CalculatorActions {
     private BigDecimal execute(boolean isCalculatingPercentage){
         BigDecimal number1 = createBigDecimalFrom(numberStr1);
         BigDecimal number2 = createBigDecimalFrom(numberStr2);
-        log("Entered execute() numberStr1: " + numberStr1.get() + " numberStr2: " + numberStr2.get());
         operator.setCalculatingPercentage(isCalculatingPercentage);
         return operator.execute(number1, number2).stripTrailingZeros();
-    }
-
-
-    private void log(String msg){
-        System.out.println("^^^ CalculatorActions: " +  msg);
     }
 
 
@@ -92,7 +85,6 @@ public class CalculatorActions {
 
 
     public void clearNumbersAndDisplayText(){
-        log("Entered clearNumberAndDisplayText");
         numberStr1.init();
         // numberStr2.init();
         resultStr.init();
@@ -101,7 +93,6 @@ public class CalculatorActions {
 
 
     public void clearSecondNumberString(){
-        log("Entered clearSecondNumberString()");
         numberStr2.init();
     }
 
