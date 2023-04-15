@@ -11,12 +11,11 @@ public class OperandString {
     private boolean isPositive = true;
     private final String MINUS = "-";
     private final String ERROR = "ERROR";
-    private final UpdatableDisplay updatableDisplay;
+   // private final UpdatableDisplay updatableDisplay;
     private boolean showError;
 
 
-    public OperandString(UpdatableDisplay updatableDisplay){
-        this.updatableDisplay = updatableDisplay;
+    public OperandString(){
         this.init();
     }
 
@@ -53,7 +52,7 @@ public class OperandString {
 
     public void set(String str){
         this.isPositive = !str.startsWith(MINUS);
-        updateValueAndDisplay(stripLeadingMinus(str));
+        value = stripLeadingMinus(str);
     }
 
 
@@ -68,18 +67,12 @@ public class OperandString {
     }
 
 
-    private void updateValueAndDisplay(String str){
-        this.value = str;
-        updatableDisplay.update(get());
-    }
-
-
     public void addDigit(int digit){
         if(value.equals(INITIAL_VALUE)){
-            updateValueAndDisplay("" + digit);
+            this.value = "" + digit;
             return;
         }
-        updateValueAndDisplay(value + digit);
+        value += digit;
     }
 
 
@@ -87,17 +80,12 @@ public class OperandString {
         if(value.contains(DECIMAL)){
             return;
         }
-        updateValueAndDisplay( value + DECIMAL);
+        value += DECIMAL;
     }
 
 
     public void deleteDigit(){
-        if(value.length() <= 1){
-            value = INITIAL_VALUE;
-            updateValueAndDisplay(INITIAL_VALUE);
-            return;
-        }
-        updateValueAndDisplay(removeEndDigit(value));
+        value = value.length() <= 1 ? INITIAL_VALUE : removeEndDigit(value);
     }
 
 
@@ -111,7 +99,7 @@ public class OperandString {
             return;
         }
         isPositive = !isPositive;
-        updateValueAndDisplay(value);
+
     }
 
 
@@ -126,7 +114,7 @@ public class OperandString {
 
     public void setAndDisplayError(){
         this.showError = true;
-        updatableDisplay.update(ERROR);
+        value = ERROR;
     }
 
 }

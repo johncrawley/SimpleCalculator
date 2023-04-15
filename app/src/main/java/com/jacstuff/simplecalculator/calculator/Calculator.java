@@ -25,40 +25,56 @@ public class Calculator {
     private Map<State, CalcState> states;
     private CalcState currentState;
     private CalculatorActions calculatorActions;
-    private OperandString operandStr1;
-    private OperandString operandStr2;
-    private OperandString resultStr;
     private Operator operator;
+    UpdatableDisplay updatableDisplay;
+    private final MainViewModel viewModel;
 
 
     public Calculator(Context context, TextView textView, MainViewModel viewModel){
+        this.viewModel = viewModel;
         initFields(context, textView, viewModel);
         setupStates();
         setState(State.FIRST_NUMBER);
     }
 
-    OperandString getNumberStr1(){return this.operandStr1;}
-    OperandString getNumberStr2(){return this.operandStr2;}
-    OperandString getResultStr(){ return this.resultStr;}
+
+    OperandString getNumberStr1(){return viewModel.operandStr1;}
+
+
+    OperandString getNumberStr2(){return viewModel.operandStr2;}
+
+
+    OperandString getResultStr(){ return viewModel.resultOperand;}
 
 
     private void initFields(Context context, TextView textView, MainViewModel viewModel){
-        UpdatableDisplay updatableDisplay = new UpdatableDisplayImpl(textView, viewModel);
-        operandStr1 = new OperandString(updatableDisplay);
-        operandStr2 = new OperandString(updatableDisplay);
-        resultStr = new OperandString(updatableDisplay);
+        updatableDisplay = new UpdatableDisplayImpl(textView, viewModel);
+        initOperands();
         Memory memory = new Memory(context);
         calculatorActions = new CalculatorActions(this, memory, textView);
     }
 
 
+    private void initOperands(){
+        if(viewModel.operandStr1 == null){
+            viewModel.operandStr1 = new OperandString();
+        }
+        if(viewModel.operandStr2 == null){
+            viewModel.operandStr2 = new OperandString();
+        }
+        if(viewModel.resultOperand == null){
+            viewModel.resultOperand = new OperandString();
+        }
+    }
+
+
     private void setupStates(){
         states = new HashMap<>();
-        addState(State.FIRST_NUMBER, new FirstNumberState(operandStr1, operandStr2));
-        addState(State.OPERATOR, new OperatorState(operandStr2));
-        addState(State.SECOND_NUMBER, new SecondNumberState(operandStr1, operandStr2));
-        addState(State.ERROR, new ErrorState());
-        addState(State.RESULT, new ResultState(operandStr1, operandStr2, resultStr));
+        addState(State.FIRST_NUMBER, new FirstNumberState(viewModel.operandStr1, viewModel.operandStr2, updatableDisplay));
+        addState(State.OPERATOR, new OperatorState(viewModel.operandStr2, updatableDisplay));
+        addState(State.SECOND_NUMBER, new SecondNumberState(viewModel.operandStr2, updatableDisplay));
+        addState(State.ERROR, new ErrorState(updatableDisplay));
+        addState(State.RESULT, new ResultState(viewModel.operandStr1, viewModel.operandStr2,viewModel.resultOperand, updatableDisplay));
     }
 
 

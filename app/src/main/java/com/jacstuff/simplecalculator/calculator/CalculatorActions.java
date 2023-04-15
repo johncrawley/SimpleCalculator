@@ -14,18 +14,18 @@ public class CalculatorActions {
 
     private Operator operator;
     private final TextView textView;
-    private final OperandString numberStr1;
-    private final OperandString numberStr2;
-    private final OperandString resultStr;
+    private final OperandString numberOperand1;
+    private final OperandString numberOperand2;
+    private final OperandString resultOperand;
     private final Calculator calculator;
     private final Memory memory;
 
 
     CalculatorActions(Calculator calculator, Memory memory, TextView textView){
         this.calculator = calculator;
-        this.numberStr1 = calculator.getNumberStr1();
-        this.numberStr2 = calculator.getNumberStr2();
-        this.resultStr = calculator.getResultStr();
+        this.numberOperand1 = calculator.getNumberStr1();
+        this.numberOperand2 = calculator.getNumberStr2();
+        this.resultOperand = calculator.getResultStr();
         this.memory = memory;
         this.textView = textView;
     }
@@ -39,7 +39,7 @@ public class CalculatorActions {
 
 
     public void copyResultToFirstNumber(){
-        numberStr1.getValueFrom(resultStr);
+        numberOperand1.getValueFrom(resultOperand);
     }
 
 
@@ -55,10 +55,12 @@ public class CalculatorActions {
 
     private boolean evalAndDisplay(boolean isCalculatingPercentage){
         try {
-            resultStr.set(execute(isCalculatingPercentage));
+            resultOperand.set(execute(isCalculatingPercentage));
+            textView.setText(resultOperand.get());
         }
         catch(ArithmeticException e){
-            resultStr.setAndDisplayError();
+            resultOperand.setAndDisplayError();
+            textView.setText(resultOperand.get());
             calculator.setState(State.ERROR);
             return false;
         }
@@ -67,15 +69,15 @@ public class CalculatorActions {
 
 
     private BigDecimal execute(boolean isCalculatingPercentage){
-        BigDecimal number1 = createBigDecimalFrom(numberStr1);
-        BigDecimal number2 = createBigDecimalFrom(numberStr2);
+        BigDecimal number1 = createBigDecimalFrom(numberOperand1);
+        BigDecimal number2 = createBigDecimalFrom(numberOperand2);
         operator.setCalculatingPercentage(isCalculatingPercentage);
         return operator.execute(number1, number2).stripTrailingZeros();
     }
 
 
     public void displayResult(){
-        setDisplay(resultStr.get());
+        setDisplay(resultOperand.get());
     }
 
 
@@ -85,15 +87,15 @@ public class CalculatorActions {
 
 
     public void clearNumbersAndDisplayText(){
-        numberStr1.init();
+        numberOperand1.init();
         // numberStr2.init();
-        resultStr.init();
+        resultOperand.init();
         setDisplay("0");
     }
 
 
     public void clearSecondNumberString(){
-        numberStr2.init();
+        numberOperand2.init();
     }
 
 
