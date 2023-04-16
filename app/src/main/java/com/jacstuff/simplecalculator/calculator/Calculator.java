@@ -17,24 +17,23 @@ import com.jacstuff.simplecalculator.state.State;
 import com.jacstuff.simplecalculator.view.MainViewModel;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class Calculator {
 
-
-    private Map<State, CalcState> states;
     private CalcState currentState;
     private CalculatorActions calculatorActions;
     private Operator operator;
     UpdatableDisplay updatableDisplay;
     private final MainViewModel viewModel;
+    private final TextView display;
 
 
     public Calculator(Context context, TextView textView, MainViewModel viewModel){
         this.viewModel = viewModel;
+        this.display = textView;
         initFields(context, textView, viewModel);
         setupStates();
-        setState(State.FIRST_NUMBER);
+        setState(viewModel.calculatorStateName);
     }
 
 
@@ -55,6 +54,11 @@ public class Calculator {
     }
 
 
+    public CalculatorActions getCalculatorActions(){
+        return calculatorActions;
+    }
+
+
     private void initOperands(){
         if(viewModel.operandStr1 == null){
             viewModel.operandStr1 = new OperandString();
@@ -69,24 +73,35 @@ public class Calculator {
 
 
     private void setupStates(){
-        states = new HashMap<>();
-        addState(State.FIRST_NUMBER, new FirstNumberState(viewModel.operandStr1, viewModel.operandStr2, updatableDisplay));
-        addState(State.OPERATOR, new OperatorState(viewModel.operandStr2, updatableDisplay));
-        addState(State.SECOND_NUMBER, new SecondNumberState(viewModel.operandStr2, updatableDisplay));
-        addState(State.ERROR, new ErrorState(updatableDisplay));
-        addState(State.RESULT, new ResultState(viewModel.operandStr1, viewModel.operandStr2,viewModel.resultOperand, updatableDisplay));
+        if(viewModel.calculatorStates == null){
+            viewModel.calculatorStates = new HashMap<>();
+            addState(State.FIRST_NUMBER, new FirstNumberState(viewModel.operandStr1, viewModel.operandStr2));
+            addState(State.OPERATOR, new OperatorState(viewModel.operandStr2));
+            addState(State.SECOND_NUMBER, new SecondNumberState(viewModel.operandStr2));
+            addState(State.ERROR, new ErrorState());
+            addState(State.RESULT, new ResultState(viewModel.operandStr1, viewModel.operandStr2,viewModel.resultOperand));
+        }
+        for(CalcState calcState : viewModel.calculatorStates.values()){
+            calcState.setCalculator(this);
+        }
+    }
+
+
+    public void updateDisplay(String str){
+        display.setText(str);
     }
 
 
     private void addState(State key, CalcState calcState){
         calcState.setCalculator(this);
         calcState.setCalculatorActions(calculatorActions);
-        states.put(key, calcState);
+        viewModel.calculatorStates.put(key, calcState);
     }
 
 
-    public void setState(State key){
-        CalcState calcState = states.get(key);
+    public void setState(State stateName){
+        viewModel.calculatorStateName = stateName;
+        CalcState calcState = viewModel.calculatorStates.get(stateName);
         if(calcState != null){
             this.currentState = calcState;
             this.currentState.init();

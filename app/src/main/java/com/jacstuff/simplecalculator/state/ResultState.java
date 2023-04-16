@@ -2,15 +2,13 @@ package com.jacstuff.simplecalculator.state;
 
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
-import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
 
 public class ResultState extends AbstractState implements CalcState {
 
 
     private final OperandString firstOperandString, secondOperandString, resultString;
 
-    public ResultState(OperandString firstOperandString, OperandString secondOperandString, OperandString resultString, UpdatableDisplay updatableDisplay){
-        super(updatableDisplay);
+    public ResultState(OperandString firstOperandString, OperandString secondOperandString, OperandString resultString){
         this.firstOperandString = firstOperandString;
         this.secondOperandString = secondOperandString;
         this.resultString = resultString;
@@ -53,7 +51,7 @@ public class ResultState extends AbstractState implements CalcState {
         secondOperandString.init();
         calculator.setState(State.FIRST_NUMBER);
         firstOperandString.addDecimal();
-        updatableDisplay.update(firstOperandString.get());
+        updateDisplay(firstOperandString.get());
     }
 
 

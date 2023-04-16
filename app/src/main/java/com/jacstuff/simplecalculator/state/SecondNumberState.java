@@ -4,16 +4,15 @@ package com.jacstuff.simplecalculator.state;
 import com.jacstuff.simplecalculator.actions.operators.PercentOf;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
-import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
 
 public class SecondNumberState extends AbstractState implements CalcState {
 
     private final OperandString secondOperandString;
 
-    public SecondNumberState(OperandString secondOperandString, UpdatableDisplay updatableDisplay){
-        super(updatableDisplay);
+    public SecondNumberState(OperandString secondOperandString){
         this.secondOperandString = secondOperandString;
     }
+
 
     @Override
     public void init(){
@@ -59,28 +58,28 @@ public class SecondNumberState extends AbstractState implements CalcState {
     @Override
     public void changeSign() {
         secondOperandString.negate();
-        updatableDisplay.update(secondOperandString.get());
+        updateDisplay(secondOperandString.get());
     }
 
 
     @Override
     public void addDecimal() {
         secondOperandString.addDecimal();
-        updatableDisplay.update(secondOperandString.get());
+        updateDisplay(secondOperandString.get());
     }
 
 
     @Override
     public void deleteDigit() {
         secondOperandString.deleteDigit();
-        updatableDisplay.update(secondOperandString.get());
+        updateDisplay(secondOperandString.get());
     }
 
 
     @Override
     public void addDigit(int digit) {
         secondOperandString.addDigit(digit);
-        updatableDisplay.update(secondOperandString.get());
+        updateDisplay(secondOperandString.get());
     }
 
 
