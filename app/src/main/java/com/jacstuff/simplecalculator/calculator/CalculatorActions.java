@@ -1,45 +1,43 @@
 package com.jacstuff.simplecalculator.calculator;
 
 
-import android.widget.TextView;
 
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 import com.jacstuff.simplecalculator.state.State;
+import com.jacstuff.simplecalculator.view.MainViewModel;
 
 import java.math.BigDecimal;
 
 public class CalculatorActions {
 
 
-    private Operator operator;
-    private final TextView textView;
-    private final OperandString numberOperand1;
-    private final OperandString numberOperand2;
     private final OperandString resultOperand;
     private final Calculator calculator;
+    private final MainViewModel viewModel;
     private final Memory memory;
 
 
-    CalculatorActions(Calculator calculator, Memory memory, TextView textView){
+    CalculatorActions(Calculator calculator, Memory memory, MainViewModel viewModel){
         this.calculator = calculator;
-        this.numberOperand1 = calculator.getNumberStr1();
-        this.numberOperand2 = calculator.getNumberStr2();
+        this.viewModel = viewModel;
         this.resultOperand = calculator.getResultStr();
         this.memory = memory;
-        this.textView = textView;
     }
 
 
-    public void setAndDisplay(Operator operator){
-        this.operator = operator;
+    public void loadAndDisplayOperator(){
+        Operator operator = calculator.getOperator();
+        if(operator == null){
+            return;
+        }
         operator.onLoad();
-        setDisplay(operator.getSymbol());
+        calculator.updateDisplay(operator.getSymbol());
     }
 
 
     public void copyResultToFirstNumber(){
-        numberOperand1.getValueFrom(resultOperand);
+        viewModel.operandStr1.setValueFrom(resultOperand);
     }
 
 
@@ -56,11 +54,12 @@ public class CalculatorActions {
     private boolean evalAndDisplay(boolean isCalculatingPercentage){
         try {
             resultOperand.set(execute(isCalculatingPercentage));
-            textView.setText(resultOperand.get());
+            calculator.updateDisplay(resultOperand.get());
         }
         catch(ArithmeticException e){
+            e.printStackTrace();
             resultOperand.setAndDisplayError();
-            textView.setText(resultOperand.get());
+            calculator.updateDisplay(resultOperand.get());
             calculator.setState(State.ERROR);
             return false;
         }
@@ -69,15 +68,16 @@ public class CalculatorActions {
 
 
     private BigDecimal execute(boolean isCalculatingPercentage){
-        BigDecimal number1 = createBigDecimalFrom(numberOperand1);
-        BigDecimal number2 = createBigDecimalFrom(numberOperand2);
+        BigDecimal number1 = createBigDecimalFrom(viewModel.operandStr1);
+        BigDecimal number2 = createBigDecimalFrom(viewModel.operandStr2);
+        Operator operator = calculator.getOperator();
         operator.setCalculatingPercentage(isCalculatingPercentage);
         return operator.execute(number1, number2).stripTrailingZeros();
     }
 
 
     public void displayResult(){
-        setDisplay(resultOperand.get());
+        calculator.updateDisplay(resultOperand.get());
     }
 
 
@@ -87,21 +87,16 @@ public class CalculatorActions {
 
 
     public void clearNumbersAndDisplayText(){
-        numberOperand1.init();
-        // numberStr2.init();
+        viewModel.operandStr1.init();
         resultOperand.init();
-        setDisplay("0");
+        calculator.updateDisplay("0");
     }
 
 
     public void clearSecondNumberString(){
-        numberOperand2.init();
+        viewModel.operandStr2.init();
     }
 
-
-    private void setDisplay(String text){
-        textView.setText(text);
-    }
 
 
     public void saveNumberToMemory(OperandString operandString){

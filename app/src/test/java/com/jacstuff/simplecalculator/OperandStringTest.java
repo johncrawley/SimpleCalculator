@@ -196,7 +196,7 @@ public class OperandStringTest {
         OperandString badStr = new OperandString();
         badStr.setAndDisplayError();
 
-        operandStr.getValueFrom(badStr);
+        operandStr.setValueFrom(badStr);
         assertOperand(INITIAL_VALUE);
     }
 

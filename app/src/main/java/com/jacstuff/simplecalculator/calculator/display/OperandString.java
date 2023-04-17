@@ -11,7 +11,6 @@ public class OperandString {
     private boolean isPositive = true;
     private final String MINUS = "-";
     private final String ERROR = "ERROR";
-   // private final UpdatableDisplay updatableDisplay;
     private boolean showError;
 
 
@@ -103,7 +102,7 @@ public class OperandString {
     }
 
 
-    public void getValueFrom(OperandString operandString){
+    public void setValueFrom(OperandString operandString){
         if(operandString.get().equals(ERROR)){
             set(ZERO);
             return;

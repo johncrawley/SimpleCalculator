@@ -20,7 +20,7 @@ public class OperatorState extends AbstractState implements CalcState {
 
     @Override
     public void setOperator(Operator operator){
-        calculatorActions.setAndDisplay(operator);
+        calculatorActions.loadAndDisplayOperator();
         if(operator.hasSingleInput()) {
             calculator.setState(State.SECOND_NUMBER);
             calculator.evaluate();

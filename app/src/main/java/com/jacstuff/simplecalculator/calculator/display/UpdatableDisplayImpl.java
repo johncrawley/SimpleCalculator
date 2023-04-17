@@ -12,11 +12,11 @@ public class UpdatableDisplayImpl implements UpdatableDisplay {
     public UpdatableDisplayImpl(TextView textView, MainViewModel viewModel){
         this.textView = textView;
         this.viewModel = viewModel;
-        textView.setText(viewModel.display);
+        textView.setText(viewModel.displayStr);
     }
 
     public void update(String str){
-        viewModel.display = str;
+        viewModel.displayStr = str;
         textView.setText(str);
     }
 }

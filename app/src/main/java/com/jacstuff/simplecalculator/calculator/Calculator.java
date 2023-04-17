@@ -4,8 +4,6 @@ import android.content.Context;
 import android.widget.TextView;
 
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
-import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
-import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplayImpl;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 import com.jacstuff.simplecalculator.state.CalcState;
 import com.jacstuff.simplecalculator.state.ErrorState;
@@ -20,10 +18,7 @@ import java.util.HashMap;
 
 public class Calculator {
 
-    private CalcState currentState;
     private CalculatorActions calculatorActions;
-    private Operator operator;
-    UpdatableDisplay updatableDisplay;
     private final MainViewModel viewModel;
     private final TextView display;
 
@@ -31,26 +26,20 @@ public class Calculator {
     public Calculator(Context context, TextView textView, MainViewModel viewModel){
         this.viewModel = viewModel;
         this.display = textView;
-        initFields(context, textView, viewModel);
+        initFields(context);
         setupStates();
-        setState(viewModel.calculatorStateName);
+        assignState();
+        updateDisplay();
     }
-
-
-    OperandString getNumberStr1(){return viewModel.operandStr1;}
-
-
-    OperandString getNumberStr2(){return viewModel.operandStr2;}
 
 
     OperandString getResultStr(){ return viewModel.resultOperand;}
 
 
-    private void initFields(Context context, TextView textView, MainViewModel viewModel){
-        updatableDisplay = new UpdatableDisplayImpl(textView, viewModel);
+    private void initFields(Context context){
         initOperands();
         Memory memory = new Memory(context);
-        calculatorActions = new CalculatorActions(this, memory, textView);
+        calculatorActions = new CalculatorActions(this, memory, viewModel);
     }
 
 
@@ -69,6 +58,7 @@ public class Calculator {
         if(viewModel.resultOperand == null){
             viewModel.resultOperand = new OperandString();
         }
+
     }
 
 
@@ -79,7 +69,8 @@ public class Calculator {
             addState(State.OPERATOR, new OperatorState(viewModel.operandStr2));
             addState(State.SECOND_NUMBER, new SecondNumberState(viewModel.operandStr2));
             addState(State.ERROR, new ErrorState());
-            addState(State.RESULT, new ResultState(viewModel.operandStr1, viewModel.operandStr2,viewModel.resultOperand));
+            addState(State.RESULT, new ResultState(viewModel.operandStr1, viewModel.operandStr2, viewModel.resultOperand));
+
         }
         for(CalcState calcState : viewModel.calculatorStates.values()){
             calcState.setCalculator(this);
@@ -88,66 +79,80 @@ public class Calculator {
 
 
     public void updateDisplay(String str){
-        display.setText(str);
+        viewModel.displayStr = str;
+        updateDisplay();
+    }
+
+
+    private void updateDisplay(){
+        display.setText(viewModel.displayStr);
     }
 
 
     private void addState(State key, CalcState calcState){
-        calcState.setCalculator(this);
-        calcState.setCalculatorActions(calculatorActions);
         viewModel.calculatorStates.put(key, calcState);
     }
 
 
+    public Operator getOperator(){
+        return viewModel.operator;
+    }
+
+
     public void setState(State stateName){
-        viewModel.calculatorStateName = stateName;
+        viewModel.currentCalculatorStateName = stateName;
         CalcState calcState = viewModel.calculatorStates.get(stateName);
         if(calcState != null){
-            this.currentState = calcState;
-            this.currentState.init();
+            viewModel.currentState = calcState;
+            viewModel.currentState.init();
         }
     }
 
 
+    private void assignState(){
+        viewModel.currentState = viewModel.calculatorStates.get(viewModel.currentCalculatorStateName);
+    }
+
+
     public void setOperator(Operator operator){
-        currentState.setOperator(operator);
-        this.operator = operator;
+        viewModel.operator = operator;
+        viewModel.currentState.setOperator(operator);
     }
 
 
     public Operator getExistingOperator(){
-        return operator;
+        return viewModel.operator;
     }
 
 
     public void evaluate(){
-        currentState.evaluate();
+        viewModel.currentState.evaluate();
     }
 
 
     public void addDigit(int digit){
-        currentState.addDigit(digit);
+        viewModel.currentState.addDigit(digit);
     }
 
 
-    public void changeSign() { currentState.changeSign(); }
+    public void changeSign() { viewModel.currentState.changeSign(); }
 
 
-    public void addDecimal() { currentState.addDecimal(); }
+    public void addDecimal() { viewModel.currentState.addDecimal(); }
 
 
-    public void backSpace() { currentState.deleteDigit();}
+    public void backSpace() { viewModel.currentState.deleteDigit();}
 
 
     public void clear(){
-        currentState.clear();
+        viewModel.currentState.clear();
     }
 
 
-    public void saveNumberToMemory(){ currentState.saveNumberToMemory();}
+    public void saveNumberToMemory(){ viewModel.currentState.saveNumberToMemory();}
 
 
-    public void recallNumberFromMemory(){ currentState.recallNumberFromMemory();}
+    public void recallNumberFromMemory(){ viewModel.currentState.recallNumberFromMemory();}
 
 
 }
