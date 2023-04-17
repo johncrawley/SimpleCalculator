@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:text="@string/symbol_0"
         android:textSize="36sp"
+        android:fontFamily="@font/pt_mono_regular"
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
