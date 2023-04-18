@@ -61,26 +61,25 @@
             style="?android:attr/buttonBarStyle">
 
             <Button
-                android:id="@+id/button1"
+                android:id="@+id/button7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_1"  />
+                android:text="@string/symbol_7"/>
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_2" />
+                android:text="@string/symbol_8"/>
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/button9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_3" />
-
+                android:text="@string/symbol_9" />
 
             <Button
                 android:id="@+id/buttonPlus"
@@ -89,14 +88,12 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:text="@string/symbol_add" />
 
-
             <Button
-                android:id="@+id/buttonDecimal"
+                android:id="@+id/buttonClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_decimal" />
-
+                android:text="@string/symbol_cancel" />
 
             <Button
                 android:id="@+id/buttonChangeSign"
@@ -162,28 +159,26 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_7"/>
+                android:text="@string/symbol_1"  />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_8"/>
+                android:text="@string/symbol_2" />
 
             <Button
-                android:id="@+id/button9"
+                android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_9" />
-
+                android:text="@string/symbol_3" />
 
             <Button
                 android:id="@+id/buttonMultiply"
@@ -212,14 +207,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <Button
-                android:id="@+id/buttonClear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_cancel" />
-
             <Button
                 android:id="@+id/button0"
                 android:layout_width="wrap_content"
@@ -227,6 +214,12 @@
                 style="?android:attr/borderlessButtonStyle"
                 android:text="@string/symbol_0" />
 
+            <Button
+                android:id="@+id/buttonDecimal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:text="@string/symbol_decimal" />
 
             <Button
                 android:id="@+id/buttonEquals"
