@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initCalculator(){
-        TextView display = findViewById(R.id.textView);
+        TextView display = findViewById(R.id.outputDisplayText);
         calculator = new Calculator(getApplicationContext(), display, viewModel);
     }
 

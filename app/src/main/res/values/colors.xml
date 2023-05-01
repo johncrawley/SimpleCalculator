@@ -3,7 +3,11 @@
     <color name="colorPrimary">#352B0C</color>
     <color name="colorPrimaryDark">#30270D</color>
     <color name="colorAccent">#827717</color>
-    <color name="buttonText">#7B8994</color>
+    <color name="dark_button_text">#B1B9BF</color>
+    <color name="dark_primary_dark">#271F09</color>
+    <color name="dark_window_background">#1C1C1C</color>
+    <color name="dark_display_background">#3A3939</color>
+    <color name="dark_primary">#A17222</color>
     <color name="displayText">#858A54</color>
     <color name="background">#171717</color>
     <color name="buttonOutline">#302F2F</color>

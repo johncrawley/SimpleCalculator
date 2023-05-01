@@ -6,4 +6,9 @@
     <dimen name="button_minWidth">20dp</dimen>
     <dimen name="button_paddingHorizontal">20dp</dimen>
     <dimen name="button_paddingVertical">20dp</dimen>
+    <dimen name="display_margin_top">20dp</dimen>
+    <dimen name="display_text_padding_vertical">12dp</dimen>
+    <dimen name="display_text_padding_horizontal">8dp</dimen>
+    <dimen name="display_margin_horizontal">20dp</dimen>
+    <dimen name="button_table_margin_bottom_portrait">18dp</dimen>
 </resources>

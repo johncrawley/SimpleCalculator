@@ -1,10 +1,11 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.Material3.Dark">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/dark_primary</item>
+        <item name="colorPrimaryDark">@color/dark_primary_dark</item> <!-- Notification Bar -->
         <item name="android:navigationBarColor">@color/navigationBar</item>
-        <item name="backgroundColor">@color/background</item>
+        <item name="android:windowBackground">@color/dark_window_background</item>
+        <item name="calculatorDisplayBackground">@color/dark_display_background</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/displayText</item>
         <item name="materialButtonStyle">@style/materialCalculatorButton</item>
@@ -12,7 +13,7 @@
 
 
     <style name="materialCalculatorButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:textColor">@color/buttonText</item>
+        <item name="android:textColor">@color/dark_button_text</item>
         <item name="cornerRadius">22dp</item>
         <item name="strokeWidth">1dp</item>
         <item name="backgroundColor">@color/background</item>

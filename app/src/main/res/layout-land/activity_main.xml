@@ -6,33 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    <include
+        layout="@layout/output_display"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/symbol_0"
-        android:textSize="36sp"
-        android:fontFamily="@font/pt_mono_regular"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonTable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@+id/buttonTable"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-
-        tools:layout_editor_absoluteX="0dp" />
+        />
 
     <TableLayout
         android:id="@+id/buttonTable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/button_table_margin_bottom_portrait"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
