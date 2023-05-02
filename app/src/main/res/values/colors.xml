@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#30270D</color>
     <color name="colorAccent">#827717</color>
     <color name="dark_button_text">#B1B9BF</color>
+    <color name="dark_operator_button_text">#2979FF</color>
     <color name="dark_primary_dark">#271F09</color>
     <color name="dark_window_background">#1C1C1C</color>
     <color name="dark_display_background">#3A3939</color>

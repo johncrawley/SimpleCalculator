@@ -37,6 +37,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonClear"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -48,6 +49,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonBackspace"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -59,6 +61,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMemorySet"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -70,6 +73,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMemoryRecall"
+                style="?attr/operatorButtonStyle"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
                 android:minHeight="@dimen/button_minHeight"
@@ -85,6 +89,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPow"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -96,6 +101,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonRoot"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -107,6 +113,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPercent"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -118,6 +125,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonChangeSign"
+                style="?attr/operatorButtonStyle"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
                 android:minHeight="@dimen/button_minHeight"
@@ -166,6 +174,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMultiply"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -216,6 +225,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMinus"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -265,6 +275,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPlus"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -308,6 +319,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonEquals"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -319,6 +331,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonDivide"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
