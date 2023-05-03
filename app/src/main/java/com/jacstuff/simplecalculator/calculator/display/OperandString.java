@@ -1,6 +1,11 @@
 package com.jacstuff.simplecalculator.calculator.display;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class OperandString {
 
@@ -36,6 +41,41 @@ public class OperandString {
         return MINUS + value;
     }
 
+
+    public String get(int maxLength){
+        if(showError){
+            return ERROR;
+        }
+        if(isPositive || value.equals(ZERO)){
+            return value;
+        }
+        String displayStr =  MINUS + value;
+        if(displayStr.length() <= maxLength){
+            return displayStr;
+        }
+        int decimalIndex = displayStr.indexOf(".");
+        if(decimalIndex == -1 || decimalIndex >= maxLength - 1){
+            return getScientificStrFrom(displayStr);
+        }
+        return cutOffSomeDecimalsFrom(displayStr, decimalIndex, maxLength);
+    }
+
+
+    private String cutOffSomeDecimalsFrom(String str, int decimalIndex, int maxLength){
+        DecimalFormat df = new DecimalFormat();
+        df.setMaximumFractionDigits(3);
+        df.setMinimumFractionDigits(0);
+        df.setGroupingUsed(false);
+
+        return df.format(str);
+    }
+
+
+    private String getScientificStrFrom(String str){
+        BigInteger bigInteger = new BigInteger(str);
+        NumberFormat formatter = new DecimalFormat("0.######E0", DecimalFormatSymbols.getInstance(Locale.ROOT));
+        return formatter.format(bigInteger);
+    }
 
     public String getLegalStr(){
         if(showError){

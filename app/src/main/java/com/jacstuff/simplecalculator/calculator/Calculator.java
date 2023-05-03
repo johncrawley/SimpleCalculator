@@ -58,7 +58,6 @@ public class Calculator {
         if(viewModel.resultOperand == null){
             viewModel.resultOperand = new OperandString();
         }
-
     }
 
 
