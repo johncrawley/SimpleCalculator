@@ -17,9 +17,11 @@ public class OperandString {
     private final String MINUS = "-";
     private final String ERROR = "ERROR";
     private boolean showError;
+    private final int maxLength;
 
 
-    public OperandString(){
+    public OperandString(int maxLength){
+        this.maxLength = maxLength;
         this.init();
     }
 
@@ -28,6 +30,11 @@ public class OperandString {
         this.value = INITIAL_VALUE;
         this.isPositive = true;
         this.showError = false;
+    }
+
+
+    public boolean isAtMaxLength(){
+        return value.length() >= maxLength;
     }
 
 

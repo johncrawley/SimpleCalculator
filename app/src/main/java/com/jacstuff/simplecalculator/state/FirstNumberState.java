@@ -47,6 +47,9 @@ public class FirstNumberState extends AbstractState implements CalcState {
         if(!hasFirstDigitBeenAdded){
             secondOperandString.init();
         }
+        if(firstOperandString.isAtMaxLength()){
+            return;
+        }
         firstOperandString.addDigit(digit);
         updateDisplay(firstOperandString.get());
         hasFirstDigitBeenAdded = true;

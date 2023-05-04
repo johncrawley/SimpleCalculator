@@ -78,6 +78,9 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
     @Override
     public void addDigit(int digit) {
+        if(secondOperandString.isAtMaxLength()){
+            return;
+        }
         secondOperandString.addDigit(digit);
         updateDisplay(secondOperandString.get());
     }

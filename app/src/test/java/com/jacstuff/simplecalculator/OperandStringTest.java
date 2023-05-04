@@ -26,7 +26,7 @@ public class OperandStringTest {
     public void setup()
     {
         mockDisplay = new MockDisplay();
-        operandStr = new OperandString();
+        operandStr = new OperandString(10);
     }
 
     @Test
@@ -193,7 +193,7 @@ public class OperandStringTest {
     @Test
     public void wontCopyErrorString(){
 
-        OperandString badStr = new OperandString();
+        OperandString badStr = new OperandString(10);
         badStr.setAndDisplayError();
 
         operandStr.setValueFrom(badStr);

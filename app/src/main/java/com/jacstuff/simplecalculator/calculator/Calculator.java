@@ -49,14 +49,15 @@ public class Calculator {
 
 
     private void initOperands(){
+        int maxLength = 14;
         if(viewModel.operandStr1 == null){
-            viewModel.operandStr1 = new OperandString();
+            viewModel.operandStr1 = new OperandString(maxLength);
         }
         if(viewModel.operandStr2 == null){
-            viewModel.operandStr2 = new OperandString();
+            viewModel.operandStr2 = new OperandString(maxLength);
         }
         if(viewModel.resultOperand == null){
-            viewModel.resultOperand = new OperandString();
+            viewModel.resultOperand = new OperandString(maxLength);
         }
     }
 
