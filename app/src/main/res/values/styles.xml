@@ -10,6 +10,9 @@
         <item name="android:textColor">@color/displayText</item>
         <item name="materialButtonStyle">@style/materialCalculatorButton</item>
         <item name="operatorButtonStyle">@style/materialCalculatorOperatorButton</item>
+        <item name="editButtonStyle">@style/materialCalculatorEditButton</item>
+        <item name="memoryButtonStyle">@style/materialCalculatorMemoryButton</item>
+        <item name="equalsButtonStyle">@style/materialCalculatorEqualsButton</item>
     </style>
 
 
@@ -28,6 +31,18 @@
 
     <style name="materialCalculatorOperatorButton" parent="materialCalculatorButton">
         <item name="android:textColor">@color/dark_operator_button_text</item>
+    </style>
+
+    <style name="materialCalculatorEditButton" parent="materialCalculatorButton">
+        <item name="android:textColor">@color/dark_edit_button_text</item>
+    </style>
+
+    <style name="materialCalculatorMemoryButton" parent="materialCalculatorButton">
+        <item name="android:textColor">@color/dark_memory_button_text</item>
+    </style>
+
+    <style name="materialCalculatorEqualsButton" parent="materialCalculatorButton">
+        <item name="android:textColor">@color/dark_equals_button_text</item>
     </style>
 
 </resources>

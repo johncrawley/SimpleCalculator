@@ -38,7 +38,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonClear"
-                style="?attr/operatorButtonStyle"
+                style="?attr/editButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -50,7 +50,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonBackspace"
-                style="?attr/operatorButtonStyle"
+                style="?attr/editButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -62,7 +62,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMemorySet"
-                style="?attr/operatorButtonStyle"
+                style="?attr/memoryButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
@@ -74,7 +74,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMemoryRecall"
-                style="?attr/operatorButtonStyle"
+                style="?attr/memoryButtonStyle"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
                 android:minHeight="@dimen/button_minHeight"
@@ -320,7 +320,7 @@
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonEquals"
-                style="?attr/operatorButtonStyle"
+                style="?attr/equalsButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/button_margin"
