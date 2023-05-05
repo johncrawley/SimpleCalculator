@@ -15,7 +15,6 @@ public class FirstNumberState extends AbstractState implements CalcState {
     }
 
 
-
     @Override
     public void init(){
         hasFirstDigitBeenAdded = false;
@@ -27,6 +26,7 @@ public class FirstNumberState extends AbstractState implements CalcState {
         calculator.setState(State.OPERATOR);
         calculator.setOperator(operator);
     }
+
 
     @Override
     public void changeSign() {
@@ -79,8 +79,10 @@ public class FirstNumberState extends AbstractState implements CalcState {
         calculatorActions.saveNumberToMemory(firstOperandString);
     }
 
+
     @Override
     public void recallNumberFromMemory(){
         calculatorActions.recallNumberFromMemory(firstOperandString);
+        updateDisplay(firstOperandString.get());
     }
 }
