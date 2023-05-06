@@ -42,38 +42,33 @@ public class OperandString {
         if(showError){
             return ERROR;
         }
-        if(isPositive || value.equals(ZERO)){
-            return value;
-        }
-        return MINUS + value;
+        String displayValue = value.length() > maxLength ? getTruncatedValue() : value;
+        return isValuePositive() ? displayValue : MINUS + displayValue;
     }
 
 
-    public String get(int maxLength){
-        if(showError){
-            return ERROR;
-        }
-        if(isPositive || value.equals(ZERO)){
-            return value;
-        }
-        String displayStr =  MINUS + value;
-        if(displayStr.length() <= maxLength){
-            return displayStr;
-        }
-        int decimalIndex = displayStr.indexOf(".");
+    private String getTruncatedValue(){
+        int decimalIndex = value.indexOf(".");
         if(decimalIndex == -1 || decimalIndex >= maxLength - 1){
-            return getScientificStrFrom(displayStr);
+            return getScientificStrFrom(value);
         }
-        return cutOffSomeDecimalsFrom(displayStr, decimalIndex, maxLength);
+        return cutOffSomeDecimalsFrom(value, decimalIndex);
     }
 
 
-    private String cutOffSomeDecimalsFrom(String str, int decimalIndex, int maxLength){
+    private boolean isValuePositive(){
+        return isPositive || value.equals(ZERO);
+    }
+
+
+    private String cutOffSomeDecimalsFrom(String str, int decimalIndex){
+        String decimalPart = str.substring(decimalIndex + 1);
+        int numberOfDecimalsToTruncate = str.length() - maxLength;
+        int maxFractionDigits = decimalPart.length() - numberOfDecimalsToTruncate;
         DecimalFormat df = new DecimalFormat();
-        df.setMaximumFractionDigits(3);
+        df.setMaximumFractionDigits(maxFractionDigits);
         df.setMinimumFractionDigits(0);
         df.setGroupingUsed(false);
-
         return df.format(str);
     }
 
