@@ -69,7 +69,8 @@ public class OperandString {
         df.setMaximumFractionDigits(maxFractionDigits);
         df.setMinimumFractionDigits(0);
         df.setGroupingUsed(false);
-        return df.format(str);
+        Double d = Double.valueOf(str);
+        return df.format(d);
     }
 
 

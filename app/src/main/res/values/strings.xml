@@ -19,6 +19,7 @@
     <string name="symbol_cos">COS</string>
     <string name="symbol_sin">SIN</string>
     <string name="symbol_tan">TAN</string>
+    <string name="symbol_pi">π</string>
     <string name="symbol_inverse">INV</string>
 
 

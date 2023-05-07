@@ -16,12 +16,15 @@ import com.jacstuff.simplecalculator.actions.MemoryRecallAction;
 import com.jacstuff.simplecalculator.actions.MemorySetAction;
 import com.jacstuff.simplecalculator.actions.Number;
 import com.jacstuff.simplecalculator.actions.operators.Add;
+import com.jacstuff.simplecalculator.actions.operators.Cosine;
 import com.jacstuff.simplecalculator.actions.operators.Divide;
 import com.jacstuff.simplecalculator.actions.operators.Multiply;
 import com.jacstuff.simplecalculator.actions.operators.PercentOf;
 import com.jacstuff.simplecalculator.actions.operators.PowerOf;
+import com.jacstuff.simplecalculator.actions.operators.Sine;
 import com.jacstuff.simplecalculator.actions.operators.SquareRoot;
 import com.jacstuff.simplecalculator.actions.operators.Subtract;
+import com.jacstuff.simplecalculator.actions.operators.Tan;
 import com.jacstuff.simplecalculator.calculator.Calculator;
 import com.jacstuff.simplecalculator.view.MainViewModel;
 
@@ -73,6 +76,11 @@ public class MainActivity extends AppCompatActivity {
         setupButton(R.id.buttonMemorySet,   new MemorySetAction(),      R.string.symbol_memory_set);
         setupButton(R.id.buttonMemoryRecall,new MemoryRecallAction(),   R.string.symbol_memory_recall);
 
+
+        setupButton(R.id.buttonSine,new Sine(mc),   R.string.symbol_sin);
+        setupButton(R.id.buttonCosine,new Cosine(mc),   R.string.symbol_cos);
+        setupButton(R.id.buttonTan,new Tan(mc),   R.string.symbol_tan);
+
         setupButton(R.id.button0, new Number(0), R.string.symbol_0);
         setupButton(R.id.button1, new Number(1), R.string.symbol_1);
         setupButton(R.id.button2, new Number(2),R.string.symbol_2);
@@ -83,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         setupButton(R.id.button7, new Number(7), R.string.symbol_7);
         setupButton(R.id.button8, new Number(8), R.string.symbol_8);
         setupButton(R.id.button9, new Number(9), R.string.symbol_9);
+        setupButton(R.id.buttonPi, new Number(3), R.string.symbol_pi);
     }
 
 
