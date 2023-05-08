@@ -3,17 +3,17 @@
     <color name="colorPrimary">#352B0C</color>
     <color name="colorPrimaryDark">#30270D</color>
     <color name="colorAccent">#827717</color>
-    <color name="dark_button_text">#B1B9BF</color>
-    <color name="dark_operator_button_text">#2979FF</color>
+    <color name="dark_button_text">#D4DEE4</color>
+    <color name="dark_operator_button_text">#629BFB</color>
     <color name="dark_edit_button_text">#EB8381</color>
-    <color name="dark_memory_button_text">#E7C677</color>
-    <color name="dark_equals_button_text">#43A047</color>
+    <color name="dark_memory_button_text">#EDD496</color>
+    <color name="dark_equals_button_text">#66CC6A</color>
     <color name="dark_primary_dark">#271F09</color>
     <color name="dark_window_background">#1C1C1C</color>
     <color name="dark_display_background">#3A3939</color>
     <color name="dark_primary">#A17222</color>
-    <color name="displayText">#858A54</color>
+    <color name="displayText">#CAD188</color>
     <color name="background">#171717</color>
-    <color name="buttonOutline">#494848</color>
+    <color name="buttonOutline">#7A7979</color>
     <color name="navigationBar">#100D02</color>
 </resources>
