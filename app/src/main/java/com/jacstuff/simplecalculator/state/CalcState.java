@@ -8,6 +8,7 @@ public interface CalcState {
 
     void setOperator(Operator operator);
     void addDigit(int digit);
+    void setNumber(double number);
     void clear();
     void evaluate();
     void setCalculator(Calculator calculator);

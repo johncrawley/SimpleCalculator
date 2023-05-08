@@ -11,9 +11,13 @@ public abstract class AbstractAction {
     public void setCalculator(Calculator calculator){
         this.calculator = calculator;
     }
+
+
     public void setSymbol(String symbol){
         this.symbol = symbol;
     }
+
+
     public String getSymbol(){
         return symbol;
     }

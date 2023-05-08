@@ -5,6 +5,8 @@ import com.jacstuff.simplecalculator.actions.operators.PercentOf;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
+import java.math.BigDecimal;
+
 public class SecondNumberState extends AbstractState implements CalcState {
 
     private final OperandString secondOperandString;
@@ -90,6 +92,14 @@ public class SecondNumberState extends AbstractState implements CalcState {
     public void clear() {
         calculatorActions.clearNumbersAndDisplayText();
         calculator.setState(State.FIRST_NUMBER);
+    }
+
+
+    @Override
+    public void setNumber(double number) {
+        BigDecimal bd = BigDecimal.valueOf(number);
+        secondOperandString.set(bd);
+        updateDisplay(secondOperandString.get());
     }
 
 

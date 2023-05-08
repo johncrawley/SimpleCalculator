@@ -14,7 +14,8 @@ import com.jacstuff.simplecalculator.actions.DecimalAction;
 import com.jacstuff.simplecalculator.actions.EqualsAction;
 import com.jacstuff.simplecalculator.actions.MemoryRecallAction;
 import com.jacstuff.simplecalculator.actions.MemorySetAction;
-import com.jacstuff.simplecalculator.actions.Number;
+import com.jacstuff.simplecalculator.actions.DigitAction;
+import com.jacstuff.simplecalculator.actions.NumberAction;
 import com.jacstuff.simplecalculator.actions.operators.Add;
 import com.jacstuff.simplecalculator.actions.operators.Cosine;
 import com.jacstuff.simplecalculator.actions.operators.Divide;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Calculator calculator;
     private MainViewModel viewModel;
-    MathContext mc = new MathContext(9);
+    MathContext mc = new MathContext(13);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,17 +82,17 @@ public class MainActivity extends AppCompatActivity {
         setupButton(R.id.buttonCosine,new Cosine(mc),   R.string.symbol_cos);
         setupButton(R.id.buttonTan,new Tan(mc),   R.string.symbol_tan);
 
-        setupButton(R.id.button0, new Number(0), R.string.symbol_0);
-        setupButton(R.id.button1, new Number(1), R.string.symbol_1);
-        setupButton(R.id.button2, new Number(2),R.string.symbol_2);
-        setupButton(R.id.button3, new Number(3), R.string.symbol_3);
-        setupButton(R.id.button4, new Number(4), R.string.symbol_4);
-        setupButton(R.id.button5, new Number(5), R.string.symbol_5);
-        setupButton(R.id.button6, new Number(6), R.string.symbol_6 );
-        setupButton(R.id.button7, new Number(7), R.string.symbol_7);
-        setupButton(R.id.button8, new Number(8), R.string.symbol_8);
-        setupButton(R.id.button9, new Number(9), R.string.symbol_9);
-        setupButton(R.id.buttonPi, new Number(3), R.string.symbol_pi);
+        setupButton(R.id.button0, new DigitAction(0), R.string.symbol_0);
+        setupButton(R.id.button1, new DigitAction(1), R.string.symbol_1);
+        setupButton(R.id.button2, new DigitAction(2),R.string.symbol_2);
+        setupButton(R.id.button3, new DigitAction(3), R.string.symbol_3);
+        setupButton(R.id.button4, new DigitAction(4), R.string.symbol_4);
+        setupButton(R.id.button5, new DigitAction(5), R.string.symbol_5);
+        setupButton(R.id.button6, new DigitAction(6), R.string.symbol_6 );
+        setupButton(R.id.button7, new DigitAction(7), R.string.symbol_7);
+        setupButton(R.id.button8, new DigitAction(8), R.string.symbol_8);
+        setupButton(R.id.button9, new DigitAction(9), R.string.symbol_9);
+        setupButton(R.id.buttonPi, new NumberAction(Math.PI), R.string.symbol_pi);
     }
 
 

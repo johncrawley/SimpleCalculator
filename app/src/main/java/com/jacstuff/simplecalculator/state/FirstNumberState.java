@@ -3,6 +3,8 @@ package com.jacstuff.simplecalculator.state;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
+import java.math.BigDecimal;
+
 public class FirstNumberState extends AbstractState implements CalcState {
 
 
@@ -53,6 +55,14 @@ public class FirstNumberState extends AbstractState implements CalcState {
         firstOperandString.addDigit(digit);
         updateDisplay(firstOperandString.get());
         hasFirstDigitBeenAdded = true;
+    }
+
+
+    @Override
+    public void setNumber(double number) {
+        BigDecimal bd = BigDecimal.valueOf(number);
+        firstOperandString.set(bd);
+        updateDisplay(firstOperandString.get());
     }
 
 

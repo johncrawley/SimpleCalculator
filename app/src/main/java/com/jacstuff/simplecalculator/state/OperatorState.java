@@ -3,6 +3,8 @@ package com.jacstuff.simplecalculator.state;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
+import java.math.BigDecimal;
+
 public class OperatorState extends AbstractState implements CalcState {
 
     private final OperandString secondOperandString;
@@ -33,6 +35,13 @@ public class OperatorState extends AbstractState implements CalcState {
         secondOperandString.init();
         calculator.setState(State.SECOND_NUMBER);
         calculator.addDigit(digit);
+    }
+
+
+    @Override
+    public void setNumber(double number) {
+        calculator.setState(State.SECOND_NUMBER);
+        calculator.setNumber(number);
     }
 
 

@@ -135,6 +135,11 @@ public class Calculator {
     }
 
 
+    public void setNumber(double number){
+        viewModel.currentState.setNumber(number);
+    }
+
+
     public void changeSign() { viewModel.currentState.changeSign(); }
 
 

@@ -19,25 +19,38 @@ public class AbstractState {
 
 
     public void saveNumberToMemory(){}
+
+
     public void recallNumberFromMemory(){}
 
 
     public void init(){}
 
+
     public void changeSign() {
     }
+
 
     public void addDecimal() {
     }
 
+
     public void setOperator(Operator operator){
     }
+
 
     public void addDigit(int digit){
     }
 
+
+    public void setNumber(double number) {
+        // do nothing
+    }
+
+
     public void evaluate() {
     }
+
 
     public void deleteDigit() {
 
