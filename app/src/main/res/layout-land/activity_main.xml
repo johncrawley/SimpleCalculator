@@ -10,86 +10,98 @@
         layout="@layout/output_display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/display_margin_horizontal"
+        android:layout_marginHorizontal="@dimen/display_margin_horizontal_landscape"
         android:layout_marginVertical="@dimen/display_margin_vertical_landscape"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/buttonTable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
         android:id="@+id/buttonTable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/button_table_margin_top_landscape"
         android:layout_marginBottom="@dimen/button_table_margin_bottom_landscape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/output_display"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/output_display">
 
 
         <TableRow
+            style="?android:attr/buttonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-        </TableRow>
-
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            style="?android:attr/buttonBarStyle">
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_7"/>
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
+                android:text="@string/symbol_7" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_8"/>
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
+                android:text="@string/symbol_8" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_9" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPlus"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_add" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonClear"
+                style="?attr/editButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_cancel" />
 
-            <Button
-                android:id="@+id/buttonChangeSign"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonBackspace"
+                style="?attr/editButtonStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_change_sign" />
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
+                android:text="@string/symbol_backspace" />
 
 
             <com.google.android.material.button.MaterialButton
@@ -97,11 +109,11 @@
                 style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/button_margin"
-                android:minHeight="@dimen/button_minHeight"
-                android:minWidth="@dimen/button_minWidth"
-                android:paddingHorizontal="@dimen/button_paddingHorizontal"
-                android:paddingVertical="@dimen/button_paddingVertical"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_sin" />
 
         </TableRow>
@@ -111,61 +123,86 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_4"/>
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
+                android:text="@string/symbol_4" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_5" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_6"/>
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
+                android:text="@string/symbol_6" />
 
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMinus"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_subtract" />
 
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPow"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_power" />
 
-            <Button
-                android:id="@+id/buttonBackspace"
-                style="?android:attr/borderlessButtonStyle"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonChangeSign"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/symbol_backspace" />
-
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
+                android:text="@string/symbol_change_sign" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonCosine"
                 style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/button_margin"
-                android:minHeight="@dimen/button_minHeight"
-                android:minWidth="@dimen/button_minWidth"
-                android:paddingHorizontal="@dimen/button_paddingHorizontal"
-                android:paddingVertical="@dimen/button_paddingVertical"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_cos" />
 
         </TableRow>
@@ -175,46 +212,73 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="@string/symbol_1"  />
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
+                android:text="@string/symbol_1" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_2" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_3" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMultiply"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_multiply" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonRoot"
-                style="?android:attr/borderlessButtonStyle"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_root" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMemorySet"
-                style="?android:attr/borderlessButtonStyle"
+                style="?attr/memoryButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_memory_set" />
 
 
@@ -223,11 +287,11 @@
                 style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/button_margin"
-                android:minHeight="@dimen/button_minHeight"
-                android:minWidth="@dimen/button_minWidth"
-                android:paddingHorizontal="@dimen/button_paddingHorizontal"
-                android:paddingVertical="@dimen/button_paddingVertical"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_tan" />
 
         </TableRow>
@@ -236,58 +300,88 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/button0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_0" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonDecimal"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_decimal" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonEquals"
+                style="?attr/equalsButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_equals" />
 
-
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonDivide"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_divide" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPercent"
-                style="?android:attr/borderlessButtonStyle"
+                style="?attr/operatorButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_percentage" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonMemoryRecall"
-                style="?android:attr/borderlessButtonStyle"
+                style="?attr/memoryButtonStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_memory_recall" />
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPi"
                 style="?attr/operatorButtonStyle"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/button_margin"
-                android:minHeight="@dimen/button_minHeight"
-                android:minWidth="@dimen/button_minWidth"
-                android:paddingHorizontal="@dimen/button_paddingHorizontal"
-                android:paddingVertical="@dimen/button_paddingVertical"
+                android:layout_margin="@dimen/button_margin_landscape"
+                android:minWidth="@dimen/button_minWidth_landscape"
+                android:minHeight="@dimen/button_minHeight_landscape"
+                android:paddingHorizontal="@dimen/button_paddingHorizontal_landscape"
+                android:paddingVertical="@dimen/button_paddingVertical_landscape"
                 android:text="@string/symbol_pi" />
 
         </TableRow>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/display_margin_top"
+    android:layout_marginHorizontal="@dimen/display_margin_horizontal"
+    android:background="?attr/calculatorDisplayBackground">
+
+    <TextView
+        android:id="@+id/outputDisplayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:paddingVertical="@dimen/display_text_padding_vertical"
+        android:paddingHorizontal="@dimen/display_text_padding_horizontal"
+        android:maxLines="1"
+        android:text="@string/symbol_0"
+        android:fontFamily="@font/pt_mono_regular"
+        android:textSize="@dimen/output_display_text_size_landscape"
+        style="?attr/calculatorDisplayBackground"/>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+</LinearLayout>
