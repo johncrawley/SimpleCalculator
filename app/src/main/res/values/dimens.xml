@@ -10,9 +10,9 @@
 
 
     <dimen name="button_margin_landscape">6dp</dimen>
-    <dimen name="button_minHeight_landscape">10dp</dimen>
     <dimen name="button_minWidth_landscape">20dp</dimen>
-    <dimen name="button_paddingHorizontal_landscape">12dp</dimen>
+    <dimen name="button_minHeight_landscape">10dp</dimen>
+    <dimen name="button_paddingHorizontal_landscape">20dp</dimen>
     <dimen name="button_paddingVertical_landscape">12dp</dimen>
 
 

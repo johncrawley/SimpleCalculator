@@ -141,7 +141,6 @@ public class OperandString {
             return;
         }
         isPositive = !isPositive;
-
     }
 
 

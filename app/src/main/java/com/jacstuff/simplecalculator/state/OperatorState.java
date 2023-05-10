@@ -3,7 +3,6 @@ package com.jacstuff.simplecalculator.state;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 
-import java.math.BigDecimal;
 
 public class OperatorState extends AbstractState implements CalcState {
 
@@ -16,7 +15,7 @@ public class OperatorState extends AbstractState implements CalcState {
 
     @Override
     public void init(){
-
+        //do nothing
     }
 
 
@@ -47,10 +46,6 @@ public class OperatorState extends AbstractState implements CalcState {
 
     @Override
     public void changeSign() {
-        calculator.setState(State.SECOND_NUMBER);
-        secondOperandString.init();
-        secondOperandString.addDecimal();
-        updateDisplay(secondOperandString.get());
     }
 
 
