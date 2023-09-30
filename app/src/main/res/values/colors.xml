@@ -9,7 +9,7 @@
     <color name="dark_memory_button_text">#EDD496</color>
     <color name="dark_equals_button_text">#66CC6A</color>
     <color name="dark_primary_dark">#271F09</color>
-    <color name="dark_window_background">#1C1C1C</color>
+    <color name="dark_window_background">#0E0E0E</color>
     <color name="dark_display_background">#3A3939</color>
     <color name="dark_primary">#A17222</color>
     <color name="displayText">#CAD188</color>
