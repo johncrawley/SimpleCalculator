@@ -26,7 +26,7 @@ public class FirstNumberState extends AbstractState implements CalcState {
     @Override
     public void setOperator(Operator operator){
         calculator.setState(State.OPERATOR);
-        calculator.setOperator(operator);
+        calculator.setOperatorState(operator);
     }
 
 

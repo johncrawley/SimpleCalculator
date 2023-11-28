@@ -17,6 +17,6 @@ public class MainViewModel extends ViewModel {
     public OperandString resultOperand;
     public State currentCalculatorStateName = State.FIRST_NUMBER;
     public HashMap<State, CalcState> calculatorStates;
-    public Operator operator;
+    public Operator operator, previousOperator;
     public CalcState currentState;
 }

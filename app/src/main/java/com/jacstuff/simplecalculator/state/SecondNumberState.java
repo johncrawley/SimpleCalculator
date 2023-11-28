@@ -47,11 +47,11 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
 
     private void evaluateAndDisplayNewResult(Operator operator){
-        boolean success = calculatorActions.evaluateAndDisplay();
+        boolean success = calculatorActions.evaluateUsingPreviousOperatorAndDisplayResult();
         if (success) {
             calculatorActions.copyResultToFirstNumber();
-            calculator.setState(State.FIRST_NUMBER);
-            calculator.setOperator(operator);
+            calculator.setState(State.SECOND_NUMBER);
+            calculator.assignOperator(operator);
             calculatorActions.displayResult(); // because we'd rather see the result of the existing operation than the operator symbol
         }
     }

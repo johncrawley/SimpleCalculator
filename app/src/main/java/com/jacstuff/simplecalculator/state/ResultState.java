@@ -25,7 +25,7 @@ public class ResultState extends AbstractState implements CalcState {
     public void setOperator(Operator operator) {
         calculatorActions.copyResultToFirstNumber();
         calculator.setState(State.FIRST_NUMBER);
-        calculator.setOperator(operator);
+        calculator.setOperatorState(operator);
     }
 
 

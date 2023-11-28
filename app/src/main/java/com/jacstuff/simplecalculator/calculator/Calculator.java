@@ -99,6 +99,11 @@ public class Calculator {
     }
 
 
+    public Operator getPreviousOperator(){
+        return viewModel.previousOperator;
+    }
+
+
     public void setState(State stateName){
         viewModel.currentCalculatorStateName = stateName;
         CalcState calcState = viewModel.calculatorStates.get(stateName);
@@ -114,10 +119,23 @@ public class Calculator {
     }
 
 
-    public void setOperator(Operator operator){
+    public void setOperatorFromButton(Operator operator){
+        assignOperator(operator);
+        setOperatorState(operator);
+    }
+
+
+    public void assignOperator(Operator operator){
+        viewModel.previousOperator = viewModel.operator;
         viewModel.operator = operator;
+    }
+
+
+    public void setOperatorState(Operator operator){
         viewModel.currentState.setOperator(operator);
     }
+
+
 
 
     public Operator getExistingOperator(){

@@ -42,18 +42,23 @@ public class CalculatorActions {
 
 
     public boolean evaluateAndDisplay() {
-        return evalAndDisplay(false);
+        return evalAndDisplay(false, calculator.getOperator());
+    }
+
+
+    public boolean evaluateUsingPreviousOperatorAndDisplayResult() {
+        return evalAndDisplay(false, calculator.getPreviousOperator());
     }
 
 
     public boolean evaluatePercentageAndDisplay(){
-        return evalAndDisplay(true);
+        return evalAndDisplay(true, calculator.getOperator());
     }
 
 
-    private boolean evalAndDisplay(boolean isCalculatingPercentage){
+    private boolean evalAndDisplay(boolean isCalculatingPercentage, Operator operator){
         try {
-            resultOperand.set(execute(isCalculatingPercentage));
+            resultOperand.set(execute(isCalculatingPercentage, operator));
             calculator.updateDisplay(resultOperand.get());
         }
         catch(ArithmeticException e){
@@ -67,10 +72,9 @@ public class CalculatorActions {
     }
 
 
-    private BigDecimal execute(boolean isCalculatingPercentage){
+    private BigDecimal execute(boolean isCalculatingPercentage, Operator operator){
         BigDecimal number1 = createBigDecimalFrom(viewModel.operandStr1);
         BigDecimal number2 = createBigDecimalFrom(viewModel.operandStr2);
-        Operator operator = calculator.getOperator();
         operator.setCalculatingPercentage(isCalculatingPercentage);
         return operator.execute(number1, number2).stripTrailingZeros();
     }

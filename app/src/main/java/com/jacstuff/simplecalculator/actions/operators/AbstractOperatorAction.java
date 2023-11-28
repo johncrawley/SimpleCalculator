@@ -13,7 +13,7 @@ public abstract class AbstractOperatorAction extends AbstractAction implements B
     protected boolean hasSingleInput = false;
 
     public void process(){
-        calculator.setOperator(this);
+        calculator.setOperatorFromButton(this);
     }
 
 
