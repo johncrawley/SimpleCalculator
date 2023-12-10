@@ -52,7 +52,7 @@ public class CalculatorActions {
 
 
     public boolean evaluatePercentageAndDisplay(){
-        return evalAndDisplay(true, calculator.getOperator());
+        return evalAndDisplay(true, calculator.getPreviousOperator());
     }
 
 

@@ -33,7 +33,7 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
 
     private boolean isCompoundPercentageOperation(Operator operator){
-        return calculator.getExistingOperator().isPercentagePreOperator() && operator instanceof PercentOf;
+        return calculator.getPreviousOperator().isPercentagePreOperator() && operator instanceof PercentOf;
     }
 
 

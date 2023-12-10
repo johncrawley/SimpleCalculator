@@ -136,13 +136,6 @@ public class Calculator {
     }
 
 
-
-
-    public Operator getExistingOperator(){
-        return viewModel.operator;
-    }
-
-
     public void evaluate(){
         viewModel.currentState.evaluate();
     }

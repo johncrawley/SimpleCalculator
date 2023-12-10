@@ -23,7 +23,8 @@ public abstract class AbstractOperatorAction extends AbstractAction implements B
     public boolean hasSingleInput(){ return hasSingleInput;}
 
 
-    @Override public boolean isPercentagePreOperator(){return isPercentagePreOperator;}
+    @Override public boolean isPercentagePreOperator(){
+        return isPercentagePreOperator;}
 
 
     @Override public void setCalculatingPercentage(boolean isCalculatingPercentage){
