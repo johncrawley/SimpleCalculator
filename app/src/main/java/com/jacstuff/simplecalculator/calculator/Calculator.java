@@ -70,7 +70,6 @@ public class Calculator {
             addState(State.SECOND_NUMBER, new SecondNumberState(viewModel.operandStr2));
             addState(State.ERROR, new ErrorState());
             addState(State.RESULT, new ResultState(viewModel.operandStr1, viewModel.operandStr2, viewModel.resultOperand));
-
         }
         for(CalcState calcState : viewModel.calculatorStates.values()){
             calcState.setCalculator(this);
