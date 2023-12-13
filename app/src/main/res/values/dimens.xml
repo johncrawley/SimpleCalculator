@@ -3,8 +3,8 @@
     <dimen name="button_margin">6dp</dimen>
     <dimen name="button_minHeight">20dp</dimen>
     <dimen name="button_minWidth">20dp</dimen>
-    <dimen name="button_paddingHorizontal">20dp</dimen>
-    <dimen name="button_paddingVertical">20dp</dimen>
+    <dimen name="button_paddingHorizontal">8dp</dimen>
+    <dimen name="button_paddingVertical">8dp</dimen>
     <dimen name="display_margin_top">20dp</dimen>
 
 
@@ -18,9 +18,11 @@
     <dimen name="display_text_padding_vertical">8dp</dimen>
     <dimen name="display_text_padding_horizontal">4dp</dimen>
     <dimen name="display_margin_horizontal">12dp</dimen>
+    <dimen name="display_margin_vertical">8dp</dimen>
 
     <dimen name="display_margin_vertical_landscape">8dp</dimen>
     <dimen name="button_table_margin_bottom_portrait">18dp</dimen>
+    <dimen name="button_layout_margin">8dp</dimen>
     <dimen name="button_table_margin_top_landscape">4dp</dimen>
     <dimen name="button_table_margin_bottom_landscape">8dp</dimen>
     <dimen name="display_margin_horizontal_landscape">32dp</dimen>

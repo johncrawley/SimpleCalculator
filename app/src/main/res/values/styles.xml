@@ -1,6 +1,8 @@
 <resources>
 
     <style name="AppTheme" parent="Theme.Material3.Dark">
+        <item name = "android:windowActionBar">false</item>
+        <item name = "android:windowNoTitle">true</item>
         <item name="colorPrimary">@color/dark_primary</item>
         <item name="colorPrimaryDark">@color/dark_primary_dark</item> <!-- Notification Bar -->
         <item name="android:navigationBarColor">@color/navigationBar</item>
