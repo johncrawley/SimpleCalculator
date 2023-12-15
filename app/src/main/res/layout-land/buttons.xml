@@ -104,21 +104,21 @@
                 app:layout_constraintBottom_toTopOf="@id/buttonTan"
                 android:text="@string/symbol_cos" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/buttonTan"
-                style="?attr/operatorButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_margin="@dimen/button_margin"
-                android:minHeight="@dimen/button_minHeight"
-                android:minWidth="@dimen/button_minWidth"
-                android:paddingHorizontal="@dimen/button_paddingHorizontal"
-                android:paddingVertical="@dimen/button_paddingVertical"
-                app:layout_constraintTop_toBottomOf="@id/buttonCosine"
-                app:layout_constraintStart_toEndOf="@id/buttonMemorySet"
-                app:layout_constraintEnd_toStartOf="@id/buttonPi"
-                app:layout_constraintBottom_toTopOf="@id/buttonPi"
-                android:text="@string/symbol_tan" />
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonTan"
+        style="?attr/operatorButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/button_margin"
+        android:minWidth="@dimen/button_minWidth"
+        android:minHeight="@dimen/button_minHeight"
+        android:paddingHorizontal="@dimen/button_paddingHorizontal"
+        android:paddingVertical="@dimen/button_paddingVertical"
+        android:text="@string/symbol_tan"
+        app:layout_constraintBottom_toTopOf="@id/buttonPi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/buttonMemorySet"
+        app:layout_constraintTop_toBottomOf="@id/buttonCosine" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/buttonPi"
@@ -441,9 +441,9 @@
                 android:minWidth="@dimen/button_minWidth"
                 android:paddingHorizontal="@dimen/button_paddingHorizontal"
                 android:paddingVertical="@dimen/button_paddingVertical"
-                app:layout_constraintTop_toBottomOf="@id/buttonPlus"
+                app:layout_constraintTop_toBottomOf="@id/buttonMultiply"
                 app:layout_constraintStart_toEndOf="@id/buttonEquals"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/buttonPercent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:text="@string/symbol_divide" />
 
