@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
+import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
 import com.jacstuff.simplecalculator.state.CalcState;
 import com.jacstuff.simplecalculator.state.ErrorState;
 import com.jacstuff.simplecalculator.state.FirstNumberState;
@@ -20,27 +21,20 @@ public class Calculator {
 
     private CalculatorActions calculatorActions;
     private final MainViewModel viewModel;
-    private final TextView display;
+    private final UpdatableDisplay updatableDisplay;
 
 
-    public Calculator(Context context, TextView textView, MainViewModel viewModel){
+    public Calculator(Memory memory, UpdatableDisplay updatableDisplay, MainViewModel viewModel){
         this.viewModel = viewModel;
-        this.display = textView;
-        initFields(context);
+        this.updatableDisplay = updatableDisplay;
+        initOperands();
+        calculatorActions = new CalculatorActions(this, memory, viewModel);
         setupStates();
         assignState();
-        updateDisplay();
     }
 
 
     OperandString getResultStr(){ return viewModel.resultOperand;}
-
-
-    private void initFields(Context context){
-        initOperands();
-        Memory memory = new Memory(context);
-        calculatorActions = new CalculatorActions(this, memory, viewModel);
-    }
 
 
     public CalculatorActions getCalculatorActions(){
@@ -78,13 +72,7 @@ public class Calculator {
 
 
     public void updateDisplay(String str){
-        viewModel.displayStr = str;
-        updateDisplay();
-    }
-
-
-    private void updateDisplay(){
-        display.setText(viewModel.displayStr);
+        updatableDisplay.update(str);
     }
 
 

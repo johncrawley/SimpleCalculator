@@ -27,6 +27,9 @@ import com.jacstuff.simplecalculator.actions.operators.SquareRoot;
 import com.jacstuff.simplecalculator.actions.operators.Subtract;
 import com.jacstuff.simplecalculator.actions.operators.Tan;
 import com.jacstuff.simplecalculator.calculator.Calculator;
+import com.jacstuff.simplecalculator.calculator.Memory;
+import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
+import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplayImpl;
 import com.jacstuff.simplecalculator.view.MainViewModel;
 
 
@@ -49,8 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void initCalculator(){
-        TextView display = findViewById(R.id.outputDisplayText);
-        calculator = new Calculator(getApplicationContext(), display, viewModel);
+        TextView displayTextView = findViewById(R.id.outputDisplayText);
+        UpdatableDisplay display = new UpdatableDisplayImpl(displayTextView, viewModel);
+        Memory memory = new Memory(getApplicationContext());
+        calculator = new Calculator(memory, display, viewModel);
     }
 
 
