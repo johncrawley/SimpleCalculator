@@ -1,11 +1,9 @@
 package com.jacstuff.simplecalculator.calculator;
 
 
-
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 import com.jacstuff.simplecalculator.state.State;
-import com.jacstuff.simplecalculator.view.MainViewModel;
 
 import java.math.BigDecimal;
 
@@ -14,13 +12,11 @@ public class CalculatorActions {
 
     private final OperandString resultOperand;
     private final Calculator calculator;
-    private final MainViewModel viewModel;
     private final Memory memory;
 
 
-    CalculatorActions(Calculator calculator, Memory memory, MainViewModel viewModel){
+    CalculatorActions(Calculator calculator, Memory memory){
         this.calculator = calculator;
-        this.viewModel = viewModel;
         this.resultOperand = calculator.getResultStr();
         this.memory = memory;
     }
@@ -37,7 +33,7 @@ public class CalculatorActions {
 
 
     public void copyResultToFirstNumber(){
-        viewModel.operandStr1.setValueFrom(resultOperand);
+        calculator.getOperandStr1().setValueFrom(resultOperand);
     }
 
 
@@ -73,8 +69,8 @@ public class CalculatorActions {
 
 
     private BigDecimal execute(boolean isCalculatingPercentage, Operator operator){
-        BigDecimal number1 = createBigDecimalFrom(viewModel.operandStr1);
-        BigDecimal number2 = createBigDecimalFrom(viewModel.operandStr2);
+        BigDecimal number1 = createBigDecimalFrom(calculator.getOperandStr1());
+        BigDecimal number2 = createBigDecimalFrom(calculator.getOperandStr2());
         operator.setCalculatingPercentage(isCalculatingPercentage);
         return operator.execute(number1, number2).stripTrailingZeros();
     }
@@ -91,14 +87,14 @@ public class CalculatorActions {
 
 
     public void clearNumbersAndDisplayText(){
-        viewModel.operandStr1.init();
+        calculator.getOperandStr1().init();
         resultOperand.init();
         calculator.updateDisplay("0");
     }
 
 
     public void clearSecondNumberString(){
-        viewModel.operandStr2.init();
+        calculator.getOperandStr2().init();
     }
 
 

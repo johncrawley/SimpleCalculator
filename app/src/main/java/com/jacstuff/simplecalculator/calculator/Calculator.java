@@ -19,22 +19,40 @@ import java.util.HashMap;
 
 public class Calculator {
 
-    private CalculatorActions calculatorActions;
-    private final MainViewModel viewModel;
+    private final CalculatorActions calculatorActions;
     private final UpdatableDisplay updatableDisplay;
+    private OperandString operandStr1, operandStr2, resultOperand;
+    private Operator operator, previousOperator;
+    public State currentCalculatorStateName = State.FIRST_NUMBER;
+    public HashMap<State, CalcState> calculatorStates;
+    public CalcState currentState;
 
 
-    public Calculator(Memory memory, UpdatableDisplay updatableDisplay, MainViewModel viewModel){
-        this.viewModel = viewModel;
+    public Calculator(Memory memory, UpdatableDisplay updatableDisplay){
         this.updatableDisplay = updatableDisplay;
         initOperands();
-        calculatorActions = new CalculatorActions(this, memory, viewModel);
+        calculatorActions = new CalculatorActions(this, memory);
         setupStates();
         assignState();
+
     }
 
 
-    OperandString getResultStr(){ return viewModel.resultOperand;}
+    OperandString getResultStr(){ return resultOperand;}
+
+    public OperandString getOperandStr1(){
+        return operandStr1;
+    }
+
+
+    public OperandString getOperandStr2(){
+        return operandStr2;
+    }
+
+    public void process(InputSymbol inputSymbol){
+
+    }
+
 
 
     public CalculatorActions getCalculatorActions(){
@@ -44,28 +62,29 @@ public class Calculator {
 
     private void initOperands(){
         int maxLength = 14;
-        if(viewModel.operandStr1 == null){
-            viewModel.operandStr1 = new OperandString(maxLength);
+        
+        if(operandStr1 == null){
+            operandStr1 = new OperandString(maxLength);
         }
-        if(viewModel.operandStr2 == null){
-            viewModel.operandStr2 = new OperandString(maxLength);
+        if(operandStr2 == null){
+            operandStr2 = new OperandString(maxLength);
         }
-        if(viewModel.resultOperand == null){
-            viewModel.resultOperand = new OperandString(maxLength);
+        if(resultOperand == null){
+            resultOperand = new OperandString(maxLength);
         }
     }
-
+        
 
     private void setupStates(){
-        if(viewModel.calculatorStates == null){
-            viewModel.calculatorStates = new HashMap<>();
-            addState(State.FIRST_NUMBER, new FirstNumberState(viewModel.operandStr1, viewModel.operandStr2));
-            addState(State.OPERATOR, new OperatorState(viewModel.operandStr2));
-            addState(State.SECOND_NUMBER, new SecondNumberState(viewModel.operandStr2));
+        if(calculatorStates == null){
+            calculatorStates = new HashMap<>();
+            addState(State.FIRST_NUMBER, new FirstNumberState(operandStr1, operandStr2));
+            addState(State.OPERATOR, new OperatorState(operandStr2));
+            addState(State.SECOND_NUMBER, new SecondNumberState(operandStr2));
             addState(State.ERROR, new ErrorState());
-            addState(State.RESULT, new ResultState(viewModel.operandStr1, viewModel.operandStr2, viewModel.resultOperand));
+            addState(State.RESULT, new ResultState(operandStr1, operandStr2, resultOperand));
         }
-        for(CalcState calcState : viewModel.calculatorStates.values()){
+        for(CalcState calcState : calculatorStates.values()){
             calcState.setCalculator(this);
         }
     }
@@ -77,32 +96,32 @@ public class Calculator {
 
 
     private void addState(State key, CalcState calcState){
-        viewModel.calculatorStates.put(key, calcState);
+        calculatorStates.put(key, calcState);
     }
 
 
     public Operator getOperator(){
-        return viewModel.operator;
+        return operator;
     }
 
 
     public Operator getPreviousOperator(){
-        return viewModel.previousOperator;
+        return previousOperator;
     }
 
 
     public void setState(State stateName){
-        viewModel.currentCalculatorStateName = stateName;
-        CalcState calcState = viewModel.calculatorStates.get(stateName);
+        currentCalculatorStateName = stateName;
+        CalcState calcState = calculatorStates.get(stateName);
         if(calcState != null){
-            viewModel.currentState = calcState;
-            viewModel.currentState.init();
+            currentState = calcState;
+            currentState.init();
         }
     }
 
 
     private void assignState(){
-        viewModel.currentState = viewModel.calculatorStates.get(viewModel.currentCalculatorStateName);
+        currentState = calculatorStates.get(currentCalculatorStateName);
     }
 
 
@@ -113,49 +132,49 @@ public class Calculator {
 
 
     public void assignOperator(Operator operator){
-        viewModel.previousOperator = viewModel.operator;
-        viewModel.operator = operator;
+        previousOperator = operator;
+        this.operator = operator;
     }
 
 
     public void setOperatorState(Operator operator){
-        viewModel.currentState.setOperator(operator);
+        currentState.setOperator(operator);
     }
 
 
     public void evaluate(){
-        viewModel.currentState.evaluate();
+        currentState.evaluate();
     }
 
 
     public void addDigit(int digit){
-        viewModel.currentState.addDigit(digit);
+        currentState.addDigit(digit);
     }
 
 
     public void setNumber(double number){
-        viewModel.currentState.setNumber(number);
+        currentState.setNumber(number);
     }
 
 
-    public void changeSign() { viewModel.currentState.changeSign(); }
+    public void changeSign() { currentState.changeSign(); }
 
 
-    public void addDecimal() { viewModel.currentState.addDecimal(); }
+    public void addDecimal() { currentState.addDecimal(); }
 
 
-    public void backSpace() { viewModel.currentState.deleteDigit();}
+    public void backSpace() { currentState.deleteDigit();}
 
 
     public void clear(){
-        viewModel.currentState.clear();
+        currentState.clear();
     }
 
 
-    public void saveNumberToMemory(){ viewModel.currentState.saveNumberToMemory();}
+    public void saveNumberToMemory(){ currentState.saveNumberToMemory();}
 
 
-    public void recallNumberFromMemory(){ viewModel.currentState.recallNumberFromMemory();}
+    public void recallNumberFromMemory(){ currentState.recallNumberFromMemory();}
 
 
 }
