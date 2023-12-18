@@ -50,7 +50,7 @@ public class Calculator {
     }
 
     public void process(InputSymbol inputSymbol){
-
+        swit
     }
 
 

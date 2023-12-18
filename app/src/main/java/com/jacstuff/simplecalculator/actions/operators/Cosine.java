@@ -7,6 +7,7 @@ public class Cosine extends AbstractOperatorAction {
 
     public Cosine(MathContext mathContext){
         this.mathContext = mathContext;
+        setSymbol("Cosine");
         hasSingleInput = true;
     }
 

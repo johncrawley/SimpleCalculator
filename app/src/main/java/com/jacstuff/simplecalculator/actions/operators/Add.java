@@ -7,6 +7,7 @@ public class Add extends AbstractOperatorAction {
 
     public Add(MathContext mathContext){
         isPercentagePreOperator = true;
+        setSymbol("+");
         this.mathContext = mathContext;
     }
 
