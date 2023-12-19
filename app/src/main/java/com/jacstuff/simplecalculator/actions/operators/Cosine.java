@@ -5,9 +5,8 @@ import java.math.MathContext;
 
 public class Cosine extends AbstractOperatorAction {
 
-    public Cosine(MathContext mathContext){
-        this.mathContext = mathContext;
-        setSymbol("Cosine");
+    public Cosine(){
+        super("Cosine");
         hasSingleInput = true;
     }
 

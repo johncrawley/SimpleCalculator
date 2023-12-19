@@ -12,6 +12,10 @@ public abstract class AbstractOperatorAction extends AbstractAction implements B
     protected boolean isPercentagePreOperator = false;
     protected boolean hasSingleInput = false;
 
+    public AbstractOperatorAction(String displayStr){
+        setSymbol(displayStr);
+    }
+
     public void process(){
         calculator.setOperatorFromButton(this);
     }
@@ -29,5 +33,10 @@ public abstract class AbstractOperatorAction extends AbstractAction implements B
 
     @Override public void setCalculatingPercentage(boolean isCalculatingPercentage){
         this.isCalculatingPercentage = isCalculatingPercentage;
+    }
+
+
+    @Override public void setMathContext(MathContext mc){
+        this.mathContext = mc;
     }
 }

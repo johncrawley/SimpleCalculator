@@ -1,8 +1,16 @@
 package com.jacstuff.simplecalculator.calculator;
 
-import android.content.Context;
-import android.widget.TextView;
 
+import com.jacstuff.simplecalculator.actions.operators.Add;
+import com.jacstuff.simplecalculator.actions.operators.Cosine;
+import com.jacstuff.simplecalculator.actions.operators.Divide;
+import com.jacstuff.simplecalculator.actions.operators.Multiply;
+import com.jacstuff.simplecalculator.actions.operators.PercentOf;
+import com.jacstuff.simplecalculator.actions.operators.PowerOf;
+import com.jacstuff.simplecalculator.actions.operators.Sine;
+import com.jacstuff.simplecalculator.actions.operators.SquareRoot;
+import com.jacstuff.simplecalculator.actions.operators.Subtract;
+import com.jacstuff.simplecalculator.actions.operators.Tan;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
@@ -13,9 +21,10 @@ import com.jacstuff.simplecalculator.state.OperatorState;
 import com.jacstuff.simplecalculator.state.ResultState;
 import com.jacstuff.simplecalculator.state.SecondNumberState;
 import com.jacstuff.simplecalculator.state.State;
-import com.jacstuff.simplecalculator.view.MainViewModel;
 
+import java.math.MathContext;
 import java.util.HashMap;
+import java.util.Map;
 
 public class Calculator {
 
@@ -26,33 +35,56 @@ public class Calculator {
     public State currentCalculatorStateName = State.FIRST_NUMBER;
     public HashMap<State, CalcState> calculatorStates;
     public CalcState currentState;
+    private final MathContext mc = new MathContext(13);
+    private Map<Class<? extends Operator>, Operator> operatorMap;
 
 
     public Calculator(Memory memory, UpdatableDisplay updatableDisplay){
         this.updatableDisplay = updatableDisplay;
         initOperands();
+        registerOperatorActions();
         calculatorActions = new CalculatorActions(this, memory);
         setupStates();
         assignState();
 
     }
 
+    private void registerOperatorActions(){
+        operatorMap = new HashMap<>();
+        register(new Add());
+        register(new Subtract());
+        register(new Multiply());
+        register(new Divide());
+        register(new PowerOf());
+        register(new SquareRoot());
+        register(new PercentOf());
+        register(new Sine());
+        register(new Cosine());
+        register(new Tan());
+    }
+
+
+    private void register(Operator operator){
+        operatorMap.put(operator.getClass(), operator);
+        operator.setMathContext(mc);
+    }
+
 
     OperandString getResultStr(){ return resultOperand;}
 
-    public OperandString getOperandStr1(){
+
+    OperandString getOperandStr1(){
         return operandStr1;
     }
 
-
-    public OperandString getOperandStr2(){
+    OperandString getOperandStr2(){
         return operandStr2;
     }
 
-    public void process(InputSymbol inputSymbol){
-        swit
-    }
 
+    public void process(InputSymbol inputSymbol){
+        inputSymbol.process(this);
+    }
 
 
     public CalculatorActions getCalculatorActions(){
@@ -100,7 +132,7 @@ public class Calculator {
     }
 
 
-    public Operator getOperator(){
+    Operator getOperator(){
         return operator;
     }
 
@@ -125,6 +157,11 @@ public class Calculator {
     }
 
 
+    void setOperator(Class<? extends Operator> operatorClass){
+        setOperatorFromButton(operatorMap.get(operatorClass));
+    }
+
+
     public void setOperatorFromButton(Operator operator){
         assignOperator(operator);
         setOperatorState(operator);
@@ -132,7 +169,7 @@ public class Calculator {
 
 
     public void assignOperator(Operator operator){
-        previousOperator = operator;
+        previousOperator = this.operator;
         this.operator = operator;
     }
 

@@ -5,16 +5,16 @@ import java.math.MathContext;
 
 public class Subtract extends AbstractOperatorAction {
 
-    public Subtract(MathContext mathContext){
+    public Subtract(){
+        super("−");
         isPercentagePreOperator = true;
-        this.mathContext = mathContext;
     }
 
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
         if(isCalculatingPercentage){
-            Operator percentOf = new PercentOf(mathContext);
+            Operator percentOf = new PercentOf();
             BigDecimal percentResult =  percentOf.execute(num2, num1);
             return num1.subtract(percentResult, mathContext);
         }

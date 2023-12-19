@@ -9,6 +9,7 @@ public interface CalcState {
     void setOperator(Operator operator);
     void addDigit(int digit);
     void setNumber(double number);
+    void setNumber(double number, String displayValue);
     void clear();
     void evaluate();
     void setCalculator(Calculator calculator);

@@ -65,6 +65,13 @@ public class FirstNumberState extends AbstractState implements CalcState {
         updateDisplay(firstOperandString.get());
     }
 
+    @Override
+    public void setNumber(double number, String displayValue) {
+        BigDecimal bd = BigDecimal.valueOf(number);
+        firstOperandString.set(bd);
+        updateDisplay(displayValue);
+    }
+
 
     @Override
     public void clear() {

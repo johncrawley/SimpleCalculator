@@ -5,8 +5,8 @@ import java.math.MathContext;
 
 public class Sine extends AbstractOperatorAction {
 
-    public Sine(MathContext mathContext){
-        this.mathContext = mathContext;
+    public Sine(){
+        super("Sine");
         hasSingleInput = true;
     }
 

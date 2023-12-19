@@ -5,8 +5,8 @@ import java.math.MathContext;
 
 public class PercentOf extends AbstractOperatorAction {
 
-    public PercentOf(MathContext mathContext){
-        this.mathContext = mathContext;
+    public PercentOf(){
+        super("%");
     }
 
     @Override

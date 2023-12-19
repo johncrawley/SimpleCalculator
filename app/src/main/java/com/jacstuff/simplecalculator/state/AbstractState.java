@@ -48,6 +48,12 @@ public class AbstractState {
     }
 
 
+
+    public void setNumber(double number, String displayValue) {
+        // do nothing
+    }
+
+
     public void evaluate() {
     }
 

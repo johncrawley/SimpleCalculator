@@ -46,6 +46,15 @@ public class ResultState extends AbstractState implements CalcState {
 
 
     @Override
+    public void setNumber(double number, String displayValue) {
+        calculatorActions.clearNumbersAndDisplayText();
+        calculator.setState(State.FIRST_NUMBER);
+        calculator.setNumber(number);
+        updateDisplay(displayValue);
+    }
+
+
+    @Override
     public void changeSign() {
         calculatorActions.copyResultToFirstNumber();
         calculator.setState(State.FIRST_NUMBER);

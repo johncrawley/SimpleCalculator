@@ -6,8 +6,8 @@ import java.math.RoundingMode;
 
 public class SquareRoot extends AbstractOperatorAction {
 
-    public SquareRoot(MathContext mathContext){
-        this.mathContext = mathContext;
+    public SquareRoot(){
+        super("√");
     }
 
     @Override

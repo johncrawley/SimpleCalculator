@@ -1,5 +1,7 @@
 package com.jacstuff.simplecalculator.calculator.display;
 
+import com.jacstuff.simplecalculator.calculator.Calculator;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DecimalFormat;

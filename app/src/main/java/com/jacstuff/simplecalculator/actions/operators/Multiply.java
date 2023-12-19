@@ -6,15 +6,15 @@ import java.math.MathContext;
 
 public class Multiply extends AbstractOperatorAction {
 
-    public Multiply(MathContext mathContext){
+    public Multiply(){
+        super("×");
         isPercentagePreOperator = true;
-        this.mathContext = mathContext;
     }
 
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
-        return isCalculatingPercentage ? new PercentOf(mathContext).execute(num2, num1)
+        return isCalculatingPercentage ? new PercentOf().execute(num2, num1)
                 : num1.multiply(num2, mathContext);
     }
 }

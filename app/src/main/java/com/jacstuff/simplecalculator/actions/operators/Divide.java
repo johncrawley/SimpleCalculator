@@ -5,8 +5,8 @@ import java.math.MathContext;
 
 public class Divide  extends AbstractOperatorAction {
 
-    public Divide(MathContext mathContext){
-        this.mathContext = mathContext;
+    public Divide(){
+        super("/");
     }
 
     @Override

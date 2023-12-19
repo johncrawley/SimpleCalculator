@@ -45,6 +45,14 @@ public class OperatorState extends AbstractState implements CalcState {
 
 
     @Override
+    public void setNumber(double number, String displayValue) {
+        calculator.setState(State.SECOND_NUMBER);
+        calculator.setNumber(number);
+        updateDisplay(displayValue);
+    }
+
+
+    @Override
     public void changeSign() {
     }
 

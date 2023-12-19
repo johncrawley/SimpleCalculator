@@ -5,8 +5,8 @@ import java.math.MathContext;
 
 public class PowerOf extends AbstractOperatorAction {
 
-    public PowerOf(MathContext mathContext){
-        this.mathContext = mathContext;
+    public PowerOf(){
+        super("xʸ");
     }
 
     @Override

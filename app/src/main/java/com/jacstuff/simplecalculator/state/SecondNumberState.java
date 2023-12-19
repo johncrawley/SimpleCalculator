@@ -104,6 +104,15 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
 
     @Override
+    public void setNumber(double number, String displayValue) {
+        BigDecimal bd = BigDecimal.valueOf(number);
+        secondOperandString.set(bd);
+        updateDisplay(secondOperandString.get());
+        updateDisplay(displayValue);
+    }
+
+
+    @Override
     public void evaluate() {
         boolean success = calculatorActions.evaluateAndDisplay();
         if(success){

@@ -5,8 +5,8 @@ import java.math.MathContext;
 
 public class Tan extends AbstractOperatorAction {
 
-    public Tan(MathContext mathContext){
-        this.mathContext = mathContext;
+    public Tan(){
+        super("Tangent");
         hasSingleInput = true;
     }
 
