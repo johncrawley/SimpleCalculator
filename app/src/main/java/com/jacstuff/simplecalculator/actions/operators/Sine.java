@@ -13,8 +13,7 @@ public class Sine extends AbstractOperatorAction {
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
-        double sine = Math.sin(num1.doubleValue());
-        return BigDecimal.valueOf(Math.sin(sine));
+        return MathUtils.performFunction(Math::sin, num1);
     }
 
 }

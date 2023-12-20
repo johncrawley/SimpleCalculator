@@ -13,10 +13,7 @@ public class Cosine extends AbstractOperatorAction {
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
-        double sine = Math.cos(num1.doubleValue());
-        BigDecimal bd = BigDecimal.valueOf(Math.sin(sine));
-        System.out.println("^^^ Cosine.execute() result : " + bd.toPlainString());
-        return bd;
+        return MathUtils.performFunction(Math::cos, num1);
     }
 
 }
