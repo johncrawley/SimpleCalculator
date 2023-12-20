@@ -14,15 +14,10 @@ import com.jacstuff.simplecalculator.actions.operators.Tan;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
-import com.jacstuff.simplecalculator.state.CalcState;
-import com.jacstuff.simplecalculator.state.ErrorState;
-import com.jacstuff.simplecalculator.state.FirstNumberState;
-import com.jacstuff.simplecalculator.state.OperatorState;
-import com.jacstuff.simplecalculator.state.ResultState;
-import com.jacstuff.simplecalculator.state.SecondNumberState;
-import com.jacstuff.simplecalculator.state.State;
+
 
 import java.math.MathContext;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,9 +27,8 @@ public class Calculator {
     private final UpdatableDisplay updatableDisplay;
     private OperandString operandStr1, operandStr2, resultOperand;
     private Operator operator, previousOperator;
-    public State currentCalculatorStateName = State.FIRST_NUMBER;
-    public HashMap<State, CalcState> calculatorStates;
-    public CalcState currentState;
+    private final StateManager stateManager;
+
     private final MathContext mc = new MathContext(13);
     private Map<Class<? extends Operator>, Operator> operatorMap;
 
@@ -44,23 +38,29 @@ public class Calculator {
         initOperands();
         registerOperatorActions();
         calculatorActions = new CalculatorActions(this, memory);
-        setupStates();
-        assignState();
-
+        stateManager = new StateManager(this, operandStr1, operandStr2, resultOperand);
+        stateManager.assignState();
     }
+
+
+    public void process(InputSymbol inputSymbol){
+        inputSymbol.process(this);
+    }
+
 
     private void registerOperatorActions(){
         operatorMap = new HashMap<>();
-        register(new Add());
-        register(new Subtract());
-        register(new Multiply());
-        register(new Divide());
-        register(new PowerOf());
-        register(new SquareRoot());
-        register(new PercentOf());
-        register(new Sine());
-        register(new Cosine());
-        register(new Tan());
+        Arrays.asList(new Add(),
+                new Subtract(),
+                new Multiply(),
+                new Divide(),
+                new PowerOf(),
+                new SquareRoot(),
+                new PercentOf(),
+                new Sine(),
+                new Cosine(),
+                new Tan()
+                ).forEach(this::register);
     }
 
 
@@ -82,12 +82,7 @@ public class Calculator {
     }
 
 
-    public void process(InputSymbol inputSymbol){
-        inputSymbol.process(this);
-    }
-
-
-    public CalculatorActions getCalculatorActions(){
+    CalculatorActions getCalculatorActions(){
         return calculatorActions;
     }
 
@@ -105,30 +100,10 @@ public class Calculator {
             resultOperand = new OperandString(maxLength);
         }
     }
-        
-
-    private void setupStates(){
-        if(calculatorStates == null){
-            calculatorStates = new HashMap<>();
-            addState(State.FIRST_NUMBER, new FirstNumberState(operandStr1, operandStr2));
-            addState(State.OPERATOR, new OperatorState(operandStr2));
-            addState(State.SECOND_NUMBER, new SecondNumberState(operandStr2));
-            addState(State.ERROR, new ErrorState());
-            addState(State.RESULT, new ResultState(operandStr1, operandStr2, resultOperand));
-        }
-        for(CalcState calcState : calculatorStates.values()){
-            calcState.setCalculator(this);
-        }
-    }
 
 
-    public void updateDisplay(String str){
+    void updateDisplay(String str){
         updatableDisplay.update(str);
-    }
-
-
-    private void addState(State key, CalcState calcState){
-        calculatorStates.put(key, calcState);
     }
 
 
@@ -137,23 +112,8 @@ public class Calculator {
     }
 
 
-    public Operator getPreviousOperator(){
+    Operator getPreviousOperator(){
         return previousOperator;
-    }
-
-
-    public void setState(State stateName){
-        currentCalculatorStateName = stateName;
-        CalcState calcState = calculatorStates.get(stateName);
-        if(calcState != null){
-            currentState = calcState;
-            currentState.init();
-        }
-    }
-
-
-    private void assignState(){
-        currentState = calculatorStates.get(currentCalculatorStateName);
     }
 
 
@@ -162,56 +122,20 @@ public class Calculator {
     }
 
 
-    public void setOperatorFromButton(Operator operator){
+    void setOperatorFromButton(Operator operator){
         assignOperator(operator);
-        setOperatorState(operator);
+        stateManager.setOperatorState(operator);
     }
 
 
-    public void assignOperator(Operator operator){
+    void assignOperator(Operator operator){
         previousOperator = this.operator;
         this.operator = operator;
     }
 
-
-    public void setOperatorState(Operator operator){
-        currentState.setOperator(operator);
+    StateManager getStateManager(){
+        return stateManager;
     }
-
-
-    public void evaluate(){
-        currentState.evaluate();
-    }
-
-
-    public void addDigit(int digit){
-        currentState.addDigit(digit);
-    }
-
-
-    public void setNumber(double number){
-        currentState.setNumber(number);
-    }
-
-
-    public void changeSign() { currentState.changeSign(); }
-
-
-    public void addDecimal() { currentState.addDecimal(); }
-
-
-    public void backSpace() { currentState.deleteDigit();}
-
-
-    public void clear(){
-        currentState.clear();
-    }
-
-
-    public void saveNumberToMemory(){ currentState.saveNumberToMemory();}
-
-
-    public void recallNumberFromMemory(){ currentState.recallNumberFromMemory();}
 
 
 }

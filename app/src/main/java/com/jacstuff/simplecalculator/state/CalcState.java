@@ -3,6 +3,7 @@ package com.jacstuff.simplecalculator.state;
 import com.jacstuff.simplecalculator.calculator.Calculator;
 import com.jacstuff.simplecalculator.calculator.CalculatorActions;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
+import com.jacstuff.simplecalculator.calculator.StateManager;
 
 public interface CalcState {
 
@@ -12,7 +13,7 @@ public interface CalcState {
     void setNumber(double number, String displayValue);
     void clear();
     void evaluate();
-    void setCalculator(Calculator calculator);
+    void setStateManager(StateManager stateManager);
     void setCalculatorActions(CalculatorActions calculatorActions);
     void init();
     void changeSign();

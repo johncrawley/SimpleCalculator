@@ -1,17 +1,8 @@
 package com.jacstuff.simplecalculator.actions;
 
-import com.jacstuff.simplecalculator.calculator.Calculator;
-
 public abstract class AbstractAction {
 
-
-    protected Calculator calculator;
     private String symbol;
-
-    public void setCalculator(Calculator calculator){
-        this.calculator = calculator;
-    }
-
 
     public void setSymbol(String symbol){
         this.symbol = symbol;

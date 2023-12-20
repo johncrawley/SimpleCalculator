@@ -23,8 +23,8 @@ public class OperatorState extends AbstractState implements CalcState {
     public void setOperator(Operator operator){
         calculatorActions.loadAndDisplayOperator();
         if(operator.hasSingleInput()) {
-            calculator.setState(State.SECOND_NUMBER);
-            calculator.evaluate();
+            stateManager.setState(State.SECOND_NUMBER);
+            stateManager.evaluate();
         }
     }
 
@@ -32,22 +32,22 @@ public class OperatorState extends AbstractState implements CalcState {
     @Override
     public void addDigit(int digit) {
         secondOperandString.init();
-        calculator.setState(State.SECOND_NUMBER);
-        calculator.addDigit(digit);
+        stateManager.setState(State.SECOND_NUMBER);
+        stateManager.addDigit(digit);
     }
 
 
     @Override
     public void setNumber(double number) {
-        calculator.setState(State.SECOND_NUMBER);
-        calculator.setNumber(number);
+        stateManager.setState(State.SECOND_NUMBER);
+        stateManager.setNumber(number);
     }
 
 
     @Override
     public void setNumber(double number, String displayValue) {
-        calculator.setState(State.SECOND_NUMBER);
-        calculator.setNumber(number);
+        stateManager.setState(State.SECOND_NUMBER);
+        stateManager.setNumber(number);
         updateDisplay(displayValue);
     }
 
@@ -60,15 +60,15 @@ public class OperatorState extends AbstractState implements CalcState {
     @Override
     public void addDecimal() {
         secondOperandString.init();
-        calculator.setState(State.SECOND_NUMBER);
-        calculator.addDecimal();
+        stateManager.setState(State.SECOND_NUMBER);
+        stateManager.addDecimal();
     }
 
 
     @Override
     public void clear() {
         calculatorActions.clearNumbersAndDisplayText();
-        calculator.setState(State.FIRST_NUMBER);
+        stateManager.setState(State.FIRST_NUMBER);
     }
 
 
@@ -76,7 +76,7 @@ public class OperatorState extends AbstractState implements CalcState {
     public void evaluate() {
         boolean success = calculatorActions.evaluateAndDisplay();
         if(success){
-            calculator.setState(State.RESULT);
+            stateManager.setState(State.RESULT);
         }
     }
 
@@ -87,7 +87,7 @@ public class OperatorState extends AbstractState implements CalcState {
 
     @Override
     public void recallNumberFromMemory(){
-        calculator.setState(State.SECOND_NUMBER);
-        calculator.recallNumberFromMemory();
+        stateManager.setState(State.SECOND_NUMBER);
+        stateManager.recallNumberFromMemory();
     }
 }

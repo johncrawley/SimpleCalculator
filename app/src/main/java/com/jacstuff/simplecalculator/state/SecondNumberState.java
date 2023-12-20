@@ -33,7 +33,7 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
 
     private boolean isCompoundPercentageOperation(Operator operator){
-        return calculator.getPreviousOperator().isPercentagePreOperator() && operator instanceof PercentOf;
+        return stateManager.getPreviousOperator().isPercentagePreOperator() && operator instanceof PercentOf;
     }
 
 
@@ -41,7 +41,7 @@ public class SecondNumberState extends AbstractState implements CalcState {
         boolean success = calculatorActions.evaluatePercentageAndDisplay();
         if(success){
             calculatorActions.displayResult();
-            calculator.setState(State.RESULT);
+            stateManager.setState(State.RESULT);
         }
     }
 
@@ -50,8 +50,8 @@ public class SecondNumberState extends AbstractState implements CalcState {
         boolean success = calculatorActions.evaluateUsingPreviousOperatorAndDisplayResult();
         if (success) {
             calculatorActions.copyResultToFirstNumber();
-            calculator.setState(State.SECOND_NUMBER);
-            calculator.assignOperator(operator);
+            stateManager.setState(State.SECOND_NUMBER);
+            stateManager.assignOperator(operator);
             calculatorActions.displayResult(); // because we'd rather see the result of the existing operation than the operator symbol
         }
     }
@@ -91,7 +91,7 @@ public class SecondNumberState extends AbstractState implements CalcState {
     @Override
     public void clear() {
         calculatorActions.clearNumbersAndDisplayText();
-        calculator.setState(State.FIRST_NUMBER);
+        stateManager.setState(State.FIRST_NUMBER);
     }
 
 
@@ -116,7 +116,7 @@ public class SecondNumberState extends AbstractState implements CalcState {
     public void evaluate() {
         boolean success = calculatorActions.evaluateAndDisplay();
         if(success){
-            calculator.setState(State.RESULT);
+            stateManager.setState(State.RESULT);
         }
     }
 

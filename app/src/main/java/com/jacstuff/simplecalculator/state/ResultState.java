@@ -24,32 +24,32 @@ public class ResultState extends AbstractState implements CalcState {
     @Override
     public void setOperator(Operator operator) {
         calculatorActions.copyResultToFirstNumber();
-        calculator.setState(State.FIRST_NUMBER);
-        calculator.setOperatorState(operator);
+        stateManager.setState(State.FIRST_NUMBER);
+        stateManager.setOperatorState(operator);
     }
 
 
     @Override
     public void addDigit(int digit) {
         calculatorActions.clearNumbersAndDisplayText();
-        calculator.setState(State.FIRST_NUMBER);
-        calculator.addDigit(digit);
+        stateManager.setState(State.FIRST_NUMBER);
+        stateManager.addDigit(digit);
     }
 
 
     @Override
     public void setNumber(double number) {
         calculatorActions.clearNumbersAndDisplayText();
-        calculator.setState(State.FIRST_NUMBER);
-        calculator.setNumber(number);
+        stateManager.setState(State.FIRST_NUMBER);
+        stateManager.setNumber(number);
     }
 
 
     @Override
     public void setNumber(double number, String displayValue) {
         calculatorActions.clearNumbersAndDisplayText();
-        calculator.setState(State.FIRST_NUMBER);
-        calculator.setNumber(number);
+        stateManager.setState(State.FIRST_NUMBER);
+        stateManager.setNumber(number);
         updateDisplay(displayValue);
     }
 
@@ -57,8 +57,8 @@ public class ResultState extends AbstractState implements CalcState {
     @Override
     public void changeSign() {
         calculatorActions.copyResultToFirstNumber();
-        calculator.setState(State.FIRST_NUMBER);
-        calculator.changeSign();
+        stateManager.setState(State.FIRST_NUMBER);
+        stateManager.changeSign();
     }
 
 
@@ -66,7 +66,7 @@ public class ResultState extends AbstractState implements CalcState {
     public void addDecimal() {
         calculatorActions.copyResultToFirstNumber();
         secondOperandString.init();
-        calculator.setState(State.FIRST_NUMBER);
+        stateManager.setState(State.FIRST_NUMBER);
         firstOperandString.addDecimal();
         updateDisplay(firstOperandString.get());
     }
@@ -88,8 +88,8 @@ public class ResultState extends AbstractState implements CalcState {
     public void deleteDigit() {
         secondOperandString.init();
         calculatorActions.copyResultToFirstNumber();
-        calculator.setState(State.FIRST_NUMBER);
-        calculator.backSpace();
+        stateManager.setState(State.FIRST_NUMBER);
+        stateManager.backSpace();
     }
 
 

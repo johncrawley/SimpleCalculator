@@ -3,19 +3,20 @@ package com.jacstuff.simplecalculator.state;
 import com.jacstuff.simplecalculator.actions.operators.Operator;
 import com.jacstuff.simplecalculator.calculator.Calculator;
 import com.jacstuff.simplecalculator.calculator.CalculatorActions;
+import com.jacstuff.simplecalculator.calculator.StateManager;
 
 public class AbstractState {
 
-    Calculator calculator;
     CalculatorActions calculatorActions;
-
-    public void setCalculator(Calculator calculator){
-        this.calculator = calculator;
-        this.calculatorActions = calculator.getCalculatorActions();
-    }
+    StateManager stateManager;
 
 
     public void setCalculatorActions(CalculatorActions calculatorActions){ this.calculatorActions = calculatorActions;}
+
+
+    public void setStateManager(StateManager stateManager){
+        this.stateManager = stateManager;
+    }
 
 
     public void saveNumberToMemory(){}
@@ -63,6 +64,6 @@ public class AbstractState {
     }
 
     void updateDisplay(String str){
-        calculator.updateDisplay(str);
+        stateManager.updateDisplay(str);
     }
 }

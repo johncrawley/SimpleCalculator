@@ -27,13 +27,13 @@ public enum InputSymbol {
     COSINE(Cosine.class),
     TAN(Tan.class),
 
-    CLEAR(Calculator::clear),
-    BACKSPACE(Calculator::backSpace),
-    DECIMAL(Calculator::addDecimal),
-    EQUALS(Calculator::evaluate),
-    CHANGE_SIGN(Calculator::changeSign),
-    SET_MEMORY(Calculator::saveNumberToMemory),
-    RECALL_MEMORY(Calculator::recallNumberFromMemory),
+    CLEAR(StateManager::clear),
+    BACKSPACE(StateManager::backSpace),
+    DECIMAL(StateManager::addDecimal),
+    EQUALS(StateManager::evaluate),
+    CHANGE_SIGN(StateManager::changeSign),
+    SET_MEMORY(StateManager::saveNumberToMemory),
+    RECALL_MEMORY(StateManager::recallNumberFromMemory),
     _1(1),
     _2(2),
     _3(3),
@@ -50,8 +50,10 @@ public enum InputSymbol {
     private final Consumer<Calculator> consumer;
 
 
-    InputSymbol(Consumer<Calculator> consumer){
-        this.consumer = consumer;
+    InputSymbol(Consumer<StateManager> consumer){
+        this.consumer = c -> {
+            consumer.accept(c.getStateManager());
+        };
     }
 
 
@@ -61,7 +63,7 @@ public enum InputSymbol {
 
 
     InputSymbol(int digit) {
-        this.consumer = calculator -> calculator.addDigit(digit);
+        this.consumer = calculator -> calculator.getStateManager().addDigit(digit);
     }
     
 

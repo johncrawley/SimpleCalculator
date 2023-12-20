@@ -1,11 +1,10 @@
 package com.jacstuff.simplecalculator.actions.operators;
 
 import com.jacstuff.simplecalculator.actions.AbstractAction;
-import com.jacstuff.simplecalculator.actions.ButtonAction;
 
 import java.math.MathContext;
 
-public abstract class AbstractOperatorAction extends AbstractAction implements ButtonAction, Operator {
+public abstract class AbstractOperatorAction extends AbstractAction implements Operator {
 
     protected MathContext mathContext;
     protected boolean isCalculatingPercentage = false;
@@ -14,10 +13,6 @@ public abstract class AbstractOperatorAction extends AbstractAction implements B
 
     public AbstractOperatorAction(String displayStr){
         setSymbol(displayStr);
-    }
-
-    public void process(){
-        calculator.setOperatorFromButton(this);
     }
 
 

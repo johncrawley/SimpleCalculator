@@ -61,7 +61,7 @@ public class CalculatorActions {
             e.printStackTrace();
             resultOperand.setAndDisplayError();
             calculator.updateDisplay(resultOperand.get());
-            calculator.setState(State.ERROR);
+            calculator.getStateManager().setState(State.ERROR);
             return false;
         }
         return true;
