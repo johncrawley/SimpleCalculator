@@ -1,24 +1,30 @@
-package com.jacstuff.simplecalculator.actions.operators;
+package com.jacstuff.simplecalculator.calculator.operators;
 
-import com.jacstuff.simplecalculator.actions.AbstractAction;
 
 import java.math.MathContext;
 
-public abstract class AbstractOperatorAction extends AbstractAction implements Operator {
+public abstract class AbstractOperatorAction implements Operator {
 
     protected MathContext mathContext;
     protected boolean isCalculatingPercentage = false;
     protected boolean isPercentagePreOperator = false;
     protected boolean hasSingleInput = false;
+    private final String symbol;
 
     public AbstractOperatorAction(String displayStr){
-        setSymbol(displayStr);
+        this.symbol = displayStr;
     }
 
 
     public void onLoad(){}
 
 
+    @Override
+    public String getSymbol(){
+        return symbol;
+    }
+
+    @Override
     public boolean hasSingleInput(){ return hasSingleInput;}
 
 

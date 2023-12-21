@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.jacstuff.simplecalculator.calculator.Calculator;
 import com.jacstuff.simplecalculator.calculator.InputSymbol;
-import com.jacstuff.simplecalculator.calculator.Memory;
+import com.jacstuff.simplecalculator.calculator.memory.PrefsMemoryImpl;
 import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
 import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplayImpl;
 import com.jacstuff.simplecalculator.view.MainViewModel;
@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private void initCalculator(){
         TextView displayTextView = findViewById(R.id.outputDisplayText);
         UpdatableDisplay display = new UpdatableDisplayImpl(displayTextView, viewModel);
-        Memory memory = new Memory(getApplicationContext());
-        calculator = new Calculator(memory, display);
+        PrefsMemoryImpl prefsMemoryImpl = new PrefsMemoryImpl(getApplicationContext());
+        calculator = new Calculator(prefsMemoryImpl, display);
     }
 
     private void setupButtons(){

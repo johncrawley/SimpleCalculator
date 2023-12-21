@@ -2,8 +2,9 @@ package com.jacstuff.simplecalculator.calculator;
 
 
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
-import com.jacstuff.simplecalculator.actions.operators.Operator;
-import com.jacstuff.simplecalculator.state.State;
+import com.jacstuff.simplecalculator.calculator.memory.PrefsMemoryImpl;
+import com.jacstuff.simplecalculator.calculator.operators.Operator;
+import com.jacstuff.simplecalculator.calculator.state.State;
 
 import java.math.BigDecimal;
 
@@ -12,10 +13,10 @@ public class CalculatorActions {
 
     private final OperandString resultOperand;
     private final Calculator calculator;
-    private final Memory memory;
+    private final PrefsMemoryImpl memory;
 
 
-    CalculatorActions(Calculator calculator, Memory memory){
+    CalculatorActions(Calculator calculator, PrefsMemoryImpl memory){
         this.calculator = calculator;
         this.resultOperand = calculator.getResultStr();
         this.memory = memory;

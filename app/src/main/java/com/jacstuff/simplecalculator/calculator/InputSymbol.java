@@ -1,16 +1,16 @@
 package com.jacstuff.simplecalculator.calculator;
 
-import com.jacstuff.simplecalculator.actions.operators.Add;
-import com.jacstuff.simplecalculator.actions.operators.Cosine;
-import com.jacstuff.simplecalculator.actions.operators.Divide;
-import com.jacstuff.simplecalculator.actions.operators.Multiply;
-import com.jacstuff.simplecalculator.actions.operators.Operator;
-import com.jacstuff.simplecalculator.actions.operators.PercentOf;
-import com.jacstuff.simplecalculator.actions.operators.PowerOf;
-import com.jacstuff.simplecalculator.actions.operators.Sine;
-import com.jacstuff.simplecalculator.actions.operators.SquareRoot;
-import com.jacstuff.simplecalculator.actions.operators.Subtract;
-import com.jacstuff.simplecalculator.actions.operators.Tan;
+import com.jacstuff.simplecalculator.calculator.operators.Add;
+import com.jacstuff.simplecalculator.calculator.operators.Cosine;
+import com.jacstuff.simplecalculator.calculator.operators.Divide;
+import com.jacstuff.simplecalculator.calculator.operators.Multiply;
+import com.jacstuff.simplecalculator.calculator.operators.Operator;
+import com.jacstuff.simplecalculator.calculator.operators.PercentOf;
+import com.jacstuff.simplecalculator.calculator.operators.PowerOf;
+import com.jacstuff.simplecalculator.calculator.operators.Sine;
+import com.jacstuff.simplecalculator.calculator.operators.SquareRoot;
+import com.jacstuff.simplecalculator.calculator.operators.Subtract;
+import com.jacstuff.simplecalculator.calculator.operators.Tan;
 
 import java.util.function.Consumer;
 

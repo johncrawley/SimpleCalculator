@@ -1,16 +1,14 @@
 package com.jacstuff.simplecalculator.calculator;
 
-import android.graphics.Path;
-
-import com.jacstuff.simplecalculator.actions.operators.Operator;
+import com.jacstuff.simplecalculator.calculator.operators.Operator;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
-import com.jacstuff.simplecalculator.state.CalcState;
-import com.jacstuff.simplecalculator.state.ErrorState;
-import com.jacstuff.simplecalculator.state.FirstNumberState;
-import com.jacstuff.simplecalculator.state.OperatorState;
-import com.jacstuff.simplecalculator.state.ResultState;
-import com.jacstuff.simplecalculator.state.SecondNumberState;
-import com.jacstuff.simplecalculator.state.State;
+import com.jacstuff.simplecalculator.calculator.state.CalcState;
+import com.jacstuff.simplecalculator.calculator.state.ErrorState;
+import com.jacstuff.simplecalculator.calculator.state.FirstNumberState;
+import com.jacstuff.simplecalculator.calculator.state.OperatorState;
+import com.jacstuff.simplecalculator.calculator.state.ResultState;
+import com.jacstuff.simplecalculator.calculator.state.SecondNumberState;
+import com.jacstuff.simplecalculator.calculator.state.State;
 
 import java.util.HashMap;
 

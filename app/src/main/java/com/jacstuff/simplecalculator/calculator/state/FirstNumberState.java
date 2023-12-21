@@ -1,7 +1,7 @@
-package com.jacstuff.simplecalculator.state;
+package com.jacstuff.simplecalculator.calculator.state;
 
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
-import com.jacstuff.simplecalculator.actions.operators.Operator;
+import com.jacstuff.simplecalculator.calculator.operators.Operator;
 
 import java.math.BigDecimal;
 

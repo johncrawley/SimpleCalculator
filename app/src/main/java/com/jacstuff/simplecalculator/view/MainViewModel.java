@@ -2,10 +2,10 @@ package com.jacstuff.simplecalculator.view;
 
 import androidx.lifecycle.ViewModel;
 
-import com.jacstuff.simplecalculator.actions.operators.Operator;
+import com.jacstuff.simplecalculator.calculator.operators.Operator;
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
-import com.jacstuff.simplecalculator.state.CalcState;
-import com.jacstuff.simplecalculator.state.State;
+import com.jacstuff.simplecalculator.calculator.state.CalcState;
+import com.jacstuff.simplecalculator.calculator.state.State;
 
 import java.util.HashMap;
 

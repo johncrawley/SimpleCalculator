@@ -1,7 +1,6 @@
 package com.jacstuff.simplecalculator;
 
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
-import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,32 +18,28 @@ public class OperandStringTest {
     private OperandString operandStr;
     private final String INITIAL_VALUE = "0";
     private final String DECIMAL = ".";
-    private MockDisplay mockDisplay;
 
 
     @Before
-    public void setup()
-    {
-        mockDisplay = new MockDisplay();
+    public void setup() {
         operandStr = new OperandString(10);
     }
 
+
     @Test
     public void canSetDigit(){
-
         assertEquals("String should have a default value of zero", "0", operandStr.get());
-
         List<String> inputs = Arrays.asList("10", "-1", "-1000", "-10.101010", "1000000");
         for(String input: inputs){
             assertInputWasAssigned(operandStr, input);
         }
     }
 
+
     private void assertInputWasAssigned(OperandString operandString, String str){
         operandString.set(str);
         assertEquals("String does not match expected value", str, operandString.get());
     }
-
 
 
     @Test
@@ -59,8 +54,8 @@ public class OperandStringTest {
             operandStr.addDigit(input);
             assertEquals(expectedMap.get(input), operandStr.get());
         }
-
     }
+
 
     @Test
     public void canAddDecimal(){
@@ -71,17 +66,17 @@ public class OperandStringTest {
         operandStr.addDigit(number);
         expectedStr += number;
         assertOperand(expectedStr);
-
         operandStr.addDecimal(); // should ignore 2nd decimal
     }
+
 
     private void assertOperand(String expectedStr){
         assertEquals(expectedStr, operandStr.get());
     }
 
+
     @Test
     public void ignoresSecondDecimal(){
-
         int number = 4;
         operandStr.addDigit(number);
         operandStr.addDecimal();
@@ -89,7 +84,6 @@ public class OperandStringTest {
         assertOperand(expectedStr);
         operandStr.addDecimal();
         assertOperand(expectedStr);
-
     }
 
 
@@ -106,13 +100,15 @@ public class OperandStringTest {
         assertDeletion("4");
         assertDeletion("0");
         assertDeletion("0");
-
     }
+
+
     private void addDigitsToOperandStr(List<Integer> numbers){
         for(Integer number: numbers){
             operandStr.addDigit(number);
         }
     }
+
 
     private String createFromNumbers(List<Integer> numbers){
         StringBuilder str = new StringBuilder();
@@ -121,6 +117,7 @@ public class OperandStringTest {
         }
         return str.toString();
     }
+
 
     private void assertDeletion(String expectedStr){
         operandStr.deleteDigit();
@@ -151,13 +148,11 @@ public class OperandStringTest {
 
     @Test
     public void canResetState(){
-
         operandStr.set("123");
         operandStr.addDigit(4);
         assertOperand("1234");
         operandStr.init();
         assertOperand(INITIAL_VALUE);
-
     }
 
 
@@ -180,38 +175,20 @@ public class OperandStringTest {
         operandStr.setAndDisplayError();
         assertEquals(errorString, operandStr.get());
         assertEquals("0", operandStr.getLegalStr());
-        assertEquals(errorString, mockDisplay.getContents());
 
         String expected = "123";
         operandStr.init();
         operandStr.set(expected);
         assertEquals(expected, operandStr.get());
-        assertEquals(expected, mockDisplay.getContents());
-
     }
+
 
     @Test
     public void wontCopyErrorString(){
-
         OperandString badStr = new OperandString(10);
         badStr.setAndDisplayError();
-
         operandStr.setValueFrom(badStr);
         assertOperand(INITIAL_VALUE);
-    }
-
-    class MockDisplay implements UpdatableDisplay {
-
-        private String contents;
-
-        public String getContents() {
-            return this.contents;
-        }
-
-        @Override
-        public void set(String str) {
-            contents = str;
-        }
     }
 
 

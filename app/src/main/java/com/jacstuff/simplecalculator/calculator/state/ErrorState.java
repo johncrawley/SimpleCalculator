@@ -1,4 +1,4 @@
-package com.jacstuff.simplecalculator.state;
+package com.jacstuff.simplecalculator.calculator.state;
 
 
 public class ErrorState extends AbstractState implements CalcState {

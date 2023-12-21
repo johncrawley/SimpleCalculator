@@ -1,8 +1,7 @@
-package com.jacstuff.simplecalculator.state;
+package com.jacstuff.simplecalculator.calculator.state;
 
-import com.jacstuff.simplecalculator.calculator.Calculator;
 import com.jacstuff.simplecalculator.calculator.CalculatorActions;
-import com.jacstuff.simplecalculator.actions.operators.Operator;
+import com.jacstuff.simplecalculator.calculator.operators.Operator;
 import com.jacstuff.simplecalculator.calculator.StateManager;
 
 public interface CalcState {

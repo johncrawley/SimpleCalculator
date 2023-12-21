@@ -1,4 +1,4 @@
-package com.jacstuff.simplecalculator.actions.operators;
+package com.jacstuff.simplecalculator.calculator.operators;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
