@@ -104,9 +104,10 @@ public class CalculatorActions {
     }
 
 
-    public void recallNumberFromMemory(OperandString operandString){
+    public void recallAndDisplayNumberFromMemory(OperandString operandString){
         String recalledStr = memory.recallNumber();
         operandString.set(recalledStr);
+        calculator.updateDisplay(recalledStr);
     }
 
 }

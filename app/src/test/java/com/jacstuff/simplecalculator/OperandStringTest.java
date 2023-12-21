@@ -209,7 +209,7 @@ public class OperandStringTest {
         }
 
         @Override
-        public void update(String str) {
+        public void set(String str) {
             contents = str;
         }
     }

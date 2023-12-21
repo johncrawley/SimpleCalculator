@@ -99,7 +99,6 @@ public class FirstNumberState extends AbstractState implements CalcState {
 
     @Override
     public void recallNumberFromMemory(){
-        calculatorActions.recallNumberFromMemory(firstOperandString);
-        updateDisplay(firstOperandString.get());
+        calculatorActions.recallAndDisplayNumberFromMemory(firstOperandString);
     }
 }

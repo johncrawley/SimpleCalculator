@@ -28,7 +28,6 @@ public class Calculator {
     private OperandString operandStr1, operandStr2, resultOperand;
     private Operator operator, previousOperator;
     private final StateManager stateManager;
-
     private final MathContext mc = new MathContext(13);
     private Map<Class<? extends Operator>, Operator> operatorMap;
 
@@ -103,7 +102,7 @@ public class Calculator {
 
 
     void updateDisplay(String str){
-        updatableDisplay.update(str);
+        updatableDisplay.set(str);
     }
 
 

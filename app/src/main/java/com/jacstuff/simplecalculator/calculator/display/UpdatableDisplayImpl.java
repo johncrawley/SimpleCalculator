@@ -15,7 +15,7 @@ public class UpdatableDisplayImpl implements UpdatableDisplay {
         textView.setText(viewModel.displayStr);
     }
 
-    public void update(String str){
+    public void set(String str){
         viewModel.displayStr = str;
         textView.setText(str);
     }

@@ -2,6 +2,6 @@ package com.jacstuff.simplecalculator.calculator.display;
 
 public interface UpdatableDisplay {
 
-    void update(String str);
+    void set(String str);
     String getContents();
 }

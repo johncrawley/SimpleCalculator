@@ -74,6 +74,7 @@ public class ResultState extends AbstractState implements CalcState {
 
     @Override
     public void clear() {
+        stateManager.setState(State.FIRST_NUMBER);
         calculatorActions.clearNumbersAndDisplayText();
     }
 
@@ -101,6 +102,7 @@ public class ResultState extends AbstractState implements CalcState {
 
     @Override
     public void recallNumberFromMemory(){
-        calculatorActions.recallNumberFromMemory(resultString);
+        stateManager.setState(State.FIRST_NUMBER);
+        stateManager.recallNumberFromMemory();
     }
 }

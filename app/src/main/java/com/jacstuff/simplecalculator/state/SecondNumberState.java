@@ -129,7 +129,6 @@ public class SecondNumberState extends AbstractState implements CalcState {
 
     @Override
     public void recallNumberFromMemory(){
-        calculatorActions.recallNumberFromMemory(secondOperandString);
-        updateDisplay(secondOperandString.get());
+        calculatorActions.recallAndDisplayNumberFromMemory(secondOperandString);
     }
 }
