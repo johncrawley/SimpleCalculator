@@ -2,7 +2,7 @@ package com.jacstuff.simplecalculator.calculator;
 
 
 import com.jacstuff.simplecalculator.calculator.display.OperandString;
-import com.jacstuff.simplecalculator.calculator.memory.PrefsMemoryImpl;
+import com.jacstuff.simplecalculator.calculator.memory.Memory;
 import com.jacstuff.simplecalculator.calculator.operators.Operator;
 import com.jacstuff.simplecalculator.calculator.state.State;
 
@@ -13,10 +13,10 @@ public class CalculatorActions {
 
     private final OperandString resultOperand;
     private final Calculator calculator;
-    private final PrefsMemoryImpl memory;
+    private final Memory memory;
 
 
-    CalculatorActions(Calculator calculator, PrefsMemoryImpl memory){
+    CalculatorActions(Calculator calculator, Memory memory){
         this.calculator = calculator;
         this.resultOperand = calculator.getResultStr();
         this.memory = memory;

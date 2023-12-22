@@ -1,7 +1,7 @@
 package com.jacstuff.simplecalculator.calculator;
 
 
-import com.jacstuff.simplecalculator.calculator.memory.PrefsMemoryImpl;
+import com.jacstuff.simplecalculator.calculator.memory.Memory;
 import com.jacstuff.simplecalculator.calculator.operators.Add;
 import com.jacstuff.simplecalculator.calculator.operators.Cosine;
 import com.jacstuff.simplecalculator.calculator.operators.Divide;
@@ -33,7 +33,7 @@ public class Calculator {
     private Map<Class<? extends Operator>, Operator> operatorMap;
 
 
-    public Calculator(PrefsMemoryImpl memory, UpdatableDisplay updatableDisplay){
+    public Calculator(Memory memory, UpdatableDisplay updatableDisplay){
         this.updatableDisplay = updatableDisplay;
         initOperands();
         registerOperatorActions();
