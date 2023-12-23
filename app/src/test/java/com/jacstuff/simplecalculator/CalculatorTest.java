@@ -96,6 +96,18 @@ public class CalculatorTest {
     }
 
 
+    @Test
+    public void canSaveAndRecallMemory(){
+        assertDisplay("20", _2, _0);
+        calculator.process(SET_MEMORY);
+        assertThatDisplayShows("20");
+        assertDisplay("0", CLEAR);
+        assertDisplay("20", RECALL_MEMORY);
+    }
+
+
+
+
     public void assertDisplay(String expected, InputSymbol... inputSymbols){
         Arrays.stream(inputSymbols).forEach(is -> calculator.process(is));
         assertThatDisplayShows(expected);
