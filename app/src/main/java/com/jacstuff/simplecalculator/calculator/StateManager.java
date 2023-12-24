@@ -46,8 +46,6 @@ public class StateManager {
     }
 
 
-
-
     private void addState(State key, CalcState calcState){
         calculatorStates.put(key, calcState);
     }
@@ -61,6 +59,7 @@ public class StateManager {
             currentState.init();
         }
     }
+
 
     void assignState(){
         currentState = calculatorStates.get(currentCalculatorStateName);

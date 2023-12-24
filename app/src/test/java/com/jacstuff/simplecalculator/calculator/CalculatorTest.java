@@ -1,4 +1,4 @@
-package com.jacstuff.simplecalculator;
+package com.jacstuff.simplecalculator.calculator;
 
 
 import static com.jacstuff.simplecalculator.calculator.InputSymbol.*;
@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.jacstuff.simplecalculator.MockDisplay;
 import com.jacstuff.simplecalculator.calculator.Calculator;
 import com.jacstuff.simplecalculator.calculator.InputSymbol;
 import com.jacstuff.simplecalculator.calculator.display.UpdatableDisplay;
@@ -104,8 +105,6 @@ public class CalculatorTest {
         assertDisplay("0", CLEAR);
         assertDisplay("20", RECALL_MEMORY);
     }
-
-
 
 
     public void assertDisplay(String expected, InputSymbol... inputSymbols){
