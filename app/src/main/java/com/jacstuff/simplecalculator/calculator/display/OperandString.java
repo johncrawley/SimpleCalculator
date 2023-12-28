@@ -102,6 +102,7 @@ public class OperandString {
 
     public void set(BigDecimal bigDecimal){
         String str = bigDecimal.toPlainString();
+        System.out.println("^^^ OperandString: set() " +  str);
         set(str);
     }
 

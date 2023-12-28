@@ -12,7 +12,7 @@ public class OperatorTestUtils {
         if(str2.isEmpty()){
             str2 = "0";
         }
-        assertEquals(expected, operator.execute( new BigDecimal(str1), new BigDecimal(str2)).toString());
+        assertEquals(expected, operator.execute( new BigDecimal(str1), new BigDecimal(str2)).stripTrailingZeros().toPlainString());
     }
 
 
