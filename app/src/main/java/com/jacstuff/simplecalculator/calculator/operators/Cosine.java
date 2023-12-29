@@ -12,7 +12,7 @@ public class Cosine extends AbstractOperatorAction {
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
-        return MathUtils.performFunction(Math::cos, num1);
+        return MathUtils.performTrigFunction(Math::cos, num1).round(mathContext);
     }
 
 }

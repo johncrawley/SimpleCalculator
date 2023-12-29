@@ -96,11 +96,38 @@ public class OperatorTests {
         assertOperation(operator, "8", "-1", "0.125");
     }
 
+    @Test
+    public void canCalculateSine(){
+        Operator operator = setup(new Sine(), 5);
+        assertOperation(operator, "0", "", "0");
+        assertOperation(operator, "1", "", "0.017452");
+    }
+
+    @Test
+    public void canCalculateCosine(){
+        Operator operator = setup(new Cosine(),5);
+        assertOperation(operator, "0", "", "1");
+        assertOperation(operator, "1", "", "0.99985");
+        assertOperation(operator, "60", "", "0.5");
+    }
+
+
+    @Test
+    public void canCalculateTangent(){
+        Operator operator = setup(new Tan(),4);
+        assertOperation(operator, "0", "", "0");
+        assertOperation(operator, "1", "", "0.01746");
+        assertOperation(operator, "45", "", "1");
+    }
+
 
     private Operator setup(Operator operator){
-        if(mathContext == null){
-            mathContext = new MathContext(14);
-        }
+        return setup(operator, 14);
+    }
+
+
+    private Operator setup(Operator operator, int precision){
+        mathContext = new MathContext(precision);
         operator.setMathContext(mathContext);
         return operator;
     }

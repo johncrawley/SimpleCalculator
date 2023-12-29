@@ -12,7 +12,7 @@ public class Sine extends AbstractOperatorAction {
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
-        return MathUtils.performFunction(Math::sin, num1);
+        return MathUtils.performTrigFunction(Math::sin, num1).round(mathContext);
     }
 
 }

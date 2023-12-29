@@ -12,7 +12,7 @@ public class Tan extends AbstractOperatorAction {
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
-        return MathUtils.performFunction(Math::tan, num1);
+        return MathUtils.performTrigFunction(Math::tan, num1).round(mathContext);
     }
 
 }
