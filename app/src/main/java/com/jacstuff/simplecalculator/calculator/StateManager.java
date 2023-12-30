@@ -15,7 +15,6 @@ import java.util.HashMap;
 public class StateManager {
 
     private final OperandString operandStr1, operandStr2, resultOperand;
-    public State currentCalculatorStateName = State.FIRST_NUMBER;
     private HashMap<State, CalcState> calculatorStates;
     public CalcState currentState;
     private final Calculator calculator;
@@ -26,43 +25,38 @@ public class StateManager {
         this.operandStr1 = operandStr1;
         this.operandStr2 = operandStr2;
         this.resultOperand = resultOperand;
-        setupStates();
+        setupStateMap();
+        setState(State.FIRST_NUMBER);
     }
 
 
-    private void setupStates(){
-        if(calculatorStates == null){
-            calculatorStates = new HashMap<>();
-            addState(State.FIRST_NUMBER, new FirstNumberState(operandStr1, operandStr2));
-            addState(State.OPERATOR, new OperatorState(operandStr2));
-            addState(State.SECOND_NUMBER, new SecondNumberState(operandStr2));
-            addState(State.ERROR, new ErrorState());
-            addState(State.RESULT, new ResultState(operandStr1, operandStr2, resultOperand));
+    private void setupStateMap(){
+        if(calculatorStates != null) {
+            return;
         }
-        for(CalcState calcState : calculatorStates.values()){
-            calcState.setStateManager(this);
-            calcState.setCalculatorActions(calculator.getCalculatorActions());
-        }
+        calculatorStates = new HashMap<>();
+        registerState(State.FIRST_NUMBER, new FirstNumberState(operandStr1, operandStr2));
+        registerState(State.OPERATOR, new OperatorState(operandStr2));
+        registerState(State.SECOND_NUMBER, new SecondNumberState(operandStr2));
+        registerState(State.ERROR, new ErrorState());
+        registerState(State.RESULT, new ResultState(operandStr1, operandStr2, resultOperand));
     }
 
 
-    private void addState(State key, CalcState calcState){
+    private void registerState(State key, CalcState calcState){
         calculatorStates.put(key, calcState);
+        calcState.setStateManager(this);
+        calcState.setCalculatorActions(calculator.getCalculatorActions());
     }
 
 
     public void setState(State stateName){
-        currentCalculatorStateName = stateName;
+        currentState = calculatorStates.get(stateName);
         CalcState calcState = calculatorStates.get(stateName);
         if(calcState != null){
             currentState = calcState;
             currentState.init();
         }
-    }
-
-
-    void assignState(){
-        currentState = calculatorStates.get(currentCalculatorStateName);
     }
 
 

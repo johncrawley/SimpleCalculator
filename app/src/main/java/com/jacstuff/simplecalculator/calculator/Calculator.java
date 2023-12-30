@@ -39,7 +39,6 @@ public class Calculator {
         registerOperatorActions();
         calculatorActions = new CalculatorActions(this, memory);
         stateManager = new StateManager(this, operandStr1, operandStr2, resultOperand);
-        stateManager.assignState();
     }
 
 
