@@ -2,17 +2,15 @@ package com.jacstuff.simplecalculator.calculator.operators;
 
 import java.math.BigDecimal;
 
-public class Add extends AbstractOperatorAction {
+public class Add extends PercentagePreOperatorAction {
 
     public Add(){
         super("+");
-        isPercentagePreOperator = true;
     }
 
     @Override
     public BigDecimal execute(BigDecimal num1, BigDecimal num2){
         if(isCalculatingPercentage){
-            Operator percentOf = new PercentOf();
             BigDecimal percentResult =  percentOf.execute(num2, num1);
             return num1.add(percentResult, mathContext);
         }

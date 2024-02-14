@@ -35,6 +35,8 @@ public class OperatorTests {
 
     @Test
     public void canMultiplyTwoNumbers(){
+        PercentOf percentOf = new PercentOf();
+        percentOf.setMathContext(mathContext);
         Operator operator = setup(new Multiply());
 
         assertOperation(operator, "1", "1", "1");

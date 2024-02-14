@@ -102,7 +102,6 @@ public class OperandString {
 
     public void set(BigDecimal bigDecimal){
         String str = bigDecimal.toPlainString();
-        System.out.println("^^^ OperandString: set() " +  str);
         set(str);
     }
 
@@ -114,7 +113,7 @@ public class OperandString {
 
     public void addDigit(int digit){
         if(value.equals(INITIAL_VALUE)){
-            this.value = "" + digit;
+            this.value = String.valueOf(digit);
             return;
         }
         value += digit;

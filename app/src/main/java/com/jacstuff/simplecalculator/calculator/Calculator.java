@@ -49,6 +49,7 @@ public class Calculator {
 
     private void registerOperatorActions(){
         operatorMap = new HashMap<>();
+
         Arrays.asList(new Add(),
                 new Subtract(),
                 new Multiply(),
