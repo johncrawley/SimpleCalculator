@@ -4,8 +4,10 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_marginTop="@dimen/display_margin_top"
+    android:layout_marginTop="@dimen/display_margin_top_tablet"
+    android:layout_marginBottom="@dimen/display_margin_bottom_tablet"
     android:layout_marginHorizontal="@dimen/display_margin_horizontal"
+    app:layout_constraintWidth_max="350dp"
     android:background="?attr/calculatorDisplayBackground">
 
     <TextView
@@ -18,7 +20,7 @@
         android:maxLines="1"
         android:text="@string/symbol_0"
         android:fontFamily="@font/pt_mono_regular"
-        android:textSize="36sp"
+        android:textSize="56sp"
         style="?attr/calculatorDisplayBackground"/>
 
     <View

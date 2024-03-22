@@ -6,6 +6,9 @@
     <dimen name="button_paddingHorizontal">8dp</dimen>
     <dimen name="button_paddingVertical">8dp</dimen>
     <dimen name="display_margin_top">20dp</dimen>
+    <dimen name="display_margin_top_tablet">30dp</dimen>
+    <dimen name="display_margin_bottom_tablet">30dp</dimen>
+    <dimen name="button_text_size_tablet">24sp</dimen>
 
 
     <dimen name="button_margin_landscape">6dp</dimen>
@@ -19,6 +22,7 @@
     <dimen name="display_text_padding_horizontal">4dp</dimen>
     <dimen name="display_margin_horizontal">12dp</dimen>
     <dimen name="display_margin_vertical">8dp</dimen>
+    <dimen name="display_margin_vertical_tablet">28dp</dimen>
 
     <dimen name="display_margin_vertical_landscape">8dp</dimen>
     <dimen name="button_table_margin_bottom_portrait">18dp</dimen>
