@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_marginTop="@dimen/display_margin_top"
     android:layout_marginHorizontal="@dimen/display_margin_horizontal"
@@ -18,7 +17,7 @@
         android:maxLines="1"
         android:text="@string/symbol_0"
         android:fontFamily="@font/pt_mono_regular"
-        android:textSize="36sp"
+        android:textSize="@dimen/output_text_size"
         style="?attr/calculatorDisplayBackground"/>
 
     <View

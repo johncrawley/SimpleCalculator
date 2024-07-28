@@ -20,8 +20,8 @@
 
     <dimen name="display_text_padding_vertical">8dp</dimen>
     <dimen name="display_text_padding_horizontal">4dp</dimen>
-    <dimen name="display_margin_horizontal">12dp</dimen>
-    <dimen name="display_margin_vertical">8dp</dimen>
+    <dimen name="display_margin_horizontal">16dp</dimen>
+    <dimen name="display_margin_vertical">18dp</dimen>
     <dimen name="display_margin_vertical_tablet">28dp</dimen>
 
     <dimen name="display_margin_vertical_landscape">8dp</dimen>
@@ -32,4 +32,5 @@
     <dimen name="display_margin_horizontal_landscape">32dp</dimen>
     <dimen name="display_text_padding_vertical_landscape">6dp</dimen>
     <dimen name="output_display_text_size_landscape">24sp</dimen>
+    <dimen name="output_text_size">34dp</dimen>
 </resources>
