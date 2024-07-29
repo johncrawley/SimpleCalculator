@@ -16,4 +16,5 @@
     <color name="background">#171717</color>
     <color name="buttonOutline">#7A7979</color>
     <color name="navigationBar">#100D02</color>
+    <color name="highlighted_text">#504728</color>
 </resources>

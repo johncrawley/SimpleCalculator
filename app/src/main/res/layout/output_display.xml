@@ -14,6 +14,7 @@
         android:layout_gravity="end"
         android:paddingVertical="@dimen/display_text_padding_vertical"
         android:paddingHorizontal="@dimen/display_text_padding_horizontal"
+        android:textIsSelectable="true"
         android:maxLines="1"
         android:text="@string/symbol_0"
         android:fontFamily="@font/pt_mono_regular"

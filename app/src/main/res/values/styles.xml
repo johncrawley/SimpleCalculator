@@ -15,6 +15,7 @@
         <item name="editButtonStyle">@style/materialCalculatorEditButton</item>
         <item name="memoryButtonStyle">@style/materialCalculatorMemoryButton</item>
         <item name="equalsButtonStyle">@style/materialCalculatorEqualsButton</item>
+        <item name="android:textColorHighlight">@color/highlighted_text</item>
     </style>
 
 
