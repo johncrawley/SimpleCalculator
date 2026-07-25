@@ -1,9 +1,13 @@
 package com.jacstuff.simplecalculator;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.jacstuff.simplecalculator.calculator.Calculator;
@@ -22,10 +26,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+        setupInsets();
         viewModel = new ViewModelProvider(this).get(MainViewModel.class);
         initCalculator();
         setupButtons();
+    }
+
+
+    private void setupInsets() {
+        View mainLayout = findViewById(R.id.mainLayout);
+        if(mainLayout == null){
+            System.out.println("MainActivity.setupInsets() main layout could not be found!");
+            return;
+        }
+        ViewCompat.setOnApplyWindowInsetsListener(mainLayout, (v, insets) -> {
+            var systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
     }
 
 
