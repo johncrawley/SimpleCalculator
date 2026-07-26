@@ -2,6 +2,7 @@ package com.jacstuff.simplecalculator;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -10,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.button.MaterialButton;
 import com.jacstuff.simplecalculator.calculator.Calculator;
 import com.jacstuff.simplecalculator.calculator.InputSymbol;
 import com.jacstuff.simplecalculator.calculator.memory.PrefsMemoryImpl;
@@ -46,6 +48,45 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    private void setupCalculatorButtons() {
+        GridLayout buttonGrid = findViewById(R.id.button_grid);
+        String[][] buttons = {
+                {"C", "±", "%", "÷"},
+                {"7", "8", "9", "×"},
+                {"4", "5", "6", "-"},
+                {"1", "2", "3", "+"},
+                {"0", ".", "="}          // 0 will span 2 columns
+        };
+
+        int row = 0, col = 0;
+
+        for (var buttonRow : buttons) {
+            for (var text : buttonRow) {
+                var button = (MaterialButton) getLayoutInflater()
+                        .inflate(R.layout.input_button, buttonGrid, false);
+
+                button.setText(text);
+
+                var params = (GridLayout.LayoutParams) button.getLayoutParams();
+                params.width = 0;
+                params.height = 0;
+                params.columnSpec = GridLayout.spec(col, 1f);   // 1f = weight
+                params.rowSpec = GridLayout.spec(row, 1f);
+
+                button.setLayoutParams(params);
+                //button.setOnClickListener(v -> calculator.process(text));
+
+                buttonGrid.addView(button);
+
+                col++;
+                if (col >= 4) {   // move to next row
+                    col = 0;
+                    row++;
+                }
+            }
+        }
     }
 
 
